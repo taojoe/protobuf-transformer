@@ -9,37 +9,37 @@ public final class Transform {
       com.google.protobuf.ExtensionRegistry registry) {
   }
   /**
-   * Protobuf enum {@code com.github.taojoe.proto.ActionStatusType}
+   * Protobuf enum {@code com.github.taojoe.proto.UserLevelType}
    */
-  public enum ActionStatusType
+  public enum UserLevelType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>FROZEN = 0;</code>
+     * <code>LV0 = 0;</code>
      */
-    FROZEN(0, 0),
+    LV0(0, 0),
     /**
-     * <code>DISPENSED = 1;</code>
+     * <code>LV1 = 1;</code>
      */
-    DISPENSED(1, 1),
+    LV1(1, 1),
     /**
-     * <code>REVOKED = 2;</code>
+     * <code>LV2 = 2;</code>
      */
-    REVOKED(2, 2),
+    LV2(2, 2),
     UNRECOGNIZED(-1, -1),
     ;
 
     /**
-     * <code>FROZEN = 0;</code>
+     * <code>LV0 = 0;</code>
      */
-    public static final int FROZEN_VALUE = 0;
+    public static final int LV0_VALUE = 0;
     /**
-     * <code>DISPENSED = 1;</code>
+     * <code>LV1 = 1;</code>
      */
-    public static final int DISPENSED_VALUE = 1;
+    public static final int LV1_VALUE = 1;
     /**
-     * <code>REVOKED = 2;</code>
+     * <code>LV2 = 2;</code>
      */
-    public static final int REVOKED_VALUE = 2;
+    public static final int LV2_VALUE = 2;
 
 
     public final int getNumber() {
@@ -50,24 +50,24 @@ public final class Transform {
       return value;
     }
 
-    public static ActionStatusType valueOf(int value) {
+    public static UserLevelType valueOf(int value) {
       switch (value) {
-        case 0: return FROZEN;
-        case 1: return DISPENSED;
-        case 2: return REVOKED;
+        case 0: return LV0;
+        case 1: return LV1;
+        case 2: return LV2;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<ActionStatusType>
+    public static com.google.protobuf.Internal.EnumLiteMap<UserLevelType>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        ActionStatusType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ActionStatusType>() {
-            public ActionStatusType findValueByNumber(int number) {
-              return ActionStatusType.valueOf(number);
+        UserLevelType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<UserLevelType>() {
+            public UserLevelType findValueByNumber(int number) {
+              return UserLevelType.valueOf(number);
             }
           };
 
@@ -84,9 +84,9 @@ public final class Transform {
       return com.github.taojoe.proto.Transform.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final ActionStatusType[] VALUES = values();
+    private static final UserLevelType[] VALUES = values();
 
-    public static ActionStatusType valueOf(
+    public static UserLevelType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -101,12 +101,12 @@ public final class Transform {
     private final int index;
     private final int value;
 
-    private ActionStatusType(int index, int value) {
+    private UserLevelType(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:com.github.taojoe.proto.ActionStatusType)
+    // @@protoc_insertion_point(enum_scope:com.github.taojoe.proto.UserLevelType)
   }
 
   public interface ErrorOrBuilder extends
@@ -752,20 +752,29 @@ public final class Transform {
         getLoginTimeBytes();
 
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    int getLevelTypeValue();
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    com.github.taojoe.proto.Transform.UserLevelType getLevelType();
+
+    /**
+     * <code>repeated string tags = 6;</code>
      */
     com.google.protobuf.ProtocolStringList
         getTagsList();
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     int getTagsCount();
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     java.lang.String getTags(int index);
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     com.google.protobuf.ByteString
         getTagsBytes(int index);
@@ -786,6 +795,7 @@ public final class Transform {
       nickname_ = "";
       nickname0_ = "";
       loginTime_ = "";
+      levelType_ = 0;
       tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
@@ -837,11 +847,17 @@ public final class Transform {
               loginTime_ = s;
               break;
             }
-            case 42: {
+            case 40: {
+              int rawValue = input.readEnum();
+
+              levelType_ = rawValue;
+              break;
+            }
+            case 50: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 tags_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               tags_.add(s);
               break;
@@ -855,7 +871,7 @@ public final class Transform {
             new com.google.protobuf.InvalidProtocolBufferException(
                 e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           tags_ = tags_.getUnmodifiableView();
         }
         makeExtensionsImmutable();
@@ -1026,29 +1042,45 @@ public final class Transform {
       }
     }
 
-    public static final int TAGS_FIELD_NUMBER = 5;
+    public static final int LEVEL_TYPE_FIELD_NUMBER = 5;
+    private int levelType_;
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    public int getLevelTypeValue() {
+      return levelType_;
+    }
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    public com.github.taojoe.proto.Transform.UserLevelType getLevelType() {
+      com.github.taojoe.proto.Transform.UserLevelType result = com.github.taojoe.proto.Transform.UserLevelType.valueOf(levelType_);
+      return result == null ? com.github.taojoe.proto.Transform.UserLevelType.UNRECOGNIZED : result;
+    }
+
+    public static final int TAGS_FIELD_NUMBER = 6;
     private com.google.protobuf.LazyStringList tags_;
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getTagsList() {
       return tags_;
     }
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     public int getTagsCount() {
       return tags_.size();
     }
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     public java.lang.String getTags(int index) {
       return tags_.get(index);
     }
     /**
-     * <code>repeated string tags = 5;</code>
+     * <code>repeated string tags = 6;</code>
      */
     public com.google.protobuf.ByteString
         getTagsBytes(int index) {
@@ -1079,8 +1111,11 @@ public final class Transform {
       if (!getLoginTimeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, loginTime_);
       }
+      if (levelType_ != com.github.taojoe.proto.Transform.UserLevelType.LV0.getNumber()) {
+        output.writeEnum(5, levelType_);
+      }
       for (int i = 0; i < tags_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 5, tags_.getRaw(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, tags_.getRaw(i));
       }
     }
 
@@ -1100,6 +1135,10 @@ public final class Transform {
       }
       if (!getLoginTimeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, loginTime_);
+      }
+      if (levelType_ != com.github.taojoe.proto.Transform.UserLevelType.LV0.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, levelType_);
       }
       {
         int dataSize = 0;
@@ -1228,8 +1267,10 @@ public final class Transform {
 
         loginTime_ = "";
 
+        levelType_ = 0;
+
         tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -1258,9 +1299,10 @@ public final class Transform {
         result.nickname_ = nickname_;
         result.nickname0_ = nickname0_;
         result.loginTime_ = loginTime_;
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        result.levelType_ = levelType_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
           tags_ = tags_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
         result.tags_ = tags_;
         result.bitField0_ = to_bitField0_;
@@ -1295,10 +1337,13 @@ public final class Transform {
           loginTime_ = other.loginTime_;
           onChanged();
         }
+        if (other.levelType_ != 0) {
+          setLevelTypeValue(other.getLevelTypeValue());
+        }
         if (!other.tags_.isEmpty()) {
           if (tags_.isEmpty()) {
             tags_ = other.tags_;
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           } else {
             ensureTagsIsMutable();
             tags_.addAll(other.tags_);
@@ -1648,41 +1693,85 @@ public final class Transform {
         return this;
       }
 
+      private int levelType_ = 0;
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public int getLevelTypeValue() {
+        return levelType_;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public Builder setLevelTypeValue(int value) {
+        levelType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public com.github.taojoe.proto.Transform.UserLevelType getLevelType() {
+        com.github.taojoe.proto.Transform.UserLevelType result = com.github.taojoe.proto.Transform.UserLevelType.valueOf(levelType_);
+        return result == null ? com.github.taojoe.proto.Transform.UserLevelType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public Builder setLevelType(com.github.taojoe.proto.Transform.UserLevelType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        levelType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public Builder clearLevelType() {
+        
+        levelType_ = 0;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.LazyStringList tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureTagsIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           tags_ = new com.google.protobuf.LazyStringArrayList(tags_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
          }
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public com.google.protobuf.ProtocolStringList
           getTagsList() {
         return tags_.getUnmodifiableView();
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public int getTagsCount() {
         return tags_.size();
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public java.lang.String getTags(int index) {
         return tags_.get(index);
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public com.google.protobuf.ByteString
           getTagsBytes(int index) {
         return tags_.getByteString(index);
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public Builder setTags(
           int index, java.lang.String value) {
@@ -1695,7 +1784,7 @@ public final class Transform {
         return this;
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public Builder addTags(
           java.lang.String value) {
@@ -1708,7 +1797,7 @@ public final class Transform {
         return this;
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public Builder addAllTags(
           java.lang.Iterable<java.lang.String> values) {
@@ -1719,16 +1808,16 @@ public final class Transform {
         return this;
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public Builder clearTags() {
         tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string tags = 5;</code>
+       * <code>repeated string tags = 6;</code>
        */
       public Builder addTagsBytes(
           com.google.protobuf.ByteString value) {
@@ -1794,2866 +1883,6 @@ public final class Transform {
     }
 
     public com.github.taojoe.proto.Transform.User getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface RegisterVerifyCodeRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.RegisterVerifyCodeRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    java.lang.String getToken();
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getTokenBytes();
-
-    /**
-     * <code>optional string phone = 2;</code>
-     */
-    java.lang.String getPhone();
-    /**
-     * <code>optional string phone = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getPhoneBytes();
-
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    java.lang.String getIp();
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getIpBytes();
-  }
-  /**
-   * Protobuf type {@code com.github.taojoe.proto.RegisterVerifyCodeRequest}
-   */
-  public  static final class RegisterVerifyCodeRequest extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.RegisterVerifyCodeRequest)
-      RegisterVerifyCodeRequestOrBuilder {
-    // Use RegisterVerifyCodeRequest.newBuilder() to construct.
-    private RegisterVerifyCodeRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private RegisterVerifyCodeRequest() {
-      token_ = "";
-      phone_ = "";
-      ip_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private RegisterVerifyCodeRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              token_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              phone_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              ip_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
-      } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.class, com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.Builder.class);
-    }
-
-    public static final int TOKEN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object token_;
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public java.lang.String getToken() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        token_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTokenBytes() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        token_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PHONE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object phone_;
-    /**
-     * <code>optional string phone = 2;</code>
-     */
-    public java.lang.String getPhone() {
-      java.lang.Object ref = phone_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        phone_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string phone = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPhoneBytes() {
-      java.lang.Object ref = phone_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        phone_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int IP_FIELD_NUMBER = 3;
-    private volatile java.lang.Object ip_;
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    public java.lang.String getIp() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ip_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIpBytes() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getTokenBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
-      }
-      if (!getPhoneBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, phone_);
-      }
-      if (!getIpBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, ip_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getTokenBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
-      }
-      if (!getPhoneBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, phone_);
-      }
-      if (!getIpBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, ip_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.github.taojoe.proto.RegisterVerifyCodeRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.RegisterVerifyCodeRequest)
-        com.github.taojoe.proto.Transform.RegisterVerifyCodeRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.class, com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.Builder.class);
-      }
-
-      // Construct using com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        token_ = "";
-
-        phone_ = "";
-
-        ip_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_descriptor;
-      }
-
-      public com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest getDefaultInstanceForType() {
-        return com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.getDefaultInstance();
-      }
-
-      public com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest build() {
-        com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest buildPartial() {
-        com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest result = new com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest(this);
-        result.token_ = token_;
-        result.phone_ = phone_;
-        result.ip_ = ip_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest) {
-          return mergeFrom((com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest other) {
-        if (other == com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest.getDefaultInstance()) return this;
-        if (!other.getToken().isEmpty()) {
-          token_ = other.token_;
-          onChanged();
-        }
-        if (!other.getPhone().isEmpty()) {
-          phone_ = other.phone_;
-          onChanged();
-        }
-        if (!other.getIp().isEmpty()) {
-          ip_ = other.ip_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object token_ = "";
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public java.lang.String getToken() {
-        java.lang.Object ref = token_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          token_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTokenBytes() {
-        java.lang.Object ref = token_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          token_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder setToken(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        token_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder clearToken() {
-        
-        token_ = getDefaultInstance().getToken();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder setTokenBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        token_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object phone_ = "";
-      /**
-       * <code>optional string phone = 2;</code>
-       */
-      public java.lang.String getPhone() {
-        java.lang.Object ref = phone_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          phone_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string phone = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPhoneBytes() {
-        java.lang.Object ref = phone_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          phone_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string phone = 2;</code>
-       */
-      public Builder setPhone(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        phone_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string phone = 2;</code>
-       */
-      public Builder clearPhone() {
-        
-        phone_ = getDefaultInstance().getPhone();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string phone = 2;</code>
-       */
-      public Builder setPhoneBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        phone_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object ip_ = "";
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public java.lang.String getIp() {
-        java.lang.Object ref = ip_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ip_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIpBytes() {
-        java.lang.Object ref = ip_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          ip_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public Builder setIp(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        ip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public Builder clearIp() {
-        
-        ip_ = getDefaultInstance().getIp();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public Builder setIpBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        ip_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.RegisterVerifyCodeRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.RegisterVerifyCodeRequest)
-    private static final com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest();
-    }
-
-    public static com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RegisterVerifyCodeRequest>
-        PARSER = new com.google.protobuf.AbstractParser<RegisterVerifyCodeRequest>() {
-      public RegisterVerifyCodeRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new RegisterVerifyCodeRequest(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<RegisterVerifyCodeRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RegisterVerifyCodeRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.github.taojoe.proto.Transform.RegisterVerifyCodeRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface RegisterRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.RegisterRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    java.lang.String getToken();
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getTokenBytes();
-
-    /**
-     * <code>optional string username = 2;</code>
-     */
-    java.lang.String getUsername();
-    /**
-     * <code>optional string username = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getUsernameBytes();
-
-    /**
-     * <code>optional string password = 3;</code>
-     */
-    java.lang.String getPassword();
-    /**
-     * <code>optional string password = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getPasswordBytes();
-
-    /**
-     * <code>optional string verifyCode = 4;</code>
-     */
-    java.lang.String getVerifyCode();
-    /**
-     * <code>optional string verifyCode = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getVerifyCodeBytes();
-  }
-  /**
-   * Protobuf type {@code com.github.taojoe.proto.RegisterRequest}
-   */
-  public  static final class RegisterRequest extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.RegisterRequest)
-      RegisterRequestOrBuilder {
-    // Use RegisterRequest.newBuilder() to construct.
-    private RegisterRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private RegisterRequest() {
-      token_ = "";
-      username_ = "";
-      password_ = "";
-      verifyCode_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private RegisterRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              token_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              username_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              password_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              verifyCode_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
-      } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.github.taojoe.proto.Transform.RegisterRequest.class, com.github.taojoe.proto.Transform.RegisterRequest.Builder.class);
-    }
-
-    public static final int TOKEN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object token_;
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public java.lang.String getToken() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        token_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTokenBytes() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        token_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object username_;
-    /**
-     * <code>optional string username = 2;</code>
-     */
-    public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        username_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string username = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUsernameBytes() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        username_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PASSWORD_FIELD_NUMBER = 3;
-    private volatile java.lang.Object password_;
-    /**
-     * <code>optional string password = 3;</code>
-     */
-    public java.lang.String getPassword() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        password_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string password = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPasswordBytes() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        password_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int VERIFYCODE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object verifyCode_;
-    /**
-     * <code>optional string verifyCode = 4;</code>
-     */
-    public java.lang.String getVerifyCode() {
-      java.lang.Object ref = verifyCode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        verifyCode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string verifyCode = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getVerifyCodeBytes() {
-      java.lang.Object ref = verifyCode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        verifyCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getTokenBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
-      }
-      if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, username_);
-      }
-      if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, password_);
-      }
-      if (!getVerifyCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, verifyCode_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getTokenBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
-      }
-      if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, username_);
-      }
-      if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, password_);
-      }
-      if (!getVerifyCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, verifyCode_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.RegisterRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.github.taojoe.proto.Transform.RegisterRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.github.taojoe.proto.RegisterRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.RegisterRequest)
-        com.github.taojoe.proto.Transform.RegisterRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.github.taojoe.proto.Transform.RegisterRequest.class, com.github.taojoe.proto.Transform.RegisterRequest.Builder.class);
-      }
-
-      // Construct using com.github.taojoe.proto.Transform.RegisterRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        token_ = "";
-
-        username_ = "";
-
-        password_ = "";
-
-        verifyCode_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_RegisterRequest_descriptor;
-      }
-
-      public com.github.taojoe.proto.Transform.RegisterRequest getDefaultInstanceForType() {
-        return com.github.taojoe.proto.Transform.RegisterRequest.getDefaultInstance();
-      }
-
-      public com.github.taojoe.proto.Transform.RegisterRequest build() {
-        com.github.taojoe.proto.Transform.RegisterRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.github.taojoe.proto.Transform.RegisterRequest buildPartial() {
-        com.github.taojoe.proto.Transform.RegisterRequest result = new com.github.taojoe.proto.Transform.RegisterRequest(this);
-        result.token_ = token_;
-        result.username_ = username_;
-        result.password_ = password_;
-        result.verifyCode_ = verifyCode_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.github.taojoe.proto.Transform.RegisterRequest) {
-          return mergeFrom((com.github.taojoe.proto.Transform.RegisterRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.github.taojoe.proto.Transform.RegisterRequest other) {
-        if (other == com.github.taojoe.proto.Transform.RegisterRequest.getDefaultInstance()) return this;
-        if (!other.getToken().isEmpty()) {
-          token_ = other.token_;
-          onChanged();
-        }
-        if (!other.getUsername().isEmpty()) {
-          username_ = other.username_;
-          onChanged();
-        }
-        if (!other.getPassword().isEmpty()) {
-          password_ = other.password_;
-          onChanged();
-        }
-        if (!other.getVerifyCode().isEmpty()) {
-          verifyCode_ = other.verifyCode_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.github.taojoe.proto.Transform.RegisterRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.github.taojoe.proto.Transform.RegisterRequest) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object token_ = "";
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public java.lang.String getToken() {
-        java.lang.Object ref = token_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          token_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTokenBytes() {
-        java.lang.Object ref = token_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          token_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder setToken(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        token_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder clearToken() {
-        
-        token_ = getDefaultInstance().getToken();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder setTokenBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        token_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object username_ = "";
-      /**
-       * <code>optional string username = 2;</code>
-       */
-      public java.lang.String getUsername() {
-        java.lang.Object ref = username_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          username_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string username = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUsernameBytes() {
-        java.lang.Object ref = username_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          username_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string username = 2;</code>
-       */
-      public Builder setUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        username_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string username = 2;</code>
-       */
-      public Builder clearUsername() {
-        
-        username_ = getDefaultInstance().getUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string username = 2;</code>
-       */
-      public Builder setUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        username_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object password_ = "";
-      /**
-       * <code>optional string password = 3;</code>
-       */
-      public java.lang.String getPassword() {
-        java.lang.Object ref = password_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          password_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string password = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPasswordBytes() {
-        java.lang.Object ref = password_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          password_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string password = 3;</code>
-       */
-      public Builder setPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        password_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string password = 3;</code>
-       */
-      public Builder clearPassword() {
-        
-        password_ = getDefaultInstance().getPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string password = 3;</code>
-       */
-      public Builder setPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        password_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object verifyCode_ = "";
-      /**
-       * <code>optional string verifyCode = 4;</code>
-       */
-      public java.lang.String getVerifyCode() {
-        java.lang.Object ref = verifyCode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          verifyCode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string verifyCode = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getVerifyCodeBytes() {
-        java.lang.Object ref = verifyCode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          verifyCode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string verifyCode = 4;</code>
-       */
-      public Builder setVerifyCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        verifyCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string verifyCode = 4;</code>
-       */
-      public Builder clearVerifyCode() {
-        
-        verifyCode_ = getDefaultInstance().getVerifyCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string verifyCode = 4;</code>
-       */
-      public Builder setVerifyCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        verifyCode_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.RegisterRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.RegisterRequest)
-    private static final com.github.taojoe.proto.Transform.RegisterRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.RegisterRequest();
-    }
-
-    public static com.github.taojoe.proto.Transform.RegisterRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RegisterRequest>
-        PARSER = new com.google.protobuf.AbstractParser<RegisterRequest>() {
-      public RegisterRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new RegisterRequest(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<RegisterRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RegisterRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.github.taojoe.proto.Transform.RegisterRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface LoginRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.LoginRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string username = 1;</code>
-     */
-    java.lang.String getUsername();
-    /**
-     * <code>optional string username = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getUsernameBytes();
-
-    /**
-     * <code>optional string password = 2;</code>
-     */
-    java.lang.String getPassword();
-    /**
-     * <code>optional string password = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getPasswordBytes();
-
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    java.lang.String getIp();
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getIpBytes();
-
-    /**
-     * <code>optional string userAgent = 4;</code>
-     */
-    java.lang.String getUserAgent();
-    /**
-     * <code>optional string userAgent = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getUserAgentBytes();
-  }
-  /**
-   * Protobuf type {@code com.github.taojoe.proto.LoginRequest}
-   */
-  public  static final class LoginRequest extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.LoginRequest)
-      LoginRequestOrBuilder {
-    // Use LoginRequest.newBuilder() to construct.
-    private LoginRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private LoginRequest() {
-      username_ = "";
-      password_ = "";
-      ip_ = "";
-      userAgent_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private LoginRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              username_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              password_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              ip_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              userAgent_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
-      } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_LoginRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_LoginRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.github.taojoe.proto.Transform.LoginRequest.class, com.github.taojoe.proto.Transform.LoginRequest.Builder.class);
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object username_;
-    /**
-     * <code>optional string username = 1;</code>
-     */
-    public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        username_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string username = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUsernameBytes() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        username_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object password_;
-    /**
-     * <code>optional string password = 2;</code>
-     */
-    public java.lang.String getPassword() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        password_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string password = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPasswordBytes() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        password_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int IP_FIELD_NUMBER = 3;
-    private volatile java.lang.Object ip_;
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    public java.lang.String getIp() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ip_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string ip = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIpBytes() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int USERAGENT_FIELD_NUMBER = 4;
-    private volatile java.lang.Object userAgent_;
-    /**
-     * <code>optional string userAgent = 4;</code>
-     */
-    public java.lang.String getUserAgent() {
-      java.lang.Object ref = userAgent_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        userAgent_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string userAgent = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUserAgentBytes() {
-      java.lang.Object ref = userAgent_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        userAgent_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, username_);
-      }
-      if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, password_);
-      }
-      if (!getIpBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, ip_);
-      }
-      if (!getUserAgentBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, userAgent_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, username_);
-      }
-      if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, password_);
-      }
-      if (!getIpBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, ip_);
-      }
-      if (!getUserAgentBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, userAgent_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.LoginRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.github.taojoe.proto.Transform.LoginRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.github.taojoe.proto.LoginRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.LoginRequest)
-        com.github.taojoe.proto.Transform.LoginRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_LoginRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_LoginRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.github.taojoe.proto.Transform.LoginRequest.class, com.github.taojoe.proto.Transform.LoginRequest.Builder.class);
-      }
-
-      // Construct using com.github.taojoe.proto.Transform.LoginRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        username_ = "";
-
-        password_ = "";
-
-        ip_ = "";
-
-        userAgent_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_LoginRequest_descriptor;
-      }
-
-      public com.github.taojoe.proto.Transform.LoginRequest getDefaultInstanceForType() {
-        return com.github.taojoe.proto.Transform.LoginRequest.getDefaultInstance();
-      }
-
-      public com.github.taojoe.proto.Transform.LoginRequest build() {
-        com.github.taojoe.proto.Transform.LoginRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.github.taojoe.proto.Transform.LoginRequest buildPartial() {
-        com.github.taojoe.proto.Transform.LoginRequest result = new com.github.taojoe.proto.Transform.LoginRequest(this);
-        result.username_ = username_;
-        result.password_ = password_;
-        result.ip_ = ip_;
-        result.userAgent_ = userAgent_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.github.taojoe.proto.Transform.LoginRequest) {
-          return mergeFrom((com.github.taojoe.proto.Transform.LoginRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.github.taojoe.proto.Transform.LoginRequest other) {
-        if (other == com.github.taojoe.proto.Transform.LoginRequest.getDefaultInstance()) return this;
-        if (!other.getUsername().isEmpty()) {
-          username_ = other.username_;
-          onChanged();
-        }
-        if (!other.getPassword().isEmpty()) {
-          password_ = other.password_;
-          onChanged();
-        }
-        if (!other.getIp().isEmpty()) {
-          ip_ = other.ip_;
-          onChanged();
-        }
-        if (!other.getUserAgent().isEmpty()) {
-          userAgent_ = other.userAgent_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.github.taojoe.proto.Transform.LoginRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.github.taojoe.proto.Transform.LoginRequest) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object username_ = "";
-      /**
-       * <code>optional string username = 1;</code>
-       */
-      public java.lang.String getUsername() {
-        java.lang.Object ref = username_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          username_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string username = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUsernameBytes() {
-        java.lang.Object ref = username_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          username_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string username = 1;</code>
-       */
-      public Builder setUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        username_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string username = 1;</code>
-       */
-      public Builder clearUsername() {
-        
-        username_ = getDefaultInstance().getUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string username = 1;</code>
-       */
-      public Builder setUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        username_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object password_ = "";
-      /**
-       * <code>optional string password = 2;</code>
-       */
-      public java.lang.String getPassword() {
-        java.lang.Object ref = password_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          password_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string password = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPasswordBytes() {
-        java.lang.Object ref = password_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          password_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string password = 2;</code>
-       */
-      public Builder setPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        password_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string password = 2;</code>
-       */
-      public Builder clearPassword() {
-        
-        password_ = getDefaultInstance().getPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string password = 2;</code>
-       */
-      public Builder setPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        password_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object ip_ = "";
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public java.lang.String getIp() {
-        java.lang.Object ref = ip_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ip_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIpBytes() {
-        java.lang.Object ref = ip_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          ip_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public Builder setIp(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        ip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public Builder clearIp() {
-        
-        ip_ = getDefaultInstance().getIp();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ip = 3;</code>
-       */
-      public Builder setIpBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        ip_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object userAgent_ = "";
-      /**
-       * <code>optional string userAgent = 4;</code>
-       */
-      public java.lang.String getUserAgent() {
-        java.lang.Object ref = userAgent_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          userAgent_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string userAgent = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUserAgentBytes() {
-        java.lang.Object ref = userAgent_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          userAgent_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string userAgent = 4;</code>
-       */
-      public Builder setUserAgent(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        userAgent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string userAgent = 4;</code>
-       */
-      public Builder clearUserAgent() {
-        
-        userAgent_ = getDefaultInstance().getUserAgent();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string userAgent = 4;</code>
-       */
-      public Builder setUserAgentBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        userAgent_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.LoginRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.LoginRequest)
-    private static final com.github.taojoe.proto.Transform.LoginRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.LoginRequest();
-    }
-
-    public static com.github.taojoe.proto.Transform.LoginRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<LoginRequest>
-        PARSER = new com.google.protobuf.AbstractParser<LoginRequest>() {
-      public LoginRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new LoginRequest(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<LoginRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<LoginRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.github.taojoe.proto.Transform.LoginRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface TokenRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.TokenRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    java.lang.String getToken();
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getTokenBytes();
-  }
-  /**
-   * Protobuf type {@code com.github.taojoe.proto.TokenRequest}
-   */
-  public  static final class TokenRequest extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.TokenRequest)
-      TokenRequestOrBuilder {
-    // Use TokenRequest.newBuilder() to construct.
-    private TokenRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private TokenRequest() {
-      token_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private TokenRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              token_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
-      } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_TokenRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_TokenRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.github.taojoe.proto.Transform.TokenRequest.class, com.github.taojoe.proto.Transform.TokenRequest.Builder.class);
-    }
-
-    public static final int TOKEN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object token_;
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public java.lang.String getToken() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        token_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string token = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTokenBytes() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        token_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getTokenBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getTokenBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.github.taojoe.proto.Transform.TokenRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.github.taojoe.proto.Transform.TokenRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.github.taojoe.proto.TokenRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.TokenRequest)
-        com.github.taojoe.proto.Transform.TokenRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_TokenRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_TokenRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.github.taojoe.proto.Transform.TokenRequest.class, com.github.taojoe.proto.Transform.TokenRequest.Builder.class);
-      }
-
-      // Construct using com.github.taojoe.proto.Transform.TokenRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        token_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_TokenRequest_descriptor;
-      }
-
-      public com.github.taojoe.proto.Transform.TokenRequest getDefaultInstanceForType() {
-        return com.github.taojoe.proto.Transform.TokenRequest.getDefaultInstance();
-      }
-
-      public com.github.taojoe.proto.Transform.TokenRequest build() {
-        com.github.taojoe.proto.Transform.TokenRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.github.taojoe.proto.Transform.TokenRequest buildPartial() {
-        com.github.taojoe.proto.Transform.TokenRequest result = new com.github.taojoe.proto.Transform.TokenRequest(this);
-        result.token_ = token_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.github.taojoe.proto.Transform.TokenRequest) {
-          return mergeFrom((com.github.taojoe.proto.Transform.TokenRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.github.taojoe.proto.Transform.TokenRequest other) {
-        if (other == com.github.taojoe.proto.Transform.TokenRequest.getDefaultInstance()) return this;
-        if (!other.getToken().isEmpty()) {
-          token_ = other.token_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.github.taojoe.proto.Transform.TokenRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.github.taojoe.proto.Transform.TokenRequest) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object token_ = "";
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public java.lang.String getToken() {
-        java.lang.Object ref = token_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          token_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTokenBytes() {
-        java.lang.Object ref = token_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          token_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder setToken(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        token_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder clearToken() {
-        
-        token_ = getDefaultInstance().getToken();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string token = 1;</code>
-       */
-      public Builder setTokenBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        token_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.TokenRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.TokenRequest)
-    private static final com.github.taojoe.proto.Transform.TokenRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.TokenRequest();
-    }
-
-    public static com.github.taojoe.proto.Transform.TokenRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TokenRequest>
-        PARSER = new com.google.protobuf.AbstractParser<TokenRequest>() {
-      public TokenRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new TokenRequest(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    public static com.google.protobuf.Parser<TokenRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TokenRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.github.taojoe.proto.Transform.TokenRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6062,26 +3291,6 @@ public final class Transform {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_github_taojoe_proto_User_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_taojoe_proto_RegisterRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_github_taojoe_proto_RegisterRequest_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_taojoe_proto_LoginRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_github_taojoe_proto_LoginRequest_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_taojoe_proto_TokenRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_github_taojoe_proto_TokenRequest_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -6101,27 +3310,21 @@ public final class Transform {
   static {
     java.lang.String[] descriptorData = {
       "\n\017transform.proto\022\027com.github.taojoe.pro" +
-      "to\"\"\n\005Error\022\014\n\004name\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\"Y" +
-      "\n\004User\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\021\n" +
-      "\tnickname0\030\003 \001(\t\022\021\n\tloginTime\030\004 \001(\t\022\014\n\004t" +
-      "ags\030\005 \003(\t\"E\n\031RegisterVerifyCodeRequest\022\r" +
-      "\n\005token\030\001 \001(\t\022\r\n\005phone\030\002 \001(\t\022\n\n\002ip\030\003 \001(\t" +
-      "\"X\n\017RegisterRequest\022\r\n\005token\030\001 \001(\t\022\020\n\010us" +
-      "ername\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\022\n\nverify" +
-      "Code\030\004 \001(\t\"Q\n\014LoginRequest\022\020\n\010username\030\001" +
-      " \001(\t\022\020\n\010password\030\002 \001(\t\022\n\n\002ip\030\003 \001(\t\022\021\n\tus",
-      "erAgent\030\004 \001(\t\"\035\n\014TokenRequest\022\r\n\005token\030\001" +
-      " \001(\t\"\326\002\n\017SessionResponse\022\r\n\005token\030\001 \001(\t\022" +
-      "+\n\004user\030\002 \001(\0132\035.com.github.taojoe.proto." +
-      "User\022-\n\005error\030\003 \001(\0132\036.com.github.taojoe." +
-      "proto.Error\022.\n\007friends\030\004 \003(\0132\035.com.githu" +
-      "b.taojoe.proto.User\022J\n\trelations\030\005 \003(\01327" +
-      ".com.github.taojoe.proto.SessionResponse" +
-      ".RelationsEntry\022\013\n\003cnt\030\006 \001(\005\032O\n\016Relation" +
-      "sEntry\022\013\n\003key\030\001 \001(\t\022,\n\005value\030\002 \001(\0132\035.com" +
-      ".github.taojoe.proto.User:\0028\001*:\n\020ActionS",
-      "tatusType\022\n\n\006FROZEN\020\000\022\r\n\tDISPENSED\020\001\022\013\n\007" +
-      "REVOKED\020\002b\006proto3"
+      "to\"\"\n\005Error\022\014\n\004name\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\"\225" +
+      "\001\n\004User\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\021" +
+      "\n\tnickname0\030\003 \001(\t\022\021\n\tloginTime\030\004 \001(\t\022:\n\n" +
+      "level_type\030\005 \001(\0162&.com.github.taojoe.pro" +
+      "to.UserLevelType\022\014\n\004tags\030\006 \003(\t\"\326\002\n\017Sessi" +
+      "onResponse\022\r\n\005token\030\001 \001(\t\022+\n\004user\030\002 \001(\0132" +
+      "\035.com.github.taojoe.proto.User\022-\n\005error\030" +
+      "\003 \001(\0132\036.com.github.taojoe.proto.Error\022.\n" +
+      "\007friends\030\004 \003(\0132\035.com.github.taojoe.proto",
+      ".User\022J\n\trelations\030\005 \003(\01327.com.github.ta" +
+      "ojoe.proto.SessionResponse.RelationsEntr" +
+      "y\022\013\n\003cnt\030\006 \001(\005\032O\n\016RelationsEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022,\n\005value\030\002 \001(\0132\035.com.github.taojoe" +
+      ".proto.User:\0028\001**\n\rUserLevelType\022\007\n\003LV0\020" +
+      "\000\022\007\n\003LV1\020\001\022\007\n\003LV2\020\002b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6146,33 +3349,9 @@ public final class Transform {
     internal_static_com_github_taojoe_proto_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_github_taojoe_proto_User_descriptor,
-        new java.lang.String[] { "Uid", "Nickname", "Nickname0", "LoginTime", "Tags", });
-    internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_com_github_taojoe_proto_RegisterVerifyCodeRequest_descriptor,
-        new java.lang.String[] { "Token", "Phone", "Ip", });
-    internal_static_com_github_taojoe_proto_RegisterRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_com_github_taojoe_proto_RegisterRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_com_github_taojoe_proto_RegisterRequest_descriptor,
-        new java.lang.String[] { "Token", "Username", "Password", "VerifyCode", });
-    internal_static_com_github_taojoe_proto_LoginRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_com_github_taojoe_proto_LoginRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_com_github_taojoe_proto_LoginRequest_descriptor,
-        new java.lang.String[] { "Username", "Password", "Ip", "UserAgent", });
-    internal_static_com_github_taojoe_proto_TokenRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_com_github_taojoe_proto_TokenRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_com_github_taojoe_proto_TokenRequest_descriptor,
-        new java.lang.String[] { "Token", });
+        new java.lang.String[] { "Uid", "Nickname", "Nickname0", "LoginTime", "LevelType", "Tags", });
     internal_static_com_github_taojoe_proto_SessionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_github_taojoe_proto_SessionResponse_descriptor,

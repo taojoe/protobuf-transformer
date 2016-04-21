@@ -2,12 +2,11 @@ syntax = "proto3";
 
 package com.github.taojoe.proto;
 
-enum ActionStatusType {
-    FROZEN=0;
-    DISPENSED=1;
-    REVOKED=2;
+enum UserLevelType {
+    LV0=0;
+    LV1=1;
+    LV2=2;
 }
-
 
 message Error {
     string name=1;
@@ -19,31 +18,8 @@ message User {
     string nickname=2; /* 打码的昵称， 如 周** */
     string nickname0=3; /* 未打码的昵称， 如 风清扬 */
     string loginTime=4;
-    repeated string tags=5;
-}
-
-message RegisterVerifyCodeRequest{
-    string token=1;
-    string phone=2;
-    string ip=3;
-}
-
-message RegisterRequest{
-    string token=1;
-    string username=2;
-    string password=3;
-    string verifyCode=4;
-}
-
-message LoginRequest {
-    string username = 1;
-    string password = 2;
-    string ip=3;
-    string userAgent=4;
-}
-
-message TokenRequest {
-    string token=1;
+    UserLevelType level_type=5;
+    repeated string tags=6;
 }
 
 message SessionResponse{
