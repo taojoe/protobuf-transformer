@@ -37,8 +37,8 @@ public class TransformerTest {
     public void testMessageToJava(){
         Transformer trans=new Transformer();
         Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb")
-                .setLoginTime(LocalDateTime.now().toString());
-//                .setLevelType(Transform.UserLevelType.LV1);
+                .setLoginTime(LocalDateTime.now().toString())
+                .setLevelType(Transform.UserLevelType.LV1);
         Transform.SessionResponse.Builder session= Transform.SessionResponse.newBuilder();
         session.setUser(user);
         Map<String, Transform.User> relations=new HashMap<>();

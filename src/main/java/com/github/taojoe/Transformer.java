@@ -1,6 +1,8 @@
 package com.github.taojoe;
 
 import com.github.taojoe.core.BeanUtil;
+import com.github.taojoe.core.Convertor;
+import com.github.taojoe.core.DefaultConvertor;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.MapEntry;
 import com.google.protobuf.Message;
@@ -14,6 +16,13 @@ import java.util.Map;
  * Created by joe on 4/20/16.
  */
 public class Transformer {
+    protected Convertor<Object> defaultConvertor=new DefaultConvertor();
+    protected Object valueFromMessageType(Object value, Descriptors.FieldDescriptor fieldDescriptor){
+        return defaultConvertor.fromMessageType(value, fieldDescriptor);
+    }
+    protected Object valueToMessageType(Object value, Descriptors.FieldDescriptor fieldDescriptor){
+        return defaultConvertor.asMessageType(value, fieldDescriptor);
+    }
     public <T> T messageToJava(MessageOrBuilder message, Class<T> clz){
         Map<Descriptors.FieldDescriptor, Object> md=message.getAllFields();
         try {
@@ -24,21 +33,31 @@ public class Transformer {
                 Object oldValue = kv.getValue();
                 Object newValue=null;
                 BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(target, name);
+                Class c1=oldValue.getClass();
                 if(objField!=null){
                     boolean isValueMessage=fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
                     if(fieldDescriptor.isMapField()){
-                        Map<Object, Object> destMap=new HashMap<>();
-                        List<MapEntry<Object, MessageOrBuilder>> origList=(List)oldValue;
-                        for(com.google.protobuf.MapEntry<Object, MessageOrBuilder> entry: origList){
-                            Object mapValue=null;
-                            if(isValueMessage){
-                                mapValue=messageToJava(entry.getValue(), objField.typeDescriptor.valueClz);
-                            }else{
-                                mapValue=entry.getValue();
+                        //fieldDescriptor 在map的时候描述的是entry, entry 本身是message类型, 因此需要进一步获取到entry value的fieldDescriptor
+                        if(fieldDescriptor.getMessageType()!=null) {
+                            List<Descriptors.FieldDescriptor> entryFields = fieldDescriptor.getMessageType().getFields();
+                            if (entryFields != null && entryFields.size() == 2) {
+                                Descriptors.FieldDescriptor valueFieldDescriptor = entryFields.get(1);
+                                isValueMessage = valueFieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                                Map<Object, Object> destMap=new HashMap<>();
+                                List<MapEntry<Object, MessageOrBuilder>> origList=(List)oldValue;
+                                for(com.google.protobuf.MapEntry<Object, MessageOrBuilder> entry: origList){
+                                    Object mapValue=null;
+                                    if(isValueMessage){
+                                        mapValue=messageToJava(entry.getValue(), objField.typeDescriptor.valueClz);
+                                    }else{
+                                        mapValue=valueFromMessageType(entry.getValue(), valueFieldDescriptor);
+                                    }
+                                    destMap.put(entry.getKey(), mapValue);
+                                }
+                                newValue=destMap;
                             }
-                            destMap.put(entry.getKey(), mapValue);
                         }
-                        newValue=destMap;
+
                     }else if(fieldDescriptor.isRepeated()){
                         ArrayList<Object> destList=new ArrayList<>();
                         if(isValueMessage){
@@ -49,7 +68,7 @@ public class Transformer {
                         }else{
                             List<Object> origList=(List) oldValue;
                             for(Object obj:origList){
-                                destList.add(obj);
+                                destList.add(valueFromMessageType(obj, fieldDescriptor));
                             }
                         }
                         newValue=destList;
@@ -57,7 +76,7 @@ public class Transformer {
                         if(isValueMessage){
                             newValue=messageToJava((MessageOrBuilder) oldValue, objField.typeDescriptor.valueClz);
                         }else{
-                            newValue=oldValue;
+                            newValue=valueFromMessageType(oldValue, fieldDescriptor);
                         }
                     }
                     if(newValue!=null){
@@ -85,7 +104,7 @@ public class Transformer {
                     boolean isValueMessage=fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
                     if(fieldDescriptor.isMapField()){
                         if(oldValue instanceof Map){
-                            //fieldDescriptor 在map的时候描述的是entry, 因此需要进一步获取到entry value的fieldDescriptor
+                            //fieldDescriptor 在map的时候描述的是entry, entry 本身是message类型, 因此需要进一步获取到entry value的fieldDescriptor
                             if(fieldDescriptor.getMessageType()!=null){
                                 List<Descriptors.FieldDescriptor> entryFields=fieldDescriptor.getMessageType().getFields();
                                 if(entryFields!=null && entryFields.size()==2) {
@@ -98,7 +117,7 @@ public class Transformer {
                                         if(isValueMessage){
                                             entryBuilder.setValue(javaToMessage(entry.getValue(), entryBuilder.newBuilderForField(valueFieldDescriptor)).build());
                                         }else{
-                                            entryBuilder.setValue(entry.getValue());
+                                            entryBuilder.setValue(valueToMessageType(entry.getValue(), valueFieldDescriptor));
                                         }
                                     }
                                 }
@@ -113,7 +132,7 @@ public class Transformer {
                                 }
                             }else{
                                 for(Object tmp:(List) oldValue){
-                                    builder.addRepeatedField(fieldDescriptor, tmp);
+                                    builder.addRepeatedField(fieldDescriptor, valueToMessageType(tmp, fieldDescriptor));
                                 }
                             }
                         }
@@ -122,7 +141,7 @@ public class Transformer {
                             Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
                             builder.setField(fieldDescriptor, javaToMessage(oldValue, tmpBuilder).build());
                         }else{
-                            builder.setField(fieldDescriptor, oldValue);
+                            builder.setField(fieldDescriptor, valueToMessageType(oldValue, fieldDescriptor));
                         }
                     }
                 }
