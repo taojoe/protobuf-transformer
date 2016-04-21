@@ -30,9 +30,11 @@ public class Transformer {
                         Map<Object, Object> destMap=new HashMap<>();
                         List<MapEntry<Object, MessageOrBuilder>> origList=(List)oldValue;
                         for(com.google.protobuf.MapEntry<Object, MessageOrBuilder> entry: origList){
-                            Object mapValue=entry.getValue();
+                            Object mapValue=null;
                             if(isValueMessage){
                                 mapValue=messageToJava(entry.getValue(), objField.typeDescriptor.valueClz);
+                            }else{
+                                mapValue=entry.getValue();
                             }
                             destMap.put(entry.getKey(), mapValue);
                         }
@@ -57,7 +59,6 @@ public class Transformer {
                         }else{
                             newValue=oldValue;
                         }
-
                     }
                     if(newValue!=null){
                         objField.setValue(target, newValue);
@@ -80,47 +81,49 @@ public class Transformer {
             BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(bean, name);
             if(objField!=null){
                 Object oldValue=objField.getValue(bean);
-                boolean isValueMessage=fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
-                if(fieldDescriptor.isMapField()){
-                    if(oldValue instanceof Map){
-                        //fieldDescriptor 在map的时候描述的是entry, 因此需要进一步获取到entry value的fieldDescriptor
-                        if(fieldDescriptor.getMessageType()!=null){
-                            List<Descriptors.FieldDescriptor> entryFields=fieldDescriptor.getMessageType().getFields();
-                            if(entryFields!=null && entryFields.size()==2) {
-                                Descriptors.FieldDescriptor valueFieldDescriptor = entryFields.get(1);
-                                isValueMessage=valueFieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
-                                for(Map.Entry<Object, Object> entry:((Map<Object, Object>) oldValue).entrySet()){
-                                    Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
-                                    MapEntry.Builder entryBuilder=(MapEntry.Builder) tmpBuilder;
-                                    entryBuilder.setKey(entry.getKey());
-                                    if(isValueMessage){
-                                        entryBuilder.setValue(javaToMessage(entry.getValue(), entryBuilder.newBuilderForField(valueFieldDescriptor)).build());
-                                    }else{
-                                        entryBuilder.setValue(entry.getValue());
+                if(oldValue!=null){
+                    boolean isValueMessage=fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                    if(fieldDescriptor.isMapField()){
+                        if(oldValue instanceof Map){
+                            //fieldDescriptor 在map的时候描述的是entry, 因此需要进一步获取到entry value的fieldDescriptor
+                            if(fieldDescriptor.getMessageType()!=null){
+                                List<Descriptors.FieldDescriptor> entryFields=fieldDescriptor.getMessageType().getFields();
+                                if(entryFields!=null && entryFields.size()==2) {
+                                    Descriptors.FieldDescriptor valueFieldDescriptor = entryFields.get(1);
+                                    isValueMessage=valueFieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                                    for(Map.Entry<Object, Object> entry:((Map<Object, Object>) oldValue).entrySet()){
+                                        Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
+                                        MapEntry.Builder entryBuilder=(MapEntry.Builder) tmpBuilder;
+                                        entryBuilder.setKey(entry.getKey());
+                                        if(isValueMessage){
+                                            entryBuilder.setValue(javaToMessage(entry.getValue(), entryBuilder.newBuilderForField(valueFieldDescriptor)).build());
+                                        }else{
+                                            entryBuilder.setValue(entry.getValue());
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                }else if(fieldDescriptor.isRepeated()){
-                    if(oldValue instanceof List){
-                        if(isValueMessage){
-                            for(Object tmp:(List) oldValue){
-                                Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
-                                builder.addRepeatedField(fieldDescriptor, javaToMessage(tmp, tmpBuilder).build());
-                            }
-                        }else{
-                            for(Object tmp:(List) oldValue){
-                                builder.addRepeatedField(fieldDescriptor, tmp);
+                    }else if(fieldDescriptor.isRepeated()){
+                        if(oldValue instanceof List){
+                            if(isValueMessage){
+                                for(Object tmp:(List) oldValue){
+                                    Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
+                                    builder.addRepeatedField(fieldDescriptor, javaToMessage(tmp, tmpBuilder).build());
+                                }
+                            }else{
+                                for(Object tmp:(List) oldValue){
+                                    builder.addRepeatedField(fieldDescriptor, tmp);
+                                }
                             }
                         }
-                    }
-                }else {
-                    if(isValueMessage){
-                        Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
-                        builder.setField(fieldDescriptor, javaToMessage(oldValue, tmpBuilder).build());
-                    }else{
-                        builder.setField(fieldDescriptor, oldValue);
+                    }else {
+                        if(isValueMessage){
+                            Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
+                            builder.setField(fieldDescriptor, javaToMessage(oldValue, tmpBuilder).build());
+                        }else{
+                            builder.setField(fieldDescriptor, oldValue);
+                        }
                     }
                 }
             }

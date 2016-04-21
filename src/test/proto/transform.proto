@@ -17,7 +17,7 @@ message User {
     string uid=1;
     string nickname=2; /* 打码的昵称， 如 周** */
     string nickname0=3; /* 未打码的昵称， 如 风清扬 */
-    string loginTime=4;
+    string login_time=4;
     UserLevelType level_type=5;
     repeated string tags=6;
 }

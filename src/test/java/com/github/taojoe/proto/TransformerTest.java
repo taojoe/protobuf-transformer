@@ -3,6 +3,7 @@ package com.github.taojoe.proto;
 import com.github.taojoe.Transformer;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ public class TransformerTest {
     public static class User{
         public String uid;
         public List<String> tags;
+        public String login_time;
+        public String level_type;
     }
     public static class Session{
         public User user;
@@ -33,7 +36,9 @@ public class TransformerTest {
     @Test
     public void testMessageToJava(){
         Transformer trans=new Transformer();
-        Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb");
+        Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb")
+                .setLoginTime(LocalDateTime.now().toString());
+//                .setLevelType(Transform.UserLevelType.LV1);
         Transform.SessionResponse.Builder session= Transform.SessionResponse.newBuilder();
         session.setUser(user);
         Map<String, Transform.User> relations=new HashMap<>();

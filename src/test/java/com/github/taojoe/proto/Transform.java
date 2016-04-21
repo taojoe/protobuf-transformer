@@ -742,11 +742,11 @@ public final class Transform {
         getNickname0Bytes();
 
     /**
-     * <code>optional string loginTime = 4;</code>
+     * <code>optional string login_time = 4;</code>
      */
     java.lang.String getLoginTime();
     /**
-     * <code>optional string loginTime = 4;</code>
+     * <code>optional string login_time = 4;</code>
      */
     com.google.protobuf.ByteString
         getLoginTimeBytes();
@@ -1008,10 +1008,10 @@ public final class Transform {
       }
     }
 
-    public static final int LOGINTIME_FIELD_NUMBER = 4;
+    public static final int LOGIN_TIME_FIELD_NUMBER = 4;
     private volatile java.lang.Object loginTime_;
     /**
-     * <code>optional string loginTime = 4;</code>
+     * <code>optional string login_time = 4;</code>
      */
     public java.lang.String getLoginTime() {
       java.lang.Object ref = loginTime_;
@@ -1026,7 +1026,7 @@ public final class Transform {
       }
     }
     /**
-     * <code>optional string loginTime = 4;</code>
+     * <code>optional string login_time = 4;</code>
      */
     public com.google.protobuf.ByteString
         getLoginTimeBytes() {
@@ -1626,7 +1626,7 @@ public final class Transform {
 
       private java.lang.Object loginTime_ = "";
       /**
-       * <code>optional string loginTime = 4;</code>
+       * <code>optional string login_time = 4;</code>
        */
       public java.lang.String getLoginTime() {
         java.lang.Object ref = loginTime_;
@@ -1641,7 +1641,7 @@ public final class Transform {
         }
       }
       /**
-       * <code>optional string loginTime = 4;</code>
+       * <code>optional string login_time = 4;</code>
        */
       public com.google.protobuf.ByteString
           getLoginTimeBytes() {
@@ -1657,7 +1657,7 @@ public final class Transform {
         }
       }
       /**
-       * <code>optional string loginTime = 4;</code>
+       * <code>optional string login_time = 4;</code>
        */
       public Builder setLoginTime(
           java.lang.String value) {
@@ -1670,7 +1670,7 @@ public final class Transform {
         return this;
       }
       /**
-       * <code>optional string loginTime = 4;</code>
+       * <code>optional string login_time = 4;</code>
        */
       public Builder clearLoginTime() {
         
@@ -1679,7 +1679,7 @@ public final class Transform {
         return this;
       }
       /**
-       * <code>optional string loginTime = 4;</code>
+       * <code>optional string login_time = 4;</code>
        */
       public Builder setLoginTimeBytes(
           com.google.protobuf.ByteString value) {
@@ -3310,21 +3310,21 @@ public final class Transform {
   static {
     java.lang.String[] descriptorData = {
       "\n\017transform.proto\022\027com.github.taojoe.pro" +
-      "to\"\"\n\005Error\022\014\n\004name\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\"\225" +
+      "to\"\"\n\005Error\022\014\n\004name\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\"\226" +
       "\001\n\004User\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\021" +
-      "\n\tnickname0\030\003 \001(\t\022\021\n\tloginTime\030\004 \001(\t\022:\n\n" +
-      "level_type\030\005 \001(\0162&.com.github.taojoe.pro" +
-      "to.UserLevelType\022\014\n\004tags\030\006 \003(\t\"\326\002\n\017Sessi" +
-      "onResponse\022\r\n\005token\030\001 \001(\t\022+\n\004user\030\002 \001(\0132" +
-      "\035.com.github.taojoe.proto.User\022-\n\005error\030" +
-      "\003 \001(\0132\036.com.github.taojoe.proto.Error\022.\n" +
-      "\007friends\030\004 \003(\0132\035.com.github.taojoe.proto",
-      ".User\022J\n\trelations\030\005 \003(\01327.com.github.ta" +
-      "ojoe.proto.SessionResponse.RelationsEntr" +
-      "y\022\013\n\003cnt\030\006 \001(\005\032O\n\016RelationsEntry\022\013\n\003key\030" +
-      "\001 \001(\t\022,\n\005value\030\002 \001(\0132\035.com.github.taojoe" +
-      ".proto.User:\0028\001**\n\rUserLevelType\022\007\n\003LV0\020" +
-      "\000\022\007\n\003LV1\020\001\022\007\n\003LV2\020\002b\006proto3"
+      "\n\tnickname0\030\003 \001(\t\022\022\n\nlogin_time\030\004 \001(\t\022:\n" +
+      "\nlevel_type\030\005 \001(\0162&.com.github.taojoe.pr" +
+      "oto.UserLevelType\022\014\n\004tags\030\006 \003(\t\"\326\002\n\017Sess" +
+      "ionResponse\022\r\n\005token\030\001 \001(\t\022+\n\004user\030\002 \001(\013" +
+      "2\035.com.github.taojoe.proto.User\022-\n\005error" +
+      "\030\003 \001(\0132\036.com.github.taojoe.proto.Error\022." +
+      "\n\007friends\030\004 \003(\0132\035.com.github.taojoe.prot",
+      "o.User\022J\n\trelations\030\005 \003(\01327.com.github.t" +
+      "aojoe.proto.SessionResponse.RelationsEnt" +
+      "ry\022\013\n\003cnt\030\006 \001(\005\032O\n\016RelationsEntry\022\013\n\003key" +
+      "\030\001 \001(\t\022,\n\005value\030\002 \001(\0132\035.com.github.taojo" +
+      "e.proto.User:\0028\001**\n\rUserLevelType\022\007\n\003LV0" +
+      "\020\000\022\007\n\003LV1\020\001\022\007\n\003LV2\020\002b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

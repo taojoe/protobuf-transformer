@@ -69,17 +69,17 @@ public class BeanUtil {
                 try {
                     field.set(bean, value);
                 } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }else if(property!=null){
                 try {
                     PropertyUtils.setSimpleProperty(bean, property.getName(), value);
                 } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
         }
@@ -88,17 +88,17 @@ public class BeanUtil {
                 try {
                     return field.get(bean);
                 } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }else if(property!=null){
                 try {
                     return PropertyUtils.getSimpleProperty(bean, property.getName());
                 } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
             return null;
@@ -111,7 +111,7 @@ public class BeanUtil {
                 return new FieldOrProperty(field, null);
             }
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         try {
             PropertyDescriptor descriptor = PropertyUtils.getPropertyDescriptor(obj, name);
@@ -119,11 +119,11 @@ public class BeanUtil {
                 return new FieldOrProperty(null, descriptor);
             }
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return null;
     }
