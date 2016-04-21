@@ -19,6 +19,7 @@ message User {
     string nickname0=3; /* 未打码的昵称， 如 风清扬 */
     string login_time=4;
     UserLevelType level_type=5;
+    double balance=7;
     repeated string tags=6;
 }
 

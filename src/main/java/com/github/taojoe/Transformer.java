@@ -68,6 +68,8 @@ public class Transformer {
             }else if(value instanceof Descriptors.EnumValueDescriptor){
                 return Enum.valueOf(clz, ((Descriptors.EnumValueDescriptor) value).getName() );
             }
+        }else if(clz.equals(BigDecimal.class)){
+            return new BigDecimal((double)value);
         }else if(clz.equals(LocalDateTime.class)){
             return LocalDateTime.parse((String) value);
         }else if(clz.equals(LocalDate.class)){

@@ -4,6 +4,7 @@ import com.github.taojoe.Transformer;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
