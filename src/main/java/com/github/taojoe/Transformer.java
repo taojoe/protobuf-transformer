@@ -1,12 +1,14 @@
 package com.github.taojoe;
 
 import com.github.taojoe.core.BeanUtil;
-import com.github.taojoe.core.Convertor;
-import com.github.taojoe.core.DefaultConvertor;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 import com.google.protobuf.MapEntry;
 import com.google.protobuf.Message;
 import com.google.protobuf.MessageOrBuilder;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,12 +18,44 @@ import java.util.Map;
  * Created by joe on 4/20/16.
  */
 public class Transformer {
-    protected Convertor<Object> defaultConvertor=new DefaultConvertor();
-    protected Object valueFromMessageType(Object value, Descriptors.FieldDescriptor fieldDescriptor){
-        return defaultConvertor.fromMessageType(value, fieldDescriptor);
+    protected Object javaValueToMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
+        JavaType type=fieldDescriptor.getJavaType();
+        if(type.equals(JavaType.INT) ||type.equals(JavaType.LONG) || type.equals(JavaType.FLOAT) || type.equals(JavaType.DOUBLE) || type.equals(JavaType.BOOLEAN)){
+            return value;
+        }
+        if(type.equals(JavaType.STRING)){
+            return value.toString();
+        }
+        if(type.equals(JavaType.ENUM)){
+            if(value instanceof String) {
+                return fieldDescriptor.getEnumType().findValueByName((String) value);
+            }else if(value.getClass().isEnum()){
+                return fieldDescriptor.getEnumType().findValueByName(((Enum) value).name());
+            }
+        }
+        return null;
     }
-    protected Object valueToMessageType(Object value, Descriptors.FieldDescriptor fieldDescriptor){
-        return defaultConvertor.asMessageType(value, fieldDescriptor);
+    protected Object massageValueToJavaValue(Object value, Class clz){
+        if(clz.equals(Integer.class) || clz.equals(Long.class) || clz.equals(Float.class) || clz.equals(Double.class) ||clz.equals(Boolean.class)){
+            return value;
+        }else if(clz.equals(String.class)){
+            if(value instanceof String){
+                return value;
+            }else if(value instanceof Descriptors.EnumDescriptor){
+                return ((Descriptors.EnumDescriptor)value).getName();
+            }
+        }else if(clz.isEnum()){
+            if(value instanceof String){
+                return Enum.valueOf(clz, (String) value);
+            }else if(value instanceof Descriptors.EnumValueDescriptor){
+                return Enum.valueOf(clz, ((Descriptors.EnumValueDescriptor) value).getName() );
+            }
+        }else if(clz.equals(LocalDateTime.class)){
+            return LocalDateTime.parse((String) value);
+        }else if(clz.equals(LocalDate.class)){
+            return LocalDate.parse((String) value);
+        }
+        return null;
     }
     public <T> T messageToJava(MessageOrBuilder message, Class<T> clz){
         Map<Descriptors.FieldDescriptor, Object> md=message.getAllFields();
@@ -50,7 +84,7 @@ public class Transformer {
                                     if(isValueMessage){
                                         mapValue=messageToJava(entry.getValue(), objField.typeDescriptor.valueClz);
                                     }else{
-                                        mapValue=valueFromMessageType(entry.getValue(), valueFieldDescriptor);
+                                        mapValue=massageValueToJavaValue(entry.getValue(), objField.typeDescriptor.valueClz);
                                     }
                                     destMap.put(entry.getKey(), mapValue);
                                 }
@@ -68,7 +102,7 @@ public class Transformer {
                         }else{
                             List<Object> origList=(List) oldValue;
                             for(Object obj:origList){
-                                destList.add(valueFromMessageType(obj, fieldDescriptor));
+                                destList.add(massageValueToJavaValue(obj, objField.typeDescriptor.valueClz));
                             }
                         }
                         newValue=destList;
@@ -76,7 +110,7 @@ public class Transformer {
                         if(isValueMessage){
                             newValue=messageToJava((MessageOrBuilder) oldValue, objField.typeDescriptor.valueClz);
                         }else{
-                            newValue=valueFromMessageType(oldValue, fieldDescriptor);
+                            newValue=massageValueToJavaValue(oldValue, objField.typeDescriptor.valueClz);
                         }
                     }
                     if(newValue!=null){
@@ -117,7 +151,7 @@ public class Transformer {
                                         if(isValueMessage){
                                             entryBuilder.setValue(javaToMessage(entry.getValue(), entryBuilder.newBuilderForField(valueFieldDescriptor)).build());
                                         }else{
-                                            entryBuilder.setValue(valueToMessageType(entry.getValue(), valueFieldDescriptor));
+                                            entryBuilder.setValue(javaValueToMessageValue(entry.getValue(), valueFieldDescriptor));
                                         }
                                     }
                                 }
@@ -132,7 +166,7 @@ public class Transformer {
                                 }
                             }else{
                                 for(Object tmp:(List) oldValue){
-                                    builder.addRepeatedField(fieldDescriptor, valueToMessageType(tmp, fieldDescriptor));
+                                    builder.addRepeatedField(fieldDescriptor, javaValueToMessageValue(tmp, fieldDescriptor));
                                 }
                             }
                         }
@@ -141,7 +175,7 @@ public class Transformer {
                             Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
                             builder.setField(fieldDescriptor, javaToMessage(oldValue, tmpBuilder).build());
                         }else{
-                            builder.setField(fieldDescriptor, valueToMessageType(oldValue, fieldDescriptor));
+                            builder.setField(fieldDescriptor, javaValueToMessageValue(oldValue, fieldDescriptor));
                         }
                     }
                 }

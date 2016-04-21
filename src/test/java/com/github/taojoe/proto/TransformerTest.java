@@ -14,11 +14,14 @@ import static org.junit.Assert.assertArrayEquals;
  * Created by joe on 4/19/16.
  */
 public class TransformerTest {
+    public enum LeveType{
+        LV0,LV1,LV2;
+    }
     public static class User{
         public String uid;
         public List<String> tags;
-        public String login_time;
-        public String level_type;
+        public LocalDateTime login_time;
+        public LeveType level_type;
     }
     public static class Session{
         public User user;
