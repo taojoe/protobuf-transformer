@@ -3,6 +3,7 @@ package com.github.taojoe.proto;
 import com.github.taojoe.Transformer;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -56,5 +57,18 @@ public class TransformerTest {
         session=Transform.SessionResponse.newBuilder();
         Transform.SessionResponse response=trans.javaToMessage(session1, session).build();
         assert response.getUser().getUid().equals("uu");
+
+    }
+    @Test
+    public void testSimple(){
+        Transformer trans=new Transformer();
+        Transform.User.Builder user= Transform.User.newBuilder();
+        Object data=new Object(){
+            public String uid="aa";
+        };
+        Class clz=data.getClass();
+        Field[] fields=clz.getDeclaredFields();
+        trans.javaToMessage(data, user);
+        assert user.build().getUid()=="aa";
     }
 }

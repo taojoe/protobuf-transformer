@@ -58,6 +58,9 @@ public class BeanUtil {
             this.field = field;
             this.property = property;
             if(field!=null){
+                if(!field.isAccessible()) {
+                    field.setAccessible(true);
+                }
                 typeDescriptor=new TypeDescriptor(field.getGenericType());
             }else if(property!=null){
                 typeDescriptor=new TypeDescriptor(property.getReadMethod().getGenericReturnType());
@@ -88,7 +91,7 @@ public class BeanUtil {
                 try {
                     return field.get(bean);
                 } catch (IllegalAccessException e) {
-//                    e.printStackTrace();
+                    e.printStackTrace();
                 }
             }else if(property!=null){
                 try {
