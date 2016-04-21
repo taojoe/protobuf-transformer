@@ -7,6 +7,8 @@ import com.google.protobuf.MapEntry;
 import com.google.protobuf.Message;
 import com.google.protobuf.MessageOrBuilder;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,13 +22,29 @@ import java.util.Map;
 public class Transformer {
     protected Object javaValueToMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
         JavaType type=fieldDescriptor.getJavaType();
-        if(type.equals(JavaType.INT) ||type.equals(JavaType.LONG) || type.equals(JavaType.FLOAT) || type.equals(JavaType.DOUBLE) || type.equals(JavaType.BOOLEAN)){
+        if(type.equals(JavaType.BOOLEAN)){
             return value;
-        }
-        if(type.equals(JavaType.STRING)){
+        }else if(type.equals(JavaType.INT) ||type.equals(JavaType.LONG)){
+            if(value instanceof BigInteger){
+                if(type.equals(JavaType.INT)){
+                    return ((BigInteger) value).intValue();
+                }else{
+                    return ((BigInteger) value).longValue();
+                }
+            }
+            return value;
+        }else if(type.equals(JavaType.FLOAT) || type.equals(JavaType.DOUBLE)){
+            if(value instanceof BigDecimal){
+                if(type.equals(JavaType.FLOAT)){
+                    return ((BigDecimal) value).floatValue();
+                }else{
+                    return ((BigDecimal) value).doubleValue();
+                }
+            }
+            return value;
+        }else if(type.equals(JavaType.STRING)){
             return value.toString();
-        }
-        if(type.equals(JavaType.ENUM)){
+        }else if(type.equals(JavaType.ENUM)){
             if(value instanceof String) {
                 return fieldDescriptor.getEnumType().findValueByName((String) value);
             }else if(value.getClass().isEnum()){
