@@ -87,8 +87,7 @@ public class Transformer {
                 Object oldValue = kv.getValue();
                 Object newValue=null;
                 BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(target, name);
-                Class c1=oldValue.getClass();
-                if(objField!=null){
+                if(objField!=null && objField.typeDescriptor.mustValueClz()){
                     boolean isValueMessage=fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
                     if(fieldDescriptor.isMapField()){
                         //fieldDescriptor 在map的时候描述的是entry, entry 本身是message类型, 因此需要进一步获取到entry value的fieldDescriptor

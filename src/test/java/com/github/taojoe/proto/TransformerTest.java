@@ -43,7 +43,7 @@ public class TransformerTest {
         Transformer trans=new Transformer();
         Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb")
                 .setLoginTime(LocalDateTime.now().toString())
-                .setLevelType(Transform.UserLevelType.LV1);
+                .setLevelType(Transform.UserLevelType.LV0);
         Transform.SessionResponse.Builder session= Transform.SessionResponse.newBuilder();
         session.setUser(user);
         Map<String, Transform.User> relations=new HashMap<>();
@@ -60,12 +60,13 @@ public class TransformerTest {
         assert response.getUser().getUid().equals("uu");
 
     }
-    @Test
+//    @Test
     public void testSimple(){
         Transformer trans=new Transformer();
         Transform.User.Builder user= Transform.User.newBuilder();
         Object data=new Object(){
             public String uid="aa";
+            public LeveType level_type=LeveType.LV0;
         };
         Class clz=data.getClass();
         Field[] fields=clz.getDeclaredFields();

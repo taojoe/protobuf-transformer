@@ -44,9 +44,13 @@ public class BeanUtil {
                     }
                 }
             }
+
+        }
+        public boolean mustValueClz(){
             if(this.valueClz==null){
                 throw new RuntimeException("不能识别的type");
             }
+            return true;
         }
     }
     public static class FieldOrProperty {
