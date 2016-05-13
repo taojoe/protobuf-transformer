@@ -24,7 +24,15 @@ public class TransformerTest {
         public List<String> tags;
         public LocalDateTime login_time;
         public LeveType level_type;
-        public boolean enabled;
+        private boolean enabled1;
+
+        public boolean isEnabled() {
+            return enabled1;
+        }
+
+        public void setEnabled(boolean enabled) {
+            this.enabled1 = enabled;
+        }
     }
     public static class Session{
         public User user;
@@ -56,7 +64,7 @@ public class TransformerTest {
         session.putAllRelations(relations);
         Session session1=trans.messageToJava(session.build(), Session.class);
         assert session1.user.uid.equals("uu");
-        assert session1.user.enabled;
+        assert session1.user.enabled1;
         assertArrayEquals(session1.user.tags.toArray(), new String[]{"aa", "bb"});
         session=Transform.SessionResponse.newBuilder();
         Transform.SessionResponse response=trans.javaToMessage(session1, session).build();
