@@ -54,9 +54,10 @@ public class Transformer {
         return null;
     }
     protected Object massageValueToJavaValue(Object value, Class clz){
-        if(clz.equals(Integer.class) || clz.equals(Long.class) || clz.equals(Float.class) || clz.equals(Double.class)
-                ||clz.equals(Boolean.class) || clz.getName().equals("boolean")){
-            // 判断clz时,如果是boolean, 估计是直接返回的boolean type,因此 只能用getName方式补充一个判断
+        String clzName=clz.getName();
+        if(clz.equals(Integer.class) || clz.equals(Long.class) || clz.equals(Float.class) || clz.equals(Double.class) ||clz.equals(Boolean.class) ||
+                clz.equals(int.class) || clz.equals(long.class) || clz.equals(float.class) || clz.equals(double.class) || clz.equals(boolean.class)){
+            // 判断clz时,如果是boolean, 估计是直接返回的boolean type,因此同时包含类型的判断
             return value;
         }else if(clz.equals(String.class)){
             if(value instanceof String){
