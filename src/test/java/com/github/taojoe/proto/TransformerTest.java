@@ -24,6 +24,7 @@ public class TransformerTest {
         public List<String> tags;
         public LocalDateTime login_time;
         public LeveType level_type;
+        public boolean enabled;
     }
     public static class Session{
         public User user;
@@ -43,7 +44,8 @@ public class TransformerTest {
         Transformer trans=new Transformer();
         Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb")
                 .setLoginTime(LocalDateTime.now().toString())
-                .setLevelType(Transform.UserLevelType.LV0);
+                .setLevelType(Transform.UserLevelType.LV0)
+                .setEnabled(true);
         Transform.SessionResponse.Builder session= Transform.SessionResponse.newBuilder();
         session.setUser(user);
         Map<String, Transform.User> relations=new HashMap<>();
@@ -54,6 +56,7 @@ public class TransformerTest {
         session.putAllRelations(relations);
         Session session1=trans.messageToJava(session.build(), Session.class);
         assert session1.user.uid.equals("uu");
+        assert session1.user.enabled;
         assertArrayEquals(session1.user.tags.toArray(), new String[]{"aa", "bb"});
         session=Transform.SessionResponse.newBuilder();
         Transform.SessionResponse response=trans.javaToMessage(session1, session).build();

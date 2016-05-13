@@ -20,6 +20,7 @@ message User {
     string login_time=4;
     UserLevelType level_type=5;
     double balance=7;
+    bool enabled=8;
     repeated string tags=6;
 }
 
