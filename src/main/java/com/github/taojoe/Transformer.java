@@ -82,12 +82,21 @@ public class Transformer {
     }
     public <T> T messageToJava(MessageOrBuilder message, Class<T> clz){
         Map<Descriptors.FieldDescriptor, Object> md=message.getAllFields();
+        List<Descriptors.FieldDescriptor> fields=message.getDescriptorForType().getFields();
         try {
             T target=clz.newInstance();
-            for(Map.Entry<Descriptors.FieldDescriptor, Object> kv : md.entrySet()) {
-                Descriptors.FieldDescriptor fieldDescriptor = kv.getKey();
+            for(Descriptors.FieldDescriptor fieldDescriptor:fields){
+                boolean hasValue=false;
+                if(fieldDescriptor.isRepeated()){
+                    hasValue=message.getRepeatedFieldCount(fieldDescriptor)>0;
+                }else{
+                    hasValue=message.hasField(fieldDescriptor) || fieldDescriptor.getJavaType().equals(JavaType.ENUM);
+                }
+                if(!hasValue){
+                    continue;
+                }
+                Object oldValue=message.getField(fieldDescriptor);
                 String name = fieldDescriptor.getName();
-                Object oldValue = kv.getValue();
                 Object newValue=null;
                 BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(target, name);
                 if(objField!=null && objField.typeDescriptor.mustValueClz()){
