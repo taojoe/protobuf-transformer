@@ -81,7 +81,6 @@ public class Transformer {
         return null;
     }
     public <T> T messageToJava(MessageOrBuilder message, Class<T> clz){
-        Map<Descriptors.FieldDescriptor, Object> md=message.getAllFields();
         List<Descriptors.FieldDescriptor> fields=message.getDescriptorForType().getFields();
         try {
             T target=clz.newInstance();
