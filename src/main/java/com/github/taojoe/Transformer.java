@@ -213,4 +213,11 @@ public class Transformer {
         }
         return builder;
     }
+    public Object getValueByFieldNameOrNull(MessageOrBuilder message, String fieldName){
+        Descriptors.FieldDescriptor field=message.getDescriptorForType().findFieldByName(fieldName);
+        if(field!=null && message.hasField(field)){
+            return message.getField(field);
+        }
+        return null;
+    }
 }
