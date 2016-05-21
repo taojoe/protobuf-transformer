@@ -68,7 +68,7 @@ public class TransformerTest {
         session.addFriends(Transform.User.newBuilder().setUid("f2").addTags("f1").addTags("f2"));
         session.putAllRelations(relations);
         Session session1=trans.messageToJava(session.build(), Session.class);
-        assertEquals(new String( session1.user.avatar),"abc");
+        assertEquals(new String(session1.user.avatar),"abc");
         assert session1.user.uid.equals("uu");
         assert session1.user.enabled1;
         assertArrayEquals(session1.user.tags.toArray(), new String[]{"aa", "bb"});

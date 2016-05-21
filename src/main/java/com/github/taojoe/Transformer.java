@@ -80,7 +80,7 @@ public class Transformer {
             return LocalDateTime.parse((String) value);
         }else if(clz.equals(LocalDate.class)){
             return LocalDate.parse((String) value);
-        }else if(clz.equals(ByteString.class)){
+        }else if(clz.equals(byte[].class)){
             return ((ByteString) value).toByteArray();
         }
         return null;
