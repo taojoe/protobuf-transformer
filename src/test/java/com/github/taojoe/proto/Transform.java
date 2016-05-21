@@ -4,3735 +4,3543 @@
 package com.github.taojoe.proto;
 
 public final class Transform {
-    private Transform() {
-    }
+  private Transform() {}
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+  }
+  /**
+   * Protobuf enum {@code com.github.taojoe.proto.UserLevelType}
+   */
+  public enum UserLevelType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>LV0 = 0;</code>
+     */
+    LV0(0),
+    /**
+     * <code>LV1 = 1;</code>
+     */
+    LV1(1),
+    /**
+     * <code>LV2 = 2;</code>
+     */
+    LV2(2),
+    UNRECOGNIZED(-1),
+    ;
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistry registry) {
+    /**
+     * <code>LV0 = 0;</code>
+     */
+    public static final int LV0_VALUE = 0;
+    /**
+     * <code>LV1 = 1;</code>
+     */
+    public static final int LV1_VALUE = 1;
+    /**
+     * <code>LV2 = 2;</code>
+     */
+    public static final int LV2_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
     }
 
     /**
-     * Protobuf enum {@code com.github.taojoe.proto.UserLevelType}
+     * @deprecated Use {@link #forNumber(int)} instead.
      */
-    public enum UserLevelType
-            implements com.google.protobuf.ProtocolMessageEnum {
-        /**
-         * <code>LV0 = 0;</code>
-         */
-        LV0(0, 0),
-        /**
-         * <code>LV1 = 1;</code>
-         */
-        LV1(1, 1),
-        /**
-         * <code>LV2 = 2;</code>
-         */
-        LV2(2, 2),
-        UNRECOGNIZED(-1, -1),;
-
-        /**
-         * <code>LV0 = 0;</code>
-         */
-        public static final int LV0_VALUE = 0;
-        /**
-         * <code>LV1 = 1;</code>
-         */
-        public static final int LV1_VALUE = 1;
-        /**
-         * <code>LV2 = 2;</code>
-         */
-        public static final int LV2_VALUE = 2;
-
-
-        public final int getNumber() {
-            if (index == -1) {
-                throw new java.lang.IllegalArgumentException(
-                        "Can't get the number of an unknown enum value.");
-            }
-            return value;
-        }
-
-        public static UserLevelType valueOf(int value) {
-            switch (value) {
-                case 0:
-                    return LV0;
-                case 1:
-                    return LV1;
-                case 2:
-                    return LV2;
-                default:
-                    return null;
-            }
-        }
-
-        public static com.google.protobuf.Internal.EnumLiteMap<UserLevelType>
-        internalGetValueMap() {
-            return internalValueMap;
-        }
-
-        private static final com.google.protobuf.Internal.EnumLiteMap<
-                UserLevelType> internalValueMap =
-                new com.google.protobuf.Internal.EnumLiteMap<UserLevelType>() {
-                    public UserLevelType findValueByNumber(int number) {
-                        return UserLevelType.valueOf(number);
-                    }
-                };
-
-        public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-            return getDescriptor().getValues().get(index);
-        }
-
-        public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-            return getDescriptor();
-        }
-
-        public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-            return com.github.taojoe.proto.Transform.getDescriptor().getEnumTypes().get(0);
-        }
-
-        private static final UserLevelType[] VALUES = values();
-
-        public static UserLevelType valueOf(
-                com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-            if (desc.getType() != getDescriptor()) {
-                throw new java.lang.IllegalArgumentException(
-                        "EnumValueDescriptor is not for this type.");
-            }
-            if (desc.getIndex() == -1) {
-                return UNRECOGNIZED;
-            }
-            return VALUES[desc.getIndex()];
-        }
-
-        private final int index;
-        private final int value;
-
-        private UserLevelType(int index, int value) {
-            this.index = index;
-            this.value = value;
-        }
-
-        // @@protoc_insertion_point(enum_scope:com.github.taojoe.proto.UserLevelType)
+    @java.lang.Deprecated
+    public static UserLevelType valueOf(int value) {
+      return forNumber(value);
     }
 
-    public interface ErrorOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.Error)
-            com.google.protobuf.MessageOrBuilder {
+    public static UserLevelType forNumber(int value) {
+      switch (value) {
+        case 0: return LV0;
+        case 1: return LV1;
+        case 2: return LV2;
+        default: return null;
+      }
+    }
 
-        /**
-         * <code>optional string name = 1;</code>
-         */
-        java.lang.String getName();
+    public static com.google.protobuf.Internal.EnumLiteMap<UserLevelType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        UserLevelType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<UserLevelType>() {
+            public UserLevelType findValueByNumber(int number) {
+              return UserLevelType.forNumber(number);
+            }
+          };
 
-        /**
-         * <code>optional string name = 1;</code>
-         */
-        com.google.protobuf.ByteString
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.github.taojoe.proto.Transform.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final UserLevelType[] VALUES = values();
+
+    public static UserLevelType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private UserLevelType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.github.taojoe.proto.UserLevelType)
+  }
+
+  public interface ErrorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.Error)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    com.google.protobuf.ByteString
         getNameBytes();
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        java.lang.String getMsg();
-
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    java.lang.String getMsg();
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    com.google.protobuf.ByteString
         getMsgBytes();
+  }
+  /**
+   * Protobuf type {@code com.github.taojoe.proto.Error}
+   */
+  public  static final class Error extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.Error)
+      ErrorOrBuilder {
+    // Use Error.newBuilder() to construct.
+    private Error(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Error() {
+      name_ = "";
+      msg_ = "";
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Error(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              msg_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.github.taojoe.proto.Transform.Error.class, com.github.taojoe.proto.Transform.Error.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MSG_FIELD_NUMBER = 2;
+    private volatile java.lang.Object msg_;
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        msg_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, msg_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, msg_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.github.taojoe.proto.Transform.Error parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.Error parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.github.taojoe.proto.Transform.Error prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     /**
      * Protobuf type {@code com.github.taojoe.proto.Error}
      */
-    public static final class Error extends
-            com.google.protobuf.GeneratedMessage implements
-            // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.Error)
-            ErrorOrBuilder {
-        // Use Error.newBuilder() to construct.
-        private Error(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-            super(builder);
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.Error)
+        com.github.taojoe.proto.Transform.ErrorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.github.taojoe.proto.Transform.Error.class, com.github.taojoe.proto.Transform.Error.Builder.class);
+      }
+
+      // Construct using com.github.taojoe.proto.Transform.Error.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
+      }
+      public Builder clear() {
+        super.clear();
+        name_ = "";
 
-        private Error() {
-            name_ = "";
-            msg_ = "";
+        msg_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_descriptor;
+      }
+
+      public com.github.taojoe.proto.Transform.Error getDefaultInstanceForType() {
+        return com.github.taojoe.proto.Transform.Error.getDefaultInstance();
+      }
+
+      public com.github.taojoe.proto.Transform.Error build() {
+        com.github.taojoe.proto.Transform.Error result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
         }
+        return result;
+      }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-            return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      public com.github.taojoe.proto.Transform.Error buildPartial() {
+        com.github.taojoe.proto.Transform.Error result = new com.github.taojoe.proto.Transform.Error(this);
+        result.name_ = name_;
+        result.msg_ = msg_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.github.taojoe.proto.Transform.Error) {
+          return mergeFrom((com.github.taojoe.proto.Transform.Error)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
         }
+      }
 
-        private Error(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-            this();
-            int mutable_bitField0_ = 0;
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        default: {
-                            if (!input.skipField(tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                        case 10: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            name_ = s;
-                            break;
-                        }
-                        case 18: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            msg_ = s;
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw new RuntimeException(e.setUnfinishedMessage(this));
-            } catch (java.io.IOException e) {
-                throw new RuntimeException(
-                        new com.google.protobuf.InvalidProtocolBufferException(
-                                e.getMessage()).setUnfinishedMessage(this));
-            } finally {
-                makeExtensionsImmutable();
-            }
+      public Builder mergeFrom(com.github.taojoe.proto.Transform.Error other) {
+        if (other == com.github.taojoe.proto.Transform.Error.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
         }
-
-        public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-            return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_descriptor;
+        if (!other.getMsg().isEmpty()) {
+          msg_ = other.msg_;
+          onChanged();
         }
+        onChanged();
+        return this;
+      }
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            com.github.taojoe.proto.Transform.Error.class, com.github.taojoe.proto.Transform.Error.Builder.class);
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.github.taojoe.proto.Transform.Error parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.github.taojoe.proto.Transform.Error) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
         }
+        return this;
+      }
 
-        public static final int NAME_FIELD_NUMBER = 1;
-        private volatile java.lang.Object name_;
-
-        /**
-         * <code>optional string name = 1;</code>
-         */
-        public java.lang.String getName() {
-            java.lang.Object ref = name_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                name_ = s;
-                return s;
-            }
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        /**
-         * <code>optional string name = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-        getNameBytes() {
-            java.lang.Object ref = name_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                name_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
 
-        public static final int MSG_FIELD_NUMBER = 2;
-        private volatile java.lang.Object msg_;
-
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        public java.lang.String getMsg() {
-            java.lang.Object ref = msg_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                msg_ = s;
-                return s;
-            }
+      private java.lang.Object msg_ = "";
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          msg_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        public com.google.protobuf.ByteString
-        getMsgBytes() {
-            java.lang.Object ref = msg_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                msg_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMsgBytes() {
+        java.lang.Object ref = msg_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          msg_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        private byte memoizedIsInitialized = -1;
-
-        public final boolean isInitialized() {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
-
-            memoizedIsInitialized = 1;
-            return true;
-        }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            if (!getNameBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
-            }
-            if (!getMsgBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 2, msg_);
-            }
-        }
-
-        public int getSerializedSize() {
-            int size = memoizedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (!getNameBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
-            }
-            if (!getMsgBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(2, msg_);
-            }
-            memoizedSize = size;
-            return size;
-        }
-
-        private static final long serialVersionUID = 0L;
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
-
-        public static com.github.taojoe.proto.Transform.Error parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public Builder newBuilderForType() {
-            return newBuilder();
-        }
-
-        public static Builder newBuilder() {
-            return DEFAULT_INSTANCE.toBuilder();
-        }
-
-        public static Builder newBuilder(com.github.taojoe.proto.Transform.Error prototype) {
-            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-
-        public Builder toBuilder() {
-            return this == DEFAULT_INSTANCE
-                    ? new Builder() : new Builder().mergeFrom(this);
-        }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
-        }
-
-        /**
-         * Protobuf type {@code com.github.taojoe.proto.Error}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.Error)
-                com.github.taojoe.proto.Transform.ErrorOrBuilder {
-            public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_descriptor;
-            }
-
-            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_fieldAccessorTable
-                        .ensureFieldAccessorsInitialized(
-                                com.github.taojoe.proto.Transform.Error.class, com.github.taojoe.proto.Transform.Error.Builder.class);
-            }
-
-            // Construct using com.github.taojoe.proto.Transform.Error.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-                }
-            }
-
-            public Builder clear() {
-                super.clear();
-                name_ = "";
-
-                msg_ = "";
-
-                return this;
-            }
-
-            public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_Error_descriptor;
-            }
-
-            public com.github.taojoe.proto.Transform.Error getDefaultInstanceForType() {
-                return com.github.taojoe.proto.Transform.Error.getDefaultInstance();
-            }
-
-            public com.github.taojoe.proto.Transform.Error build() {
-                com.github.taojoe.proto.Transform.Error result = buildPartial();
-                if (!result.isInitialized()) {
-                    throw newUninitializedMessageException(result);
-                }
-                return result;
-            }
-
-            public com.github.taojoe.proto.Transform.Error buildPartial() {
-                com.github.taojoe.proto.Transform.Error result = new com.github.taojoe.proto.Transform.Error(this);
-                result.name_ = name_;
-                result.msg_ = msg_;
-                onBuilt();
-                return result;
-            }
-
-            public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.github.taojoe.proto.Transform.Error) {
-                    return mergeFrom((com.github.taojoe.proto.Transform.Error) other);
-                } else {
-                    super.mergeFrom(other);
-                    return this;
-                }
-            }
-
-            public Builder mergeFrom(com.github.taojoe.proto.Transform.Error other) {
-                if (other == com.github.taojoe.proto.Transform.Error.getDefaultInstance()) return this;
-                if (!other.getName().isEmpty()) {
-                    name_ = other.name_;
-                    onChanged();
-                }
-                if (!other.getMsg().isEmpty()) {
-                    msg_ = other.msg_;
-                    onChanged();
-                }
-                onChanged();
-                return this;
-            }
-
-            public final boolean isInitialized() {
-                return true;
-            }
-
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                com.github.taojoe.proto.Transform.Error parsedMessage = null;
-                try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.github.taojoe.proto.Transform.Error) e.getUnfinishedMessage();
-                    throw e;
-                } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
-                return this;
-            }
-
-            private java.lang.Object name_ = "";
-
-            /**
-             * <code>optional string name = 1;</code>
-             */
-            public java.lang.String getName() {
-                java.lang.Object ref = name_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    name_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string name = 1;</code>
-             */
-            public com.google.protobuf.ByteString
-            getNameBytes() {
-                java.lang.Object ref = name_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    name_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string name = 1;</code>
-             */
-            public Builder setName(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                name_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string name = 1;</code>
-             */
-            public Builder clearName() {
-
-                name_ = getDefaultInstance().getName();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string name = 1;</code>
-             */
-            public Builder setNameBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                name_ = value;
-                onChanged();
-                return this;
-            }
-
-            private java.lang.Object msg_ = "";
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public java.lang.String getMsg() {
-                java.lang.Object ref = msg_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    msg_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-            getMsgBytes() {
-                java.lang.Object ref = msg_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    msg_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public Builder setMsg(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                msg_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public Builder clearMsg() {
-
-                msg_ = getDefaultInstance().getMsg();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public Builder setMsgBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                msg_ = value;
-                onChanged();
-                return this;
-            }
-
-            public final Builder setUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return this;
-            }
-
-            public final Builder mergeUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return this;
-            }
-
-
-            // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.Error)
-        }
-
-        // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.Error)
-        private static final com.github.taojoe.proto.Transform.Error DEFAULT_INSTANCE;
-
-        static {
-            DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.Error();
-        }
-
-        public static com.github.taojoe.proto.Transform.Error getDefaultInstance() {
-            return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<Error>
-                PARSER = new com.google.protobuf.AbstractParser<Error>() {
-            public Error parsePartialFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                try {
-                    return new Error(input, extensionRegistry);
-                } catch (RuntimeException e) {
-                    if (e.getCause() instanceof
-                            com.google.protobuf.InvalidProtocolBufferException) {
-                        throw (com.google.protobuf.InvalidProtocolBufferException)
-                                e.getCause();
-                    }
-                    throw e;
-                }
-            }
-        };
-
-        public static com.google.protobuf.Parser<Error> parser() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<Error> getParserForType() {
-            return PARSER;
-        }
-
-        public com.github.taojoe.proto.Transform.Error getDefaultInstanceForType() {
-            return DEFAULT_INSTANCE;
-        }
-
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public Builder setMsg(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public Builder clearMsg() {
+        
+        msg_ = getDefaultInstance().getMsg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public Builder setMsgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.Error)
     }
 
-    public interface UserOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.User)
-            com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.Error)
+    private static final com.github.taojoe.proto.Transform.Error DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.Error();
+    }
 
-        /**
-         * <code>optional string uid = 1;</code>
-         */
-        java.lang.String getUid();
+    public static com.github.taojoe.proto.Transform.Error getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
 
-        /**
-         * <code>optional string uid = 1;</code>
-         */
-        com.google.protobuf.ByteString
+    private static final com.google.protobuf.Parser<Error>
+        PARSER = new com.google.protobuf.AbstractParser<Error>() {
+      public Error parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Error(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Error> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Error> getParserForType() {
+      return PARSER;
+    }
+
+    public com.github.taojoe.proto.Transform.Error getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.User)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string uid = 1;</code>
+     */
+    java.lang.String getUid();
+    /**
+     * <code>optional string uid = 1;</code>
+     */
+    com.google.protobuf.ByteString
         getUidBytes();
 
-        /**
-         * <code>optional string nickname = 2;</code>
-         * <p>
-         * <pre>
-         * 打码的昵称， 如 周**
-         * </pre>
-         */
-        java.lang.String getNickname();
-
-        /**
-         * <code>optional string nickname = 2;</code>
-         * <p>
-         * <pre>
-         * 打码的昵称， 如 周**
-         * </pre>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <pre>
+     * 打码的昵称， 如 周** 
+     * </pre>
+     *
+     * <code>optional string nickname = 2;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <pre>
+     * 打码的昵称， 如 周** 
+     * </pre>
+     *
+     * <code>optional string nickname = 2;</code>
+     */
+    com.google.protobuf.ByteString
         getNicknameBytes();
 
-        /**
-         * <code>optional string nickname0 = 3;</code>
-         * <p>
-         * <pre>
-         * 未打码的昵称， 如 风清扬
-         * </pre>
-         */
-        java.lang.String getNickname0();
-
-        /**
-         * <code>optional string nickname0 = 3;</code>
-         * <p>
-         * <pre>
-         * 未打码的昵称， 如 风清扬
-         * </pre>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <pre>
+     * 未打码的昵称， 如 风清扬 
+     * </pre>
+     *
+     * <code>optional string nickname0 = 3;</code>
+     */
+    java.lang.String getNickname0();
+    /**
+     * <pre>
+     * 未打码的昵称， 如 风清扬 
+     * </pre>
+     *
+     * <code>optional string nickname0 = 3;</code>
+     */
+    com.google.protobuf.ByteString
         getNickname0Bytes();
 
-        /**
-         * <code>optional string login_time = 4;</code>
-         */
-        java.lang.String getLoginTime();
-
-        /**
-         * <code>optional string login_time = 4;</code>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <code>optional string login_time = 4;</code>
+     */
+    java.lang.String getLoginTime();
+    /**
+     * <code>optional string login_time = 4;</code>
+     */
+    com.google.protobuf.ByteString
         getLoginTimeBytes();
 
-        /**
-         * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-         */
-        int getLevelTypeValue();
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    int getLevelTypeValue();
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    com.github.taojoe.proto.Transform.UserLevelType getLevelType();
 
-        /**
-         * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-         */
-        com.github.taojoe.proto.Transform.UserLevelType getLevelType();
+    /**
+     * <code>optional double balance = 7;</code>
+     */
+    double getBalance();
 
-        /**
-         * <code>optional double balance = 7;</code>
-         */
-        double getBalance();
+    /**
+     * <code>optional bool enabled = 8;</code>
+     */
+    boolean getEnabled();
 
-        /**
-         * <code>optional bool enabled = 8;</code>
-         */
-        boolean getEnabled();
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        com.google.protobuf.ProtocolStringList
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    com.google.protobuf.ProtocolStringList
         getTagsList();
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        int getTagsCount();
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        java.lang.String getTags(int index);
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    int getTagsCount();
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    java.lang.String getTags(int index);
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    com.google.protobuf.ByteString
         getTagsBytes(int index);
+
+    /**
+     * <code>optional bytes avatar = 10;</code>
+     */
+    com.google.protobuf.ByteString getAvatar();
+  }
+  /**
+   * Protobuf type {@code com.github.taojoe.proto.User}
+   */
+  public  static final class User extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.User)
+      UserOrBuilder {
+    // Use User.newBuilder() to construct.
+    private User(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private User() {
+      uid_ = "";
+      nickname_ = "";
+      nickname0_ = "";
+      loginTime_ = "";
+      levelType_ = 0;
+      balance_ = 0D;
+      enabled_ = false;
+      tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      avatar_ = com.google.protobuf.ByteString.EMPTY;
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private User(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              uid_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nickname_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nickname0_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              loginTime_ = s;
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+
+              levelType_ = rawValue;
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                tags_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              tags_.add(s);
+              break;
+            }
+            case 57: {
+
+              balance_ = input.readDouble();
+              break;
+            }
+            case 64: {
+
+              enabled_ = input.readBool();
+              break;
+            }
+            case 82: {
+
+              avatar_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          tags_ = tags_.getUnmodifiableView();
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.github.taojoe.proto.Transform.User.class, com.github.taojoe.proto.Transform.User.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int UID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object uid_;
+    /**
+     * <code>optional string uid = 1;</code>
+     */
+    public java.lang.String getUid() {
+      java.lang.Object ref = uid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string uid = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUidBytes() {
+      java.lang.Object ref = uid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NICKNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object nickname_;
+    /**
+     * <pre>
+     * 打码的昵称， 如 周** 
+     * </pre>
+     *
+     * <code>optional string nickname = 2;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nickname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 打码的昵称， 如 周** 
+     * </pre>
+     *
+     * <code>optional string nickname = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NICKNAME0_FIELD_NUMBER = 3;
+    private volatile java.lang.Object nickname0_;
+    /**
+     * <pre>
+     * 未打码的昵称， 如 风清扬 
+     * </pre>
+     *
+     * <code>optional string nickname0 = 3;</code>
+     */
+    public java.lang.String getNickname0() {
+      java.lang.Object ref = nickname0_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nickname0_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 未打码的昵称， 如 风清扬 
+     * </pre>
+     *
+     * <code>optional string nickname0 = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNickname0Bytes() {
+      java.lang.Object ref = nickname0_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname0_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LOGIN_TIME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object loginTime_;
+    /**
+     * <code>optional string login_time = 4;</code>
+     */
+    public java.lang.String getLoginTime() {
+      java.lang.Object ref = loginTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        loginTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string login_time = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getLoginTimeBytes() {
+      java.lang.Object ref = loginTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        loginTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LEVEL_TYPE_FIELD_NUMBER = 5;
+    private int levelType_;
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    public int getLevelTypeValue() {
+      return levelType_;
+    }
+    /**
+     * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+     */
+    public com.github.taojoe.proto.Transform.UserLevelType getLevelType() {
+      com.github.taojoe.proto.Transform.UserLevelType result = com.github.taojoe.proto.Transform.UserLevelType.forNumber(levelType_);
+      return result == null ? com.github.taojoe.proto.Transform.UserLevelType.UNRECOGNIZED : result;
+    }
+
+    public static final int BALANCE_FIELD_NUMBER = 7;
+    private double balance_;
+    /**
+     * <code>optional double balance = 7;</code>
+     */
+    public double getBalance() {
+      return balance_;
+    }
+
+    public static final int ENABLED_FIELD_NUMBER = 8;
+    private boolean enabled_;
+    /**
+     * <code>optional bool enabled = 8;</code>
+     */
+    public boolean getEnabled() {
+      return enabled_;
+    }
+
+    public static final int TAGS_FIELD_NUMBER = 6;
+    private com.google.protobuf.LazyStringList tags_;
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getTagsList() {
+      return tags_;
+    }
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    public int getTagsCount() {
+      return tags_.size();
+    }
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    public java.lang.String getTags(int index) {
+      return tags_.get(index);
+    }
+    /**
+     * <code>repeated string tags = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTagsBytes(int index) {
+      return tags_.getByteString(index);
+    }
+
+    public static final int AVATAR_FIELD_NUMBER = 10;
+    private com.google.protobuf.ByteString avatar_;
+    /**
+     * <code>optional bytes avatar = 10;</code>
+     */
+    public com.google.protobuf.ByteString getAvatar() {
+      return avatar_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, uid_);
+      }
+      if (!getNicknameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, nickname_);
+      }
+      if (!getNickname0Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, nickname0_);
+      }
+      if (!getLoginTimeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, loginTime_);
+      }
+      if (levelType_ != com.github.taojoe.proto.Transform.UserLevelType.LV0.getNumber()) {
+        output.writeEnum(5, levelType_);
+      }
+      for (int i = 0; i < tags_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, tags_.getRaw(i));
+      }
+      if (balance_ != 0D) {
+        output.writeDouble(7, balance_);
+      }
+      if (enabled_ != false) {
+        output.writeBool(8, enabled_);
+      }
+      if (!avatar_.isEmpty()) {
+        output.writeBytes(10, avatar_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, uid_);
+      }
+      if (!getNicknameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, nickname_);
+      }
+      if (!getNickname0Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, nickname0_);
+      }
+      if (!getLoginTimeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, loginTime_);
+      }
+      if (levelType_ != com.github.taojoe.proto.Transform.UserLevelType.LV0.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, levelType_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < tags_.size(); i++) {
+          dataSize += computeStringSizeNoTag(tags_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getTagsList().size();
+      }
+      if (balance_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(7, balance_);
+      }
+      if (enabled_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, enabled_);
+      }
+      if (!avatar_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, avatar_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.github.taojoe.proto.Transform.User parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.User parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.User parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.User parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.github.taojoe.proto.Transform.User prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     /**
      * Protobuf type {@code com.github.taojoe.proto.User}
      */
-    public static final class User extends
-            com.google.protobuf.GeneratedMessage implements
-            // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.User)
-            UserOrBuilder {
-        // Use User.newBuilder() to construct.
-        private User(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-            super(builder);
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.User)
+        com.github.taojoe.proto.Transform.UserOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.github.taojoe.proto.Transform.User.class, com.github.taojoe.proto.Transform.User.Builder.class);
+      }
+
+      // Construct using com.github.taojoe.proto.Transform.User.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
+      }
+      public Builder clear() {
+        super.clear();
+        uid_ = "";
 
-        private User() {
-            uid_ = "";
-            nickname_ = "";
-            nickname0_ = "";
-            loginTime_ = "";
-            levelType_ = 0;
-            balance_ = 0D;
-            enabled_ = false;
-            tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        nickname_ = "";
+
+        nickname0_ = "";
+
+        loginTime_ = "";
+
+        levelType_ = 0;
+
+        balance_ = 0D;
+
+        enabled_ = false;
+
+        tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        avatar_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_descriptor;
+      }
+
+      public com.github.taojoe.proto.Transform.User getDefaultInstanceForType() {
+        return com.github.taojoe.proto.Transform.User.getDefaultInstance();
+      }
+
+      public com.github.taojoe.proto.Transform.User build() {
+        com.github.taojoe.proto.Transform.User result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
         }
+        return result;
+      }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-            return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      public com.github.taojoe.proto.Transform.User buildPartial() {
+        com.github.taojoe.proto.Transform.User result = new com.github.taojoe.proto.Transform.User(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.uid_ = uid_;
+        result.nickname_ = nickname_;
+        result.nickname0_ = nickname0_;
+        result.loginTime_ = loginTime_;
+        result.levelType_ = levelType_;
+        result.balance_ = balance_;
+        result.enabled_ = enabled_;
+        if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          tags_ = tags_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000080);
         }
+        result.tags_ = tags_;
+        result.avatar_ = avatar_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
 
-        private User(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-            this();
-            int mutable_bitField0_ = 0;
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        default: {
-                            if (!input.skipField(tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                        case 10: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            uid_ = s;
-                            break;
-                        }
-                        case 18: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            nickname_ = s;
-                            break;
-                        }
-                        case 26: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            nickname0_ = s;
-                            break;
-                        }
-                        case 34: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            loginTime_ = s;
-                            break;
-                        }
-                        case 40: {
-                            int rawValue = input.readEnum();
-
-                            levelType_ = rawValue;
-                            break;
-                        }
-                        case 50: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-                                tags_ = new com.google.protobuf.LazyStringArrayList();
-                                mutable_bitField0_ |= 0x00000080;
-                            }
-                            tags_.add(s);
-                            break;
-                        }
-                        case 57: {
-
-                            balance_ = input.readDouble();
-                            break;
-                        }
-                        case 64: {
-
-                            enabled_ = input.readBool();
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw new RuntimeException(e.setUnfinishedMessage(this));
-            } catch (java.io.IOException e) {
-                throw new RuntimeException(
-                        new com.google.protobuf.InvalidProtocolBufferException(
-                                e.getMessage()).setUnfinishedMessage(this));
-            } finally {
-                if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-                    tags_ = tags_.getUnmodifiableView();
-                }
-                makeExtensionsImmutable();
-            }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.github.taojoe.proto.Transform.User) {
+          return mergeFrom((com.github.taojoe.proto.Transform.User)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
         }
+      }
 
-        public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-            return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_descriptor;
+      public Builder mergeFrom(com.github.taojoe.proto.Transform.User other) {
+        if (other == com.github.taojoe.proto.Transform.User.getDefaultInstance()) return this;
+        if (!other.getUid().isEmpty()) {
+          uid_ = other.uid_;
+          onChanged();
         }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            com.github.taojoe.proto.Transform.User.class, com.github.taojoe.proto.Transform.User.Builder.class);
+        if (!other.getNickname().isEmpty()) {
+          nickname_ = other.nickname_;
+          onChanged();
         }
-
-        private int bitField0_;
-        public static final int UID_FIELD_NUMBER = 1;
-        private volatile java.lang.Object uid_;
-
-        /**
-         * <code>optional string uid = 1;</code>
-         */
-        public java.lang.String getUid() {
-            java.lang.Object ref = uid_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                uid_ = s;
-                return s;
-            }
+        if (!other.getNickname0().isEmpty()) {
+          nickname0_ = other.nickname0_;
+          onChanged();
         }
-
-        /**
-         * <code>optional string uid = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-        getUidBytes() {
-            java.lang.Object ref = uid_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                uid_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
+        if (!other.getLoginTime().isEmpty()) {
+          loginTime_ = other.loginTime_;
+          onChanged();
         }
-
-        public static final int NICKNAME_FIELD_NUMBER = 2;
-        private volatile java.lang.Object nickname_;
-
-        /**
-         * <code>optional string nickname = 2;</code>
-         * <p>
-         * <pre>
-         * 打码的昵称， 如 周**
-         * </pre>
-         */
-        public java.lang.String getNickname() {
-            java.lang.Object ref = nickname_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                nickname_ = s;
-                return s;
-            }
+        if (other.levelType_ != 0) {
+          setLevelTypeValue(other.getLevelTypeValue());
         }
-
-        /**
-         * <code>optional string nickname = 2;</code>
-         * <p>
-         * <pre>
-         * 打码的昵称， 如 周**
-         * </pre>
-         */
-        public com.google.protobuf.ByteString
-        getNicknameBytes() {
-            java.lang.Object ref = nickname_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                nickname_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
+        if (other.getBalance() != 0D) {
+          setBalance(other.getBalance());
         }
-
-        public static final int NICKNAME0_FIELD_NUMBER = 3;
-        private volatile java.lang.Object nickname0_;
-
-        /**
-         * <code>optional string nickname0 = 3;</code>
-         * <p>
-         * <pre>
-         * 未打码的昵称， 如 风清扬
-         * </pre>
-         */
-        public java.lang.String getNickname0() {
-            java.lang.Object ref = nickname0_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                nickname0_ = s;
-                return s;
-            }
+        if (other.getEnabled() != false) {
+          setEnabled(other.getEnabled());
         }
-
-        /**
-         * <code>optional string nickname0 = 3;</code>
-         * <p>
-         * <pre>
-         * 未打码的昵称， 如 风清扬
-         * </pre>
-         */
-        public com.google.protobuf.ByteString
-        getNickname0Bytes() {
-            java.lang.Object ref = nickname0_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                nickname0_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
+        if (!other.tags_.isEmpty()) {
+          if (tags_.isEmpty()) {
+            tags_ = other.tags_;
+            bitField0_ = (bitField0_ & ~0x00000080);
+          } else {
+            ensureTagsIsMutable();
+            tags_.addAll(other.tags_);
+          }
+          onChanged();
         }
-
-        public static final int LOGIN_TIME_FIELD_NUMBER = 4;
-        private volatile java.lang.Object loginTime_;
-
-        /**
-         * <code>optional string login_time = 4;</code>
-         */
-        public java.lang.String getLoginTime() {
-            java.lang.Object ref = loginTime_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                loginTime_ = s;
-                return s;
-            }
+        if (other.getAvatar() != com.google.protobuf.ByteString.EMPTY) {
+          setAvatar(other.getAvatar());
         }
+        onChanged();
+        return this;
+      }
 
-        /**
-         * <code>optional string login_time = 4;</code>
-         */
-        public com.google.protobuf.ByteString
-        getLoginTimeBytes() {
-            java.lang.Object ref = loginTime_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                loginTime_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.github.taojoe.proto.Transform.User parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.github.taojoe.proto.Transform.User) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
         }
+        return this;
+      }
+      private int bitField0_;
 
-        public static final int LEVEL_TYPE_FIELD_NUMBER = 5;
-        private int levelType_;
-
-        /**
-         * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-         */
-        public int getLevelTypeValue() {
-            return levelType_;
+      private java.lang.Object uid_ = "";
+      /**
+       * <code>optional string uid = 1;</code>
+       */
+      public java.lang.String getUid() {
+        java.lang.Object ref = uid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          uid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        /**
-         * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-         */
-        public com.github.taojoe.proto.Transform.UserLevelType getLevelType() {
-            com.github.taojoe.proto.Transform.UserLevelType result = com.github.taojoe.proto.Transform.UserLevelType.valueOf(levelType_);
-            return result == null ? com.github.taojoe.proto.Transform.UserLevelType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional string uid = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUidBytes() {
+        java.lang.Object ref = uid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
+      }
+      /**
+       * <code>optional string uid = 1;</code>
+       */
+      public Builder setUid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string uid = 1;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = getDefaultInstance().getUid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string uid = 1;</code>
+       */
+      public Builder setUidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
 
-        public static final int BALANCE_FIELD_NUMBER = 7;
-        private double balance_;
-
-        /**
-         * <code>optional double balance = 7;</code>
-         */
-        public double getBalance() {
-            return balance_;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <pre>
+       * 打码的昵称， 如 周** 
+       * </pre>
+       *
+       * <code>optional string nickname = 2;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        public static final int ENABLED_FIELD_NUMBER = 8;
-        private boolean enabled_;
-
-        /**
-         * <code>optional bool enabled = 8;</code>
-         */
-        public boolean getEnabled() {
-            return enabled_;
+      }
+      /**
+       * <pre>
+       * 打码的昵称， 如 周** 
+       * </pre>
+       *
+       * <code>optional string nickname = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
+      }
+      /**
+       * <pre>
+       * 打码的昵称， 如 周** 
+       * </pre>
+       *
+       * <code>optional string nickname = 2;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 打码的昵称， 如 周** 
+       * </pre>
+       *
+       * <code>optional string nickname = 2;</code>
+       */
+      public Builder clearNickname() {
+        
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 打码的昵称， 如 周** 
+       * </pre>
+       *
+       * <code>optional string nickname = 2;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
 
-        public static final int TAGS_FIELD_NUMBER = 6;
-        private com.google.protobuf.LazyStringList tags_;
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        public com.google.protobuf.ProtocolStringList
-        getTagsList() {
-            return tags_;
+      private java.lang.Object nickname0_ = "";
+      /**
+       * <pre>
+       * 未打码的昵称， 如 风清扬 
+       * </pre>
+       *
+       * <code>optional string nickname0 = 3;</code>
+       */
+      public java.lang.String getNickname0() {
+        java.lang.Object ref = nickname0_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nickname0_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        public int getTagsCount() {
-            return tags_.size();
+      }
+      /**
+       * <pre>
+       * 未打码的昵称， 如 风清扬 
+       * </pre>
+       *
+       * <code>optional string nickname0 = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNickname0Bytes() {
+        java.lang.Object ref = nickname0_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname0_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
+      }
+      /**
+       * <pre>
+       * 未打码的昵称， 如 风清扬 
+       * </pre>
+       *
+       * <code>optional string nickname0 = 3;</code>
+       */
+      public Builder setNickname0(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nickname0_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 未打码的昵称， 如 风清扬 
+       * </pre>
+       *
+       * <code>optional string nickname0 = 3;</code>
+       */
+      public Builder clearNickname0() {
+        
+        nickname0_ = getDefaultInstance().getNickname0();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 未打码的昵称， 如 风清扬 
+       * </pre>
+       *
+       * <code>optional string nickname0 = 3;</code>
+       */
+      public Builder setNickname0Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nickname0_ = value;
+        onChanged();
+        return this;
+      }
 
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        public java.lang.String getTags(int index) {
-            return tags_.get(index);
+      private java.lang.Object loginTime_ = "";
+      /**
+       * <code>optional string login_time = 4;</code>
+       */
+      public java.lang.String getLoginTime() {
+        java.lang.Object ref = loginTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          loginTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        /**
-         * <code>repeated string tags = 6;</code>
-         */
-        public com.google.protobuf.ByteString
-        getTagsBytes(int index) {
-            return tags_.getByteString(index);
+      }
+      /**
+       * <code>optional string login_time = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getLoginTimeBytes() {
+        java.lang.Object ref = loginTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          loginTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
+      }
+      /**
+       * <code>optional string login_time = 4;</code>
+       */
+      public Builder setLoginTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        loginTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string login_time = 4;</code>
+       */
+      public Builder clearLoginTime() {
+        
+        loginTime_ = getDefaultInstance().getLoginTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string login_time = 4;</code>
+       */
+      public Builder setLoginTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        loginTime_ = value;
+        onChanged();
+        return this;
+      }
 
-        private byte memoizedIsInitialized = -1;
-
-        public final boolean isInitialized() {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
-
-            memoizedIsInitialized = 1;
-            return true;
+      private int levelType_ = 0;
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public int getLevelTypeValue() {
+        return levelType_;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public Builder setLevelTypeValue(int value) {
+        levelType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public com.github.taojoe.proto.Transform.UserLevelType getLevelType() {
+        com.github.taojoe.proto.Transform.UserLevelType result = com.github.taojoe.proto.Transform.UserLevelType.forNumber(levelType_);
+        return result == null ? com.github.taojoe.proto.Transform.UserLevelType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public Builder setLevelType(com.github.taojoe.proto.Transform.UserLevelType value) {
+        if (value == null) {
+          throw new NullPointerException();
         }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            if (!getUidBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 1, uid_);
-            }
-            if (!getNicknameBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 2, nickname_);
-            }
-            if (!getNickname0Bytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 3, nickname0_);
-            }
-            if (!getLoginTimeBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 4, loginTime_);
-            }
-            if (levelType_ != com.github.taojoe.proto.Transform.UserLevelType.LV0.getNumber()) {
-                output.writeEnum(5, levelType_);
-            }
-            for (int i = 0; i < tags_.size(); i++) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 6, tags_.getRaw(i));
-            }
-            if (balance_ != 0D) {
-                output.writeDouble(7, balance_);
-            }
-            if (enabled_ != false) {
-                output.writeBool(8, enabled_);
-            }
-        }
-
-        public int getSerializedSize() {
-            int size = memoizedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (!getUidBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(1, uid_);
-            }
-            if (!getNicknameBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(2, nickname_);
-            }
-            if (!getNickname0Bytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(3, nickname0_);
-            }
-            if (!getLoginTimeBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(4, loginTime_);
-            }
-            if (levelType_ != com.github.taojoe.proto.Transform.UserLevelType.LV0.getNumber()) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeEnumSize(5, levelType_);
-            }
-            {
-                int dataSize = 0;
-                for (int i = 0; i < tags_.size(); i++) {
-                    dataSize += computeStringSizeNoTag(tags_.getRaw(i));
-                }
-                size += dataSize;
-                size += 1 * getTagsList().size();
-            }
-            if (balance_ != 0D) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeDoubleSize(7, balance_);
-            }
-            if (enabled_ != false) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeBoolSize(8, enabled_);
-            }
-            memoizedSize = size;
-            return size;
-        }
-
-        private static final long serialVersionUID = 0L;
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
-
-        public static com.github.taojoe.proto.Transform.User parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public Builder newBuilderForType() {
-            return newBuilder();
-        }
-
-        public static Builder newBuilder() {
-            return DEFAULT_INSTANCE.toBuilder();
-        }
-
-        public static Builder newBuilder(com.github.taojoe.proto.Transform.User prototype) {
-            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-
-        public Builder toBuilder() {
-            return this == DEFAULT_INSTANCE
-                    ? new Builder() : new Builder().mergeFrom(this);
-        }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
-        }
-
-        /**
-         * Protobuf type {@code com.github.taojoe.proto.User}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.User)
-                com.github.taojoe.proto.Transform.UserOrBuilder {
-            public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_descriptor;
-            }
-
-            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_fieldAccessorTable
-                        .ensureFieldAccessorsInitialized(
-                                com.github.taojoe.proto.Transform.User.class, com.github.taojoe.proto.Transform.User.Builder.class);
-            }
-
-            // Construct using com.github.taojoe.proto.Transform.User.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-                }
-            }
-
-            public Builder clear() {
-                super.clear();
-                uid_ = "";
-
-                nickname_ = "";
-
-                nickname0_ = "";
-
-                loginTime_ = "";
-
-                levelType_ = 0;
-
-                balance_ = 0D;
-
-                enabled_ = false;
-
-                tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                return this;
-            }
-
-            public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_User_descriptor;
-            }
-
-            public com.github.taojoe.proto.Transform.User getDefaultInstanceForType() {
-                return com.github.taojoe.proto.Transform.User.getDefaultInstance();
-            }
-
-            public com.github.taojoe.proto.Transform.User build() {
-                com.github.taojoe.proto.Transform.User result = buildPartial();
-                if (!result.isInitialized()) {
-                    throw newUninitializedMessageException(result);
-                }
-                return result;
-            }
-
-            public com.github.taojoe.proto.Transform.User buildPartial() {
-                com.github.taojoe.proto.Transform.User result = new com.github.taojoe.proto.Transform.User(this);
-                int from_bitField0_ = bitField0_;
-                int to_bitField0_ = 0;
-                result.uid_ = uid_;
-                result.nickname_ = nickname_;
-                result.nickname0_ = nickname0_;
-                result.loginTime_ = loginTime_;
-                result.levelType_ = levelType_;
-                result.balance_ = balance_;
-                result.enabled_ = enabled_;
-                if (((bitField0_ & 0x00000080) == 0x00000080)) {
-                    tags_ = tags_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000080);
-                }
-                result.tags_ = tags_;
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
-            }
-
-            public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.github.taojoe.proto.Transform.User) {
-                    return mergeFrom((com.github.taojoe.proto.Transform.User) other);
-                } else {
-                    super.mergeFrom(other);
-                    return this;
-                }
-            }
-
-            public Builder mergeFrom(com.github.taojoe.proto.Transform.User other) {
-                if (other == com.github.taojoe.proto.Transform.User.getDefaultInstance()) return this;
-                if (!other.getUid().isEmpty()) {
-                    uid_ = other.uid_;
-                    onChanged();
-                }
-                if (!other.getNickname().isEmpty()) {
-                    nickname_ = other.nickname_;
-                    onChanged();
-                }
-                if (!other.getNickname0().isEmpty()) {
-                    nickname0_ = other.nickname0_;
-                    onChanged();
-                }
-                if (!other.getLoginTime().isEmpty()) {
-                    loginTime_ = other.loginTime_;
-                    onChanged();
-                }
-                if (other.levelType_ != 0) {
-                    setLevelTypeValue(other.getLevelTypeValue());
-                }
-                if (other.getBalance() != 0D) {
-                    setBalance(other.getBalance());
-                }
-                if (other.getEnabled() != false) {
-                    setEnabled(other.getEnabled());
-                }
-                if (!other.tags_.isEmpty()) {
-                    if (tags_.isEmpty()) {
-                        tags_ = other.tags_;
-                        bitField0_ = (bitField0_ & ~0x00000080);
-                    } else {
-                        ensureTagsIsMutable();
-                        tags_.addAll(other.tags_);
-                    }
-                    onChanged();
-                }
-                onChanged();
-                return this;
-            }
-
-            public final boolean isInitialized() {
-                return true;
-            }
-
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                com.github.taojoe.proto.Transform.User parsedMessage = null;
-                try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.github.taojoe.proto.Transform.User) e.getUnfinishedMessage();
-                    throw e;
-                } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
-                return this;
-            }
-
-            private int bitField0_;
-
-            private java.lang.Object uid_ = "";
-
-            /**
-             * <code>optional string uid = 1;</code>
-             */
-            public java.lang.String getUid() {
-                java.lang.Object ref = uid_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    uid_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string uid = 1;</code>
-             */
-            public com.google.protobuf.ByteString
-            getUidBytes() {
-                java.lang.Object ref = uid_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    uid_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string uid = 1;</code>
-             */
-            public Builder setUid(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                uid_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string uid = 1;</code>
-             */
-            public Builder clearUid() {
-
-                uid_ = getDefaultInstance().getUid();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string uid = 1;</code>
-             */
-            public Builder setUidBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                uid_ = value;
-                onChanged();
-                return this;
-            }
-
-            private java.lang.Object nickname_ = "";
-
-            /**
-             * <code>optional string nickname = 2;</code>
-             * <p>
-             * <pre>
-             * 打码的昵称， 如 周**
-             * </pre>
-             */
-            public java.lang.String getNickname() {
-                java.lang.Object ref = nickname_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    nickname_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string nickname = 2;</code>
-             * <p>
-             * <pre>
-             * 打码的昵称， 如 周**
-             * </pre>
-             */
-            public com.google.protobuf.ByteString
-            getNicknameBytes() {
-                java.lang.Object ref = nickname_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    nickname_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string nickname = 2;</code>
-             * <p>
-             * <pre>
-             * 打码的昵称， 如 周**
-             * </pre>
-             */
-            public Builder setNickname(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                nickname_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string nickname = 2;</code>
-             * <p>
-             * <pre>
-             * 打码的昵称， 如 周**
-             * </pre>
-             */
-            public Builder clearNickname() {
-
-                nickname_ = getDefaultInstance().getNickname();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string nickname = 2;</code>
-             * <p>
-             * <pre>
-             * 打码的昵称， 如 周**
-             * </pre>
-             */
-            public Builder setNicknameBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                nickname_ = value;
-                onChanged();
-                return this;
-            }
-
-            private java.lang.Object nickname0_ = "";
-
-            /**
-             * <code>optional string nickname0 = 3;</code>
-             * <p>
-             * <pre>
-             * 未打码的昵称， 如 风清扬
-             * </pre>
-             */
-            public java.lang.String getNickname0() {
-                java.lang.Object ref = nickname0_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    nickname0_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string nickname0 = 3;</code>
-             * <p>
-             * <pre>
-             * 未打码的昵称， 如 风清扬
-             * </pre>
-             */
-            public com.google.protobuf.ByteString
-            getNickname0Bytes() {
-                java.lang.Object ref = nickname0_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    nickname0_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string nickname0 = 3;</code>
-             * <p>
-             * <pre>
-             * 未打码的昵称， 如 风清扬
-             * </pre>
-             */
-            public Builder setNickname0(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                nickname0_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string nickname0 = 3;</code>
-             * <p>
-             * <pre>
-             * 未打码的昵称， 如 风清扬
-             * </pre>
-             */
-            public Builder clearNickname0() {
-
-                nickname0_ = getDefaultInstance().getNickname0();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string nickname0 = 3;</code>
-             * <p>
-             * <pre>
-             * 未打码的昵称， 如 风清扬
-             * </pre>
-             */
-            public Builder setNickname0Bytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                nickname0_ = value;
-                onChanged();
-                return this;
-            }
-
-            private java.lang.Object loginTime_ = "";
-
-            /**
-             * <code>optional string login_time = 4;</code>
-             */
-            public java.lang.String getLoginTime() {
-                java.lang.Object ref = loginTime_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    loginTime_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string login_time = 4;</code>
-             */
-            public com.google.protobuf.ByteString
-            getLoginTimeBytes() {
-                java.lang.Object ref = loginTime_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    loginTime_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string login_time = 4;</code>
-             */
-            public Builder setLoginTime(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                loginTime_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string login_time = 4;</code>
-             */
-            public Builder clearLoginTime() {
-
-                loginTime_ = getDefaultInstance().getLoginTime();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string login_time = 4;</code>
-             */
-            public Builder setLoginTimeBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                loginTime_ = value;
-                onChanged();
-                return this;
-            }
-
-            private int levelType_ = 0;
-
-            /**
-             * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-             */
-            public int getLevelTypeValue() {
-                return levelType_;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-             */
-            public Builder setLevelTypeValue(int value) {
-                levelType_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-             */
-            public com.github.taojoe.proto.Transform.UserLevelType getLevelType() {
-                com.github.taojoe.proto.Transform.UserLevelType result = com.github.taojoe.proto.Transform.UserLevelType.valueOf(levelType_);
-                return result == null ? com.github.taojoe.proto.Transform.UserLevelType.UNRECOGNIZED : result;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-             */
-            public Builder setLevelType(com.github.taojoe.proto.Transform.UserLevelType value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                levelType_ = value.getNumber();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
-             */
-            public Builder clearLevelType() {
-
-                levelType_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private double balance_;
-
-            /**
-             * <code>optional double balance = 7;</code>
-             */
-            public double getBalance() {
-                return balance_;
-            }
-
-            /**
-             * <code>optional double balance = 7;</code>
-             */
-            public Builder setBalance(double value) {
-
-                balance_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional double balance = 7;</code>
-             */
-            public Builder clearBalance() {
-
-                balance_ = 0D;
-                onChanged();
-                return this;
-            }
-
-            private boolean enabled_;
-
-            /**
-             * <code>optional bool enabled = 8;</code>
-             */
-            public boolean getEnabled() {
-                return enabled_;
-            }
-
-            /**
-             * <code>optional bool enabled = 8;</code>
-             */
-            public Builder setEnabled(boolean value) {
-
-                enabled_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional bool enabled = 8;</code>
-             */
-            public Builder clearEnabled() {
-
-                enabled_ = false;
-                onChanged();
-                return this;
-            }
-
-            private com.google.protobuf.LazyStringList tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-            private void ensureTagsIsMutable() {
-                if (!((bitField0_ & 0x00000080) == 0x00000080)) {
-                    tags_ = new com.google.protobuf.LazyStringArrayList(tags_);
-                    bitField0_ |= 0x00000080;
-                }
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public com.google.protobuf.ProtocolStringList
-            getTagsList() {
-                return tags_.getUnmodifiableView();
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public int getTagsCount() {
-                return tags_.size();
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public java.lang.String getTags(int index) {
-                return tags_.get(index);
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public com.google.protobuf.ByteString
-            getTagsBytes(int index) {
-                return tags_.getByteString(index);
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public Builder setTags(
-                    int index, java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                ensureTagsIsMutable();
-                tags_.set(index, value);
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public Builder addTags(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                ensureTagsIsMutable();
-                tags_.add(value);
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public Builder addAllTags(
-                    java.lang.Iterable<java.lang.String> values) {
-                ensureTagsIsMutable();
-                com.google.protobuf.AbstractMessageLite.Builder.addAll(
-                        values, tags_);
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public Builder clearTags() {
-                tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>repeated string tags = 6;</code>
-             */
-            public Builder addTagsBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-                ensureTagsIsMutable();
-                tags_.add(value);
-                onChanged();
-                return this;
-            }
-
-            public final Builder setUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return this;
-            }
-
-            public final Builder mergeUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return this;
-            }
-
-
-            // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.User)
-        }
-
-        // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.User)
-        private static final com.github.taojoe.proto.Transform.User DEFAULT_INSTANCE;
-
-        static {
-            DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.User();
-        }
-
-        public static com.github.taojoe.proto.Transform.User getDefaultInstance() {
-            return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<User>
-                PARSER = new com.google.protobuf.AbstractParser<User>() {
-            public User parsePartialFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                try {
-                    return new User(input, extensionRegistry);
-                } catch (RuntimeException e) {
-                    if (e.getCause() instanceof
-                            com.google.protobuf.InvalidProtocolBufferException) {
-                        throw (com.google.protobuf.InvalidProtocolBufferException)
-                                e.getCause();
-                    }
-                    throw e;
-                }
-            }
-        };
-
-        public static com.google.protobuf.Parser<User> parser() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<User> getParserForType() {
-            return PARSER;
-        }
-
-        public com.github.taojoe.proto.Transform.User getDefaultInstanceForType() {
-            return DEFAULT_INSTANCE;
-        }
-
+        
+        levelType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.UserLevelType level_type = 5;</code>
+       */
+      public Builder clearLevelType() {
+        
+        levelType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double balance_ ;
+      /**
+       * <code>optional double balance = 7;</code>
+       */
+      public double getBalance() {
+        return balance_;
+      }
+      /**
+       * <code>optional double balance = 7;</code>
+       */
+      public Builder setBalance(double value) {
+        
+        balance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double balance = 7;</code>
+       */
+      public Builder clearBalance() {
+        
+        balance_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private boolean enabled_ ;
+      /**
+       * <code>optional bool enabled = 8;</code>
+       */
+      public boolean getEnabled() {
+        return enabled_;
+      }
+      /**
+       * <code>optional bool enabled = 8;</code>
+       */
+      public Builder setEnabled(boolean value) {
+        
+        enabled_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool enabled = 8;</code>
+       */
+      public Builder clearEnabled() {
+        
+        enabled_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureTagsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          tags_ = new com.google.protobuf.LazyStringArrayList(tags_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getTagsList() {
+        return tags_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public int getTagsCount() {
+        return tags_.size();
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public java.lang.String getTags(int index) {
+        return tags_.get(index);
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTagsBytes(int index) {
+        return tags_.getByteString(index);
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public Builder setTags(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTagsIsMutable();
+        tags_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public Builder addTags(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTagsIsMutable();
+        tags_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public Builder addAllTags(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureTagsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, tags_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public Builder clearTags() {
+        tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tags = 6;</code>
+       */
+      public Builder addTagsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureTagsIsMutable();
+        tags_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString avatar_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes avatar = 10;</code>
+       */
+      public com.google.protobuf.ByteString getAvatar() {
+        return avatar_;
+      }
+      /**
+       * <code>optional bytes avatar = 10;</code>
+       */
+      public Builder setAvatar(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        avatar_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes avatar = 10;</code>
+       */
+      public Builder clearAvatar() {
+        
+        avatar_ = getDefaultInstance().getAvatar();
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.User)
     }
 
-    public interface SessionResponseOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.SessionResponse)
-            com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.User)
+    private static final com.github.taojoe.proto.Transform.User DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.User();
+    }
 
-        /**
-         * <code>optional string token = 1;</code>
-         */
-        java.lang.String getToken();
+    public static com.github.taojoe.proto.Transform.User getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
 
-        /**
-         * <code>optional string token = 1;</code>
-         */
-        com.google.protobuf.ByteString
+    private static final com.google.protobuf.Parser<User>
+        PARSER = new com.google.protobuf.AbstractParser<User>() {
+      public User parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new User(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<User> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<User> getParserForType() {
+      return PARSER;
+    }
+
+    public com.github.taojoe.proto.Transform.User getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SessionResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.github.taojoe.proto.SessionResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string token = 1;</code>
+     */
+    java.lang.String getToken();
+    /**
+     * <code>optional string token = 1;</code>
+     */
+    com.google.protobuf.ByteString
         getTokenBytes();
 
-        /**
-         * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-         */
-        boolean hasUser();
+    /**
+     * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+     */
+    com.github.taojoe.proto.Transform.User getUser();
+    /**
+     * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+     */
+    com.github.taojoe.proto.Transform.UserOrBuilder getUserOrBuilder();
 
-        /**
-         * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-         */
-        com.github.taojoe.proto.Transform.User getUser();
+    /**
+     * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+     */
+    boolean hasError();
+    /**
+     * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+     */
+    com.github.taojoe.proto.Transform.Error getError();
+    /**
+     * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+     */
+    com.github.taojoe.proto.Transform.ErrorOrBuilder getErrorOrBuilder();
 
-        /**
-         * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-         */
-        com.github.taojoe.proto.Transform.UserOrBuilder getUserOrBuilder();
-
-        /**
-         * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-         */
-        boolean hasError();
-
-        /**
-         * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-         */
-        com.github.taojoe.proto.Transform.Error getError();
-
-        /**
-         * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-         */
-        com.github.taojoe.proto.Transform.ErrorOrBuilder getErrorOrBuilder();
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        java.util.List<com.github.taojoe.proto.Transform.User>
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    java.util.List<com.github.taojoe.proto.Transform.User> 
         getFriendsList();
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        com.github.taojoe.proto.Transform.User getFriends(int index);
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        int getFriendsCount();
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        java.util.List<? extends com.github.taojoe.proto.Transform.UserOrBuilder>
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    com.github.taojoe.proto.Transform.User getFriends(int index);
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    int getFriendsCount();
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    java.util.List<? extends com.github.taojoe.proto.Transform.UserOrBuilder> 
         getFriendsOrBuilderList();
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    com.github.taojoe.proto.Transform.UserOrBuilder getFriendsOrBuilder(
+        int index);
 
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        com.github.taojoe.proto.Transform.UserOrBuilder getFriendsOrBuilder(
-                int index);
+    /**
+     * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
+     */
+    java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User>
+    getRelations();
 
-        /**
-         * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
-         */
-        java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User>
-        getRelations();
-
-        /**
-         * <code>optional int32 cnt = 6;</code>
-         */
-        int getCnt();
+    /**
+     * <code>optional int32 cnt = 6;</code>
+     */
+    int getCnt();
+  }
+  /**
+   * Protobuf type {@code com.github.taojoe.proto.SessionResponse}
+   */
+  public  static final class SessionResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.SessionResponse)
+      SessionResponseOrBuilder {
+    // Use SessionResponse.newBuilder() to construct.
+    private SessionResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SessionResponse() {
+      token_ = "";
+      friends_ = java.util.Collections.emptyList();
+      cnt_ = 0;
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SessionResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              token_ = s;
+              break;
+            }
+            case 18: {
+              com.github.taojoe.proto.Transform.User.Builder subBuilder = null;
+              if (user_ != null) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.github.taojoe.proto.Transform.User.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              com.github.taojoe.proto.Transform.Error.Builder subBuilder = null;
+              if (error_ != null) {
+                subBuilder = error_.toBuilder();
+              }
+              error_ = input.readMessage(com.github.taojoe.proto.Transform.Error.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(error_);
+                error_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                friends_ = new java.util.ArrayList<com.github.taojoe.proto.Transform.User>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              friends_.add(input.readMessage(com.github.taojoe.proto.Transform.User.parser(), extensionRegistry));
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                relations_ = com.google.protobuf.MapField.newMapField(
+                    RelationsDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000010;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, com.github.taojoe.proto.Transform.User>
+              relations = input.readMessage(
+                  RelationsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              relations_.getMutableMap().put(relations.getKey(), relations.getValue());
+              break;
+            }
+            case 48: {
+
+              cnt_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          friends_ = java.util.Collections.unmodifiableList(friends_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 5:
+          return internalGetRelations();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.github.taojoe.proto.Transform.SessionResponse.class, com.github.taojoe.proto.Transform.SessionResponse.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TOKEN_FIELD_NUMBER = 1;
+    private volatile java.lang.Object token_;
+    /**
+     * <code>optional string token = 1;</code>
+     */
+    public java.lang.String getToken() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        token_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string token = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTokenBytes() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        token_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USER_FIELD_NUMBER = 2;
+    private com.github.taojoe.proto.Transform.User user_;
+    /**
+     * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+     */
+    public boolean hasUser() {
+      return user_ != null;
+    }
+    /**
+     * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+     */
+    public com.github.taojoe.proto.Transform.User getUser() {
+      return user_ == null ? com.github.taojoe.proto.Transform.User.getDefaultInstance() : user_;
+    }
+    /**
+     * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+     */
+    public com.github.taojoe.proto.Transform.UserOrBuilder getUserOrBuilder() {
+      return getUser();
+    }
+
+    public static final int ERROR_FIELD_NUMBER = 3;
+    private com.github.taojoe.proto.Transform.Error error_;
+    /**
+     * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+     */
+    public boolean hasError() {
+      return error_ != null;
+    }
+    /**
+     * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+     */
+    public com.github.taojoe.proto.Transform.Error getError() {
+      return error_ == null ? com.github.taojoe.proto.Transform.Error.getDefaultInstance() : error_;
+    }
+    /**
+     * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+     */
+    public com.github.taojoe.proto.Transform.ErrorOrBuilder getErrorOrBuilder() {
+      return getError();
+    }
+
+    public static final int FRIENDS_FIELD_NUMBER = 4;
+    private java.util.List<com.github.taojoe.proto.Transform.User> friends_;
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    public java.util.List<com.github.taojoe.proto.Transform.User> getFriendsList() {
+      return friends_;
+    }
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    public java.util.List<? extends com.github.taojoe.proto.Transform.UserOrBuilder> 
+        getFriendsOrBuilderList() {
+      return friends_;
+    }
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    public int getFriendsCount() {
+      return friends_.size();
+    }
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    public com.github.taojoe.proto.Transform.User getFriends(int index) {
+      return friends_.get(index);
+    }
+    /**
+     * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+     */
+    public com.github.taojoe.proto.Transform.UserOrBuilder getFriendsOrBuilder(
+        int index) {
+      return friends_.get(index);
+    }
+
+    public static final int RELATIONS_FIELD_NUMBER = 5;
+    private static final class RelationsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, com.github.taojoe.proto.Transform.User> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, com.github.taojoe.proto.Transform.User>newDefaultInstance(
+                  com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.github.taojoe.proto.Transform.User.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, com.github.taojoe.proto.Transform.User> relations_;
+    private com.google.protobuf.MapField<java.lang.String, com.github.taojoe.proto.Transform.User>
+    internalGetRelations() {
+      if (relations_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            RelationsDefaultEntryHolder.defaultEntry);
+      }
+      return relations_;
+    }
+    /**
+     * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
+     */
+
+    public java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User> getRelations() {
+      return internalGetRelations().getMap();
+    }
+
+    public static final int CNT_FIELD_NUMBER = 6;
+    private int cnt_;
+    /**
+     * <code>optional int32 cnt = 6;</code>
+     */
+    public int getCnt() {
+      return cnt_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
+      }
+      if (user_ != null) {
+        output.writeMessage(2, getUser());
+      }
+      if (error_ != null) {
+        output.writeMessage(3, getError());
+      }
+      for (int i = 0; i < friends_.size(); i++) {
+        output.writeMessage(4, friends_.get(i));
+      }
+      for (java.util.Map.Entry<java.lang.String, com.github.taojoe.proto.Transform.User> entry
+           : internalGetRelations().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, com.github.taojoe.proto.Transform.User>
+        relations = RelationsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(5, relations);
+      }
+      if (cnt_ != 0) {
+        output.writeInt32(6, cnt_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
+      }
+      if (user_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getUser());
+      }
+      if (error_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getError());
+      }
+      for (int i = 0; i < friends_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, friends_.get(i));
+      }
+      for (java.util.Map.Entry<java.lang.String, com.github.taojoe.proto.Transform.User> entry
+           : internalGetRelations().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, com.github.taojoe.proto.Transform.User>
+        relations = RelationsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(5, relations);
+      }
+      if (cnt_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, cnt_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.github.taojoe.proto.Transform.SessionResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     /**
      * Protobuf type {@code com.github.taojoe.proto.SessionResponse}
      */
-    public static final class SessionResponse extends
-            com.google.protobuf.GeneratedMessage implements
-            // @@protoc_insertion_point(message_implements:com.github.taojoe.proto.SessionResponse)
-            SessionResponseOrBuilder {
-        // Use SessionResponse.newBuilder() to construct.
-        private SessionResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-            super(builder);
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.SessionResponse)
+        com.github.taojoe.proto.Transform.SessionResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
+      }
+
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 5:
+            return internalGetRelations();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
         }
-
-        private SessionResponse() {
-            token_ = "";
-            friends_ = java.util.Collections.emptyList();
-            cnt_ = 0;
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 5:
+            return internalGetMutableRelations();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
         }
+      }
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.github.taojoe.proto.Transform.SessionResponse.class, com.github.taojoe.proto.Transform.SessionResponse.Builder.class);
+      }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-            return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      // Construct using com.github.taojoe.proto.Transform.SessionResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getFriendsFieldBuilder();
         }
+      }
+      public Builder clear() {
+        super.clear();
+        token_ = "";
 
-        private SessionResponse(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-            this();
-            int mutable_bitField0_ = 0;
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        default: {
-                            if (!input.skipField(tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                        case 10: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            token_ = s;
-                            break;
-                        }
-                        case 18: {
-                            com.github.taojoe.proto.Transform.User.Builder subBuilder = null;
-                            if (user_ != null) {
-                                subBuilder = user_.toBuilder();
-                            }
-                            user_ = input.readMessage(com.github.taojoe.proto.Transform.User.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(user_);
-                                user_ = subBuilder.buildPartial();
-                            }
-
-                            break;
-                        }
-                        case 26: {
-                            com.github.taojoe.proto.Transform.Error.Builder subBuilder = null;
-                            if (error_ != null) {
-                                subBuilder = error_.toBuilder();
-                            }
-                            error_ = input.readMessage(com.github.taojoe.proto.Transform.Error.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(error_);
-                                error_ = subBuilder.buildPartial();
-                            }
-
-                            break;
-                        }
-                        case 34: {
-                            if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                                friends_ = new java.util.ArrayList<com.github.taojoe.proto.Transform.User>();
-                                mutable_bitField0_ |= 0x00000008;
-                            }
-                            friends_.add(input.readMessage(com.github.taojoe.proto.Transform.User.parser(), extensionRegistry));
-                            break;
-                        }
-                        case 42: {
-                            if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                                relations_ = com.google.protobuf.MapField.newMapField(
-                                        RelationsDefaultEntryHolder.defaultEntry);
-                                mutable_bitField0_ |= 0x00000010;
-                            }
-                            com.google.protobuf.MapEntry<java.lang.String, com.github.taojoe.proto.Transform.User>
-                                    relations = input.readMessage(
-                                    RelationsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                            relations_.getMutableMap().put(relations.getKey(), relations.getValue());
-                            break;
-                        }
-                        case 48: {
-
-                            cnt_ = input.readInt32();
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw new RuntimeException(e.setUnfinishedMessage(this));
-            } catch (java.io.IOException e) {
-                throw new RuntimeException(
-                        new com.google.protobuf.InvalidProtocolBufferException(
-                                e.getMessage()).setUnfinishedMessage(this));
-            } finally {
-                if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                    friends_ = java.util.Collections.unmodifiableList(friends_);
-                }
-                makeExtensionsImmutable();
-            }
+        if (userBuilder_ == null) {
+          user_ = null;
+        } else {
+          user_ = null;
+          userBuilder_ = null;
         }
-
-        public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-            return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
+        if (errorBuilder_ == null) {
+          error_ = null;
+        } else {
+          error_ = null;
+          errorBuilder_ = null;
         }
-
-        @SuppressWarnings({"rawtypes"})
-        protected com.google.protobuf.MapField internalGetMapField(
-                int number) {
-            switch (number) {
-                case 5:
-                    return internalGetRelations();
-                default:
-                    throw new RuntimeException(
-                            "Invalid map field number: " + number);
-            }
+        if (friendsBuilder_ == null) {
+          friends_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          friendsBuilder_.clear();
         }
+        internalGetMutableRelations().clear();
+        cnt_ = 0;
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            com.github.taojoe.proto.Transform.SessionResponse.class, com.github.taojoe.proto.Transform.SessionResponse.Builder.class);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
+      }
+
+      public com.github.taojoe.proto.Transform.SessionResponse getDefaultInstanceForType() {
+        return com.github.taojoe.proto.Transform.SessionResponse.getDefaultInstance();
+      }
+
+      public com.github.taojoe.proto.Transform.SessionResponse build() {
+        com.github.taojoe.proto.Transform.SessionResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
         }
+        return result;
+      }
 
-        private int bitField0_;
-        public static final int TOKEN_FIELD_NUMBER = 1;
-        private volatile java.lang.Object token_;
+      public com.github.taojoe.proto.Transform.SessionResponse buildPartial() {
+        com.github.taojoe.proto.Transform.SessionResponse result = new com.github.taojoe.proto.Transform.SessionResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.token_ = token_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
+        if (errorBuilder_ == null) {
+          result.error_ = error_;
+        } else {
+          result.error_ = errorBuilder_.build();
+        }
+        if (friendsBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            friends_ = java.util.Collections.unmodifiableList(friends_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.friends_ = friends_;
+        } else {
+          result.friends_ = friendsBuilder_.build();
+        }
+        result.relations_ = internalGetRelations();
+        result.relations_.makeImmutable();
+        result.cnt_ = cnt_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
 
-        /**
-         * <code>optional string token = 1;</code>
-         */
-        public java.lang.String getToken() {
-            java.lang.Object ref = token_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.github.taojoe.proto.Transform.SessionResponse) {
+          return mergeFrom((com.github.taojoe.proto.Transform.SessionResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.github.taojoe.proto.Transform.SessionResponse other) {
+        if (other == com.github.taojoe.proto.Transform.SessionResponse.getDefaultInstance()) return this;
+        if (!other.getToken().isEmpty()) {
+          token_ = other.token_;
+          onChanged();
+        }
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
+        }
+        if (other.hasError()) {
+          mergeError(other.getError());
+        }
+        if (friendsBuilder_ == null) {
+          if (!other.friends_.isEmpty()) {
+            if (friends_.isEmpty()) {
+              friends_ = other.friends_;
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                token_ = s;
-                return s;
+              ensureFriendsIsMutable();
+              friends_.addAll(other.friends_);
             }
-        }
-
-        /**
-         * <code>optional string token = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-        getTokenBytes() {
-            java.lang.Object ref = token_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                token_ = b;
-                return b;
+            onChanged();
+          }
+        } else {
+          if (!other.friends_.isEmpty()) {
+            if (friendsBuilder_.isEmpty()) {
+              friendsBuilder_.dispose();
+              friendsBuilder_ = null;
+              friends_ = other.friends_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              friendsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFriendsFieldBuilder() : null;
             } else {
-                return (com.google.protobuf.ByteString) ref;
+              friendsBuilder_.addAllMessages(other.friends_);
             }
+          }
+        }
+        internalGetMutableRelations().mergeFrom(
+            other.internalGetRelations());
+        if (other.getCnt() != 0) {
+          setCnt(other.getCnt());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.github.taojoe.proto.Transform.SessionResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.github.taojoe.proto.Transform.SessionResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object token_ = "";
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public java.lang.String getToken() {
+        java.lang.Object ref = token_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          token_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        java.lang.Object ref = token_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          token_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public Builder setToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public Builder clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public Builder setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.github.taojoe.proto.Transform.User user_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder> userBuilder_;
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public boolean hasUser() {
+        return userBuilder_ != null || user_ != null;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public com.github.taojoe.proto.Transform.User getUser() {
+        if (userBuilder_ == null) {
+          return user_ == null ? com.github.taojoe.proto.Transform.User.getDefaultInstance() : user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public Builder setUser(com.github.taojoe.proto.Transform.User value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
         }
 
-        public static final int USER_FIELD_NUMBER = 2;
-        private com.github.taojoe.proto.Transform.User user_;
-
-        /**
-         * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-         */
-        public boolean hasUser() {
-            return user_ != null;
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public Builder setUser(
+          com.github.taojoe.proto.Transform.User.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
         }
 
-        /**
-         * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-         */
-        public com.github.taojoe.proto.Transform.User getUser() {
-            return user_ == null ? com.github.taojoe.proto.Transform.User.getDefaultInstance() : user_;
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public Builder mergeUser(com.github.taojoe.proto.Transform.User value) {
+        if (userBuilder_ == null) {
+          if (user_ != null) {
+            user_ =
+              com.github.taojoe.proto.Transform.User.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
         }
 
-        /**
-         * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-         */
-        public com.github.taojoe.proto.Transform.UserOrBuilder getUserOrBuilder() {
-            return getUser();
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = null;
+          onChanged();
+        } else {
+          user_ = null;
+          userBuilder_ = null;
         }
 
-        public static final int ERROR_FIELD_NUMBER = 3;
-        private com.github.taojoe.proto.Transform.Error error_;
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public com.github.taojoe.proto.Transform.User.Builder getUserBuilder() {
+        
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      public com.github.taojoe.proto.Transform.UserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_ == null ?
+              com.github.taojoe.proto.Transform.User.getDefaultInstance() : user_;
+        }
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.User user = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder>(
+                  getUser(),
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
+      }
 
-        /**
-         * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-         */
-        public boolean hasError() {
-            return error_ != null;
+      private com.github.taojoe.proto.Transform.Error error_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.github.taojoe.proto.Transform.Error, com.github.taojoe.proto.Transform.Error.Builder, com.github.taojoe.proto.Transform.ErrorOrBuilder> errorBuilder_;
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public boolean hasError() {
+        return errorBuilder_ != null || error_ != null;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public com.github.taojoe.proto.Transform.Error getError() {
+        if (errorBuilder_ == null) {
+          return error_ == null ? com.github.taojoe.proto.Transform.Error.getDefaultInstance() : error_;
+        } else {
+          return errorBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public Builder setError(com.github.taojoe.proto.Transform.Error value) {
+        if (errorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          error_ = value;
+          onChanged();
+        } else {
+          errorBuilder_.setMessage(value);
         }
 
-        /**
-         * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-         */
-        public com.github.taojoe.proto.Transform.Error getError() {
-            return error_ == null ? com.github.taojoe.proto.Transform.Error.getDefaultInstance() : error_;
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public Builder setError(
+          com.github.taojoe.proto.Transform.Error.Builder builderForValue) {
+        if (errorBuilder_ == null) {
+          error_ = builderForValue.build();
+          onChanged();
+        } else {
+          errorBuilder_.setMessage(builderForValue.build());
         }
 
-        /**
-         * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-         */
-        public com.github.taojoe.proto.Transform.ErrorOrBuilder getErrorOrBuilder() {
-            return getError();
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public Builder mergeError(com.github.taojoe.proto.Transform.Error value) {
+        if (errorBuilder_ == null) {
+          if (error_ != null) {
+            error_ =
+              com.github.taojoe.proto.Transform.Error.newBuilder(error_).mergeFrom(value).buildPartial();
+          } else {
+            error_ = value;
+          }
+          onChanged();
+        } else {
+          errorBuilder_.mergeFrom(value);
         }
 
-        public static final int FRIENDS_FIELD_NUMBER = 4;
-        private java.util.List<com.github.taojoe.proto.Transform.User> friends_;
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        public java.util.List<com.github.taojoe.proto.Transform.User> getFriendsList() {
-            return friends_;
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public Builder clearError() {
+        if (errorBuilder_ == null) {
+          error_ = null;
+          onChanged();
+        } else {
+          error_ = null;
+          errorBuilder_ = null;
         }
 
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        public java.util.List<? extends com.github.taojoe.proto.Transform.UserOrBuilder>
-        getFriendsOrBuilderList() {
-            return friends_;
+        return this;
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public com.github.taojoe.proto.Transform.Error.Builder getErrorBuilder() {
+        
+        onChanged();
+        return getErrorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      public com.github.taojoe.proto.Transform.ErrorOrBuilder getErrorOrBuilder() {
+        if (errorBuilder_ != null) {
+          return errorBuilder_.getMessageOrBuilder();
+        } else {
+          return error_ == null ?
+              com.github.taojoe.proto.Transform.Error.getDefaultInstance() : error_;
         }
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        public int getFriendsCount() {
-            return friends_.size();
+      }
+      /**
+       * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.github.taojoe.proto.Transform.Error, com.github.taojoe.proto.Transform.Error.Builder, com.github.taojoe.proto.Transform.ErrorOrBuilder> 
+          getErrorFieldBuilder() {
+        if (errorBuilder_ == null) {
+          errorBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.github.taojoe.proto.Transform.Error, com.github.taojoe.proto.Transform.Error.Builder, com.github.taojoe.proto.Transform.ErrorOrBuilder>(
+                  getError(),
+                  getParentForChildren(),
+                  isClean());
+          error_ = null;
         }
+        return errorBuilder_;
+      }
 
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        public com.github.taojoe.proto.Transform.User getFriends(int index) {
-            return friends_.get(index);
+      private java.util.List<com.github.taojoe.proto.Transform.User> friends_ =
+        java.util.Collections.emptyList();
+      private void ensureFriendsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          friends_ = new java.util.ArrayList<com.github.taojoe.proto.Transform.User>(friends_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder> friendsBuilder_;
+
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public java.util.List<com.github.taojoe.proto.Transform.User> getFriendsList() {
+        if (friendsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(friends_);
+        } else {
+          return friendsBuilder_.getMessageList();
         }
-
-        /**
-         * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-         */
-        public com.github.taojoe.proto.Transform.UserOrBuilder getFriendsOrBuilder(
-                int index) {
-            return friends_.get(index);
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public int getFriendsCount() {
+        if (friendsBuilder_ == null) {
+          return friends_.size();
+        } else {
+          return friendsBuilder_.getCount();
         }
-
-        public static final int RELATIONS_FIELD_NUMBER = 5;
-
-        private static final class RelationsDefaultEntryHolder {
-            static final com.google.protobuf.MapEntry<
-                    java.lang.String, com.github.taojoe.proto.Transform.User> defaultEntry =
-                    com.google.protobuf.MapEntry
-                            .<java.lang.String, com.github.taojoe.proto.Transform.User>newDefaultInstance(
-                                    com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor,
-                                    com.google.protobuf.WireFormat.FieldType.STRING,
-                                    "",
-                                    com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                                    com.github.taojoe.proto.Transform.User.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public com.github.taojoe.proto.Transform.User getFriends(int index) {
+        if (friendsBuilder_ == null) {
+          return friends_.get(index);
+        } else {
+          return friendsBuilder_.getMessage(index);
         }
-
-        private com.google.protobuf.MapField<
-                java.lang.String, com.github.taojoe.proto.Transform.User> relations_;
-
-        private com.google.protobuf.MapField<java.lang.String, com.github.taojoe.proto.Transform.User>
-        internalGetRelations() {
-            if (relations_ == null) {
-                return com.google.protobuf.MapField.emptyMapField(
-                        RelationsDefaultEntryHolder.defaultEntry);
-            }
-            return relations_;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder setFriends(
+          int index, com.github.taojoe.proto.Transform.User value) {
+        if (friendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendsIsMutable();
+          friends_.set(index, value);
+          onChanged();
+        } else {
+          friendsBuilder_.setMessage(index, value);
         }
-
-        /**
-         * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
-         */
-
-        public java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User> getRelations() {
-            return internalGetRelations().getMap();
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder setFriends(
+          int index, com.github.taojoe.proto.Transform.User.Builder builderForValue) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendsBuilder_.setMessage(index, builderForValue.build());
         }
-
-        public static final int CNT_FIELD_NUMBER = 6;
-        private int cnt_;
-
-        /**
-         * <code>optional int32 cnt = 6;</code>
-         */
-        public int getCnt() {
-            return cnt_;
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder addFriends(com.github.taojoe.proto.Transform.User value) {
+        if (friendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendsIsMutable();
+          friends_.add(value);
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(value);
         }
-
-        private byte memoizedIsInitialized = -1;
-
-        public final boolean isInitialized() {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
-
-            memoizedIsInitialized = 1;
-            return true;
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder addFriends(
+          int index, com.github.taojoe.proto.Transform.User value) {
+        if (friendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendsIsMutable();
+          friends_.add(index, value);
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(index, value);
         }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            if (!getTokenBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessage.writeString(output, 1, token_);
-            }
-            if (user_ != null) {
-                output.writeMessage(2, getUser());
-            }
-            if (error_ != null) {
-                output.writeMessage(3, getError());
-            }
-            for (int i = 0; i < friends_.size(); i++) {
-                output.writeMessage(4, friends_.get(i));
-            }
-            for (java.util.Map.Entry<java.lang.String, com.github.taojoe.proto.Transform.User> entry
-                    : internalGetRelations().getMap().entrySet()) {
-                com.google.protobuf.MapEntry<java.lang.String, com.github.taojoe.proto.Transform.User>
-                        relations = RelationsDefaultEntryHolder.defaultEntry.newBuilderForType()
-                        .setKey(entry.getKey())
-                        .setValue(entry.getValue())
-                        .build();
-                output.writeMessage(5, relations);
-            }
-            if (cnt_ != 0) {
-                output.writeInt32(6, cnt_);
-            }
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder addFriends(
+          com.github.taojoe.proto.Transform.User.Builder builderForValue) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.add(builderForValue.build());
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(builderForValue.build());
         }
-
-        public int getSerializedSize() {
-            int size = memoizedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (!getTokenBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessage.computeStringSize(1, token_);
-            }
-            if (user_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(2, getUser());
-            }
-            if (error_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(3, getError());
-            }
-            for (int i = 0; i < friends_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(4, friends_.get(i));
-            }
-            for (java.util.Map.Entry<java.lang.String, com.github.taojoe.proto.Transform.User> entry
-                    : internalGetRelations().getMap().entrySet()) {
-                com.google.protobuf.MapEntry<java.lang.String, com.github.taojoe.proto.Transform.User>
-                        relations = RelationsDefaultEntryHolder.defaultEntry.newBuilderForType()
-                        .setKey(entry.getKey())
-                        .setValue(entry.getValue())
-                        .build();
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(5, relations);
-            }
-            if (cnt_ != 0) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(6, cnt_);
-            }
-            memoizedSize = size;
-            return size;
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder addFriends(
+          int index, com.github.taojoe.proto.Transform.User.Builder builderForValue) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendsBuilder_.addMessage(index, builderForValue.build());
         }
-
-        private static final long serialVersionUID = 0L;
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder addAllFriends(
+          java.lang.Iterable<? extends com.github.taojoe.proto.Transform.User> values) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, friends_);
+          onChanged();
+        } else {
+          friendsBuilder_.addAllMessages(values);
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder clearFriends() {
+        if (friendsBuilder_ == null) {
+          friends_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          friendsBuilder_.clear();
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public Builder removeFriends(int index) {
+        if (friendsBuilder_ == null) {
+          ensureFriendsIsMutable();
+          friends_.remove(index);
+          onChanged();
+        } else {
+          friendsBuilder_.remove(index);
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+        return this;
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public com.github.taojoe.proto.Transform.User.Builder getFriendsBuilder(
+          int index) {
+        return getFriendsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public com.github.taojoe.proto.Transform.UserOrBuilder getFriendsOrBuilder(
+          int index) {
+        if (friendsBuilder_ == null) {
+          return friends_.get(index);  } else {
+          return friendsBuilder_.getMessageOrBuilder(index);
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public java.util.List<? extends com.github.taojoe.proto.Transform.UserOrBuilder> 
+           getFriendsOrBuilderList() {
+        if (friendsBuilder_ != null) {
+          return friendsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(friends_);
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public com.github.taojoe.proto.Transform.User.Builder addFriendsBuilder() {
+        return getFriendsFieldBuilder().addBuilder(
+            com.github.taojoe.proto.Transform.User.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public com.github.taojoe.proto.Transform.User.Builder addFriendsBuilder(
+          int index) {
+        return getFriendsFieldBuilder().addBuilder(
+            index, com.github.taojoe.proto.Transform.User.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
+       */
+      public java.util.List<com.github.taojoe.proto.Transform.User.Builder> 
+           getFriendsBuilderList() {
+        return getFriendsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder> 
+          getFriendsFieldBuilder() {
+        if (friendsBuilder_ == null) {
+          friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder>(
+                  friends_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          friends_ = null;
         }
+        return friendsBuilder_;
+      }
 
-        public static com.github.taojoe.proto.Transform.SessionResponse parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input);
+      private com.google.protobuf.MapField<
+          java.lang.String, com.github.taojoe.proto.Transform.User> relations_;
+      private com.google.protobuf.MapField<java.lang.String, com.github.taojoe.proto.Transform.User>
+      internalGetRelations() {
+        if (relations_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              RelationsDefaultEntryHolder.defaultEntry);
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        return relations_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, com.github.taojoe.proto.Transform.User>
+      internalGetMutableRelations() {
+        onChanged();;
+        if (relations_ == null) {
+          relations_ = com.google.protobuf.MapField.newMapField(
+              RelationsDefaultEntryHolder.defaultEntry);
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
+        if (!relations_.isMutable()) {
+          relations_ = relations_.copy();
         }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public Builder newBuilderForType() {
-            return newBuilder();
-        }
-
-        public static Builder newBuilder() {
-            return DEFAULT_INSTANCE.toBuilder();
-        }
-
-        public static Builder newBuilder(com.github.taojoe.proto.Transform.SessionResponse prototype) {
-            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-
-        public Builder toBuilder() {
-            return this == DEFAULT_INSTANCE
-                    ? new Builder() : new Builder().mergeFrom(this);
-        }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
-        }
-
-        /**
-         * Protobuf type {@code com.github.taojoe.proto.SessionResponse}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:com.github.taojoe.proto.SessionResponse)
-                com.github.taojoe.proto.Transform.SessionResponseOrBuilder {
-            public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
-            }
-
-            @SuppressWarnings({"rawtypes"})
-            protected com.google.protobuf.MapField internalGetMapField(
-                    int number) {
-                switch (number) {
-                    case 5:
-                        return internalGetRelations();
-                    default:
-                        throw new RuntimeException(
-                                "Invalid map field number: " + number);
-                }
-            }
-
-            @SuppressWarnings({"rawtypes"})
-            protected com.google.protobuf.MapField internalGetMutableMapField(
-                    int number) {
-                switch (number) {
-                    case 5:
-                        return internalGetMutableRelations();
-                    default:
-                        throw new RuntimeException(
-                                "Invalid map field number: " + number);
-                }
-            }
-
-            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable
-                        .ensureFieldAccessorsInitialized(
-                                com.github.taojoe.proto.Transform.SessionResponse.class, com.github.taojoe.proto.Transform.SessionResponse.Builder.class);
-            }
-
-            // Construct using com.github.taojoe.proto.Transform.SessionResponse.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-                    getFriendsFieldBuilder();
-                }
-            }
-
-            public Builder clear() {
-                super.clear();
-                token_ = "";
-
-                if (userBuilder_ == null) {
-                    user_ = null;
-                } else {
-                    user_ = null;
-                    userBuilder_ = null;
-                }
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                } else {
-                    error_ = null;
-                    errorBuilder_ = null;
-                }
-                if (friendsBuilder_ == null) {
-                    friends_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000008);
-                } else {
-                    friendsBuilder_.clear();
-                }
-                internalGetMutableRelations().clear();
-                cnt_ = 0;
-
-                return this;
-            }
-
-            public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-                return com.github.taojoe.proto.Transform.internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
-            }
-
-            public com.github.taojoe.proto.Transform.SessionResponse getDefaultInstanceForType() {
-                return com.github.taojoe.proto.Transform.SessionResponse.getDefaultInstance();
-            }
-
-            public com.github.taojoe.proto.Transform.SessionResponse build() {
-                com.github.taojoe.proto.Transform.SessionResponse result = buildPartial();
-                if (!result.isInitialized()) {
-                    throw newUninitializedMessageException(result);
-                }
-                return result;
-            }
-
-            public com.github.taojoe.proto.Transform.SessionResponse buildPartial() {
-                com.github.taojoe.proto.Transform.SessionResponse result = new com.github.taojoe.proto.Transform.SessionResponse(this);
-                int from_bitField0_ = bitField0_;
-                int to_bitField0_ = 0;
-                result.token_ = token_;
-                if (userBuilder_ == null) {
-                    result.user_ = user_;
-                } else {
-                    result.user_ = userBuilder_.build();
-                }
-                if (errorBuilder_ == null) {
-                    result.error_ = error_;
-                } else {
-                    result.error_ = errorBuilder_.build();
-                }
-                if (friendsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                        friends_ = java.util.Collections.unmodifiableList(friends_);
-                        bitField0_ = (bitField0_ & ~0x00000008);
-                    }
-                    result.friends_ = friends_;
-                } else {
-                    result.friends_ = friendsBuilder_.build();
-                }
-                result.relations_ = internalGetRelations();
-                result.relations_.makeImmutable();
-                result.cnt_ = cnt_;
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
-            }
-
-            public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.github.taojoe.proto.Transform.SessionResponse) {
-                    return mergeFrom((com.github.taojoe.proto.Transform.SessionResponse) other);
-                } else {
-                    super.mergeFrom(other);
-                    return this;
-                }
-            }
-
-            public Builder mergeFrom(com.github.taojoe.proto.Transform.SessionResponse other) {
-                if (other == com.github.taojoe.proto.Transform.SessionResponse.getDefaultInstance()) return this;
-                if (!other.getToken().isEmpty()) {
-                    token_ = other.token_;
-                    onChanged();
-                }
-                if (other.hasUser()) {
-                    mergeUser(other.getUser());
-                }
-                if (other.hasError()) {
-                    mergeError(other.getError());
-                }
-                if (friendsBuilder_ == null) {
-                    if (!other.friends_.isEmpty()) {
-                        if (friends_.isEmpty()) {
-                            friends_ = other.friends_;
-                            bitField0_ = (bitField0_ & ~0x00000008);
-                        } else {
-                            ensureFriendsIsMutable();
-                            friends_.addAll(other.friends_);
-                        }
-                        onChanged();
-                    }
-                } else {
-                    if (!other.friends_.isEmpty()) {
-                        if (friendsBuilder_.isEmpty()) {
-                            friendsBuilder_.dispose();
-                            friendsBuilder_ = null;
-                            friends_ = other.friends_;
-                            bitField0_ = (bitField0_ & ~0x00000008);
-                            friendsBuilder_ =
-                                    com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                                            getFriendsFieldBuilder() : null;
-                        } else {
-                            friendsBuilder_.addAllMessages(other.friends_);
-                        }
-                    }
-                }
-                internalGetMutableRelations().mergeFrom(
-                        other.internalGetRelations());
-                if (other.getCnt() != 0) {
-                    setCnt(other.getCnt());
-                }
-                onChanged();
-                return this;
-            }
-
-            public final boolean isInitialized() {
-                return true;
-            }
-
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                com.github.taojoe.proto.Transform.SessionResponse parsedMessage = null;
-                try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.github.taojoe.proto.Transform.SessionResponse) e.getUnfinishedMessage();
-                    throw e;
-                } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
-                return this;
-            }
-
-            private int bitField0_;
-
-            private java.lang.Object token_ = "";
-
-            /**
-             * <code>optional string token = 1;</code>
-             */
-            public java.lang.String getToken() {
-                java.lang.Object ref = token_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    token_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-
-            /**
-             * <code>optional string token = 1;</code>
-             */
-            public com.google.protobuf.ByteString
-            getTokenBytes() {
-                java.lang.Object ref = token_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    token_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            /**
-             * <code>optional string token = 1;</code>
-             */
-            public Builder setToken(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                token_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string token = 1;</code>
-             */
-            public Builder clearToken() {
-
-                token_ = getDefaultInstance().getToken();
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional string token = 1;</code>
-             */
-            public Builder setTokenBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                token_ = value;
-                onChanged();
-                return this;
-            }
-
-            private com.github.taojoe.proto.Transform.User user_ = null;
-            private com.google.protobuf.SingleFieldBuilder<
-                    com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder> userBuilder_;
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public boolean hasUser() {
-                return userBuilder_ != null || user_ != null;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public com.github.taojoe.proto.Transform.User getUser() {
-                if (userBuilder_ == null) {
-                    return user_ == null ? com.github.taojoe.proto.Transform.User.getDefaultInstance() : user_;
-                } else {
-                    return userBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public Builder setUser(com.github.taojoe.proto.Transform.User value) {
-                if (userBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    user_ = value;
-                    onChanged();
-                } else {
-                    userBuilder_.setMessage(value);
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public Builder setUser(
-                    com.github.taojoe.proto.Transform.User.Builder builderForValue) {
-                if (userBuilder_ == null) {
-                    user_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    userBuilder_.setMessage(builderForValue.build());
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public Builder mergeUser(com.github.taojoe.proto.Transform.User value) {
-                if (userBuilder_ == null) {
-                    if (user_ != null) {
-                        user_ =
-                                com.github.taojoe.proto.Transform.User.newBuilder(user_).mergeFrom(value).buildPartial();
-                    } else {
-                        user_ = value;
-                    }
-                    onChanged();
-                } else {
-                    userBuilder_.mergeFrom(value);
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public Builder clearUser() {
-                if (userBuilder_ == null) {
-                    user_ = null;
-                    onChanged();
-                } else {
-                    user_ = null;
-                    userBuilder_ = null;
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public com.github.taojoe.proto.Transform.User.Builder getUserBuilder() {
-
-                onChanged();
-                return getUserFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            public com.github.taojoe.proto.Transform.UserOrBuilder getUserOrBuilder() {
-                if (userBuilder_ != null) {
-                    return userBuilder_.getMessageOrBuilder();
-                } else {
-                    return user_ == null ?
-                            com.github.taojoe.proto.Transform.User.getDefaultInstance() : user_;
-                }
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.User user = 2;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder>
-            getUserFieldBuilder() {
-                if (userBuilder_ == null) {
-                    userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder>(
-                            getUser(),
-                            getParentForChildren(),
-                            isClean());
-                    user_ = null;
-                }
-                return userBuilder_;
-            }
-
-            private com.github.taojoe.proto.Transform.Error error_ = null;
-            private com.google.protobuf.SingleFieldBuilder<
-                    com.github.taojoe.proto.Transform.Error, com.github.taojoe.proto.Transform.Error.Builder, com.github.taojoe.proto.Transform.ErrorOrBuilder> errorBuilder_;
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public boolean hasError() {
-                return errorBuilder_ != null || error_ != null;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public com.github.taojoe.proto.Transform.Error getError() {
-                if (errorBuilder_ == null) {
-                    return error_ == null ? com.github.taojoe.proto.Transform.Error.getDefaultInstance() : error_;
-                } else {
-                    return errorBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public Builder setError(com.github.taojoe.proto.Transform.Error value) {
-                if (errorBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    error_ = value;
-                    onChanged();
-                } else {
-                    errorBuilder_.setMessage(value);
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public Builder setError(
-                    com.github.taojoe.proto.Transform.Error.Builder builderForValue) {
-                if (errorBuilder_ == null) {
-                    error_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    errorBuilder_.setMessage(builderForValue.build());
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public Builder mergeError(com.github.taojoe.proto.Transform.Error value) {
-                if (errorBuilder_ == null) {
-                    if (error_ != null) {
-                        error_ =
-                                com.github.taojoe.proto.Transform.Error.newBuilder(error_).mergeFrom(value).buildPartial();
-                    } else {
-                        error_ = value;
-                    }
-                    onChanged();
-                } else {
-                    errorBuilder_.mergeFrom(value);
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public Builder clearError() {
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                    onChanged();
-                } else {
-                    error_ = null;
-                    errorBuilder_ = null;
-                }
-
-                return this;
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public com.github.taojoe.proto.Transform.Error.Builder getErrorBuilder() {
-
-                onChanged();
-                return getErrorFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            public com.github.taojoe.proto.Transform.ErrorOrBuilder getErrorOrBuilder() {
-                if (errorBuilder_ != null) {
-                    return errorBuilder_.getMessageOrBuilder();
-                } else {
-                    return error_ == null ?
-                            com.github.taojoe.proto.Transform.Error.getDefaultInstance() : error_;
-                }
-            }
-
-            /**
-             * <code>optional .com.github.taojoe.proto.Error error = 3;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    com.github.taojoe.proto.Transform.Error, com.github.taojoe.proto.Transform.Error.Builder, com.github.taojoe.proto.Transform.ErrorOrBuilder>
-            getErrorFieldBuilder() {
-                if (errorBuilder_ == null) {
-                    errorBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            com.github.taojoe.proto.Transform.Error, com.github.taojoe.proto.Transform.Error.Builder, com.github.taojoe.proto.Transform.ErrorOrBuilder>(
-                            getError(),
-                            getParentForChildren(),
-                            isClean());
-                    error_ = null;
-                }
-                return errorBuilder_;
-            }
-
-            private java.util.List<com.github.taojoe.proto.Transform.User> friends_ =
-                    java.util.Collections.emptyList();
-
-            private void ensureFriendsIsMutable() {
-                if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-                    friends_ = new java.util.ArrayList<com.github.taojoe.proto.Transform.User>(friends_);
-                    bitField0_ |= 0x00000008;
-                }
-            }
-
-            private com.google.protobuf.RepeatedFieldBuilder<
-                    com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder> friendsBuilder_;
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public java.util.List<com.github.taojoe.proto.Transform.User> getFriendsList() {
-                if (friendsBuilder_ == null) {
-                    return java.util.Collections.unmodifiableList(friends_);
-                } else {
-                    return friendsBuilder_.getMessageList();
-                }
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public int getFriendsCount() {
-                if (friendsBuilder_ == null) {
-                    return friends_.size();
-                } else {
-                    return friendsBuilder_.getCount();
-                }
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public com.github.taojoe.proto.Transform.User getFriends(int index) {
-                if (friendsBuilder_ == null) {
-                    return friends_.get(index);
-                } else {
-                    return friendsBuilder_.getMessage(index);
-                }
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder setFriends(
-                    int index, com.github.taojoe.proto.Transform.User value) {
-                if (friendsBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    ensureFriendsIsMutable();
-                    friends_.set(index, value);
-                    onChanged();
-                } else {
-                    friendsBuilder_.setMessage(index, value);
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder setFriends(
-                    int index, com.github.taojoe.proto.Transform.User.Builder builderForValue) {
-                if (friendsBuilder_ == null) {
-                    ensureFriendsIsMutable();
-                    friends_.set(index, builderForValue.build());
-                    onChanged();
-                } else {
-                    friendsBuilder_.setMessage(index, builderForValue.build());
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder addFriends(com.github.taojoe.proto.Transform.User value) {
-                if (friendsBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    ensureFriendsIsMutable();
-                    friends_.add(value);
-                    onChanged();
-                } else {
-                    friendsBuilder_.addMessage(value);
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder addFriends(
-                    int index, com.github.taojoe.proto.Transform.User value) {
-                if (friendsBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    ensureFriendsIsMutable();
-                    friends_.add(index, value);
-                    onChanged();
-                } else {
-                    friendsBuilder_.addMessage(index, value);
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder addFriends(
-                    com.github.taojoe.proto.Transform.User.Builder builderForValue) {
-                if (friendsBuilder_ == null) {
-                    ensureFriendsIsMutable();
-                    friends_.add(builderForValue.build());
-                    onChanged();
-                } else {
-                    friendsBuilder_.addMessage(builderForValue.build());
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder addFriends(
-                    int index, com.github.taojoe.proto.Transform.User.Builder builderForValue) {
-                if (friendsBuilder_ == null) {
-                    ensureFriendsIsMutable();
-                    friends_.add(index, builderForValue.build());
-                    onChanged();
-                } else {
-                    friendsBuilder_.addMessage(index, builderForValue.build());
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder addAllFriends(
-                    java.lang.Iterable<? extends com.github.taojoe.proto.Transform.User> values) {
-                if (friendsBuilder_ == null) {
-                    ensureFriendsIsMutable();
-                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
-                            values, friends_);
-                    onChanged();
-                } else {
-                    friendsBuilder_.addAllMessages(values);
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder clearFriends() {
-                if (friendsBuilder_ == null) {
-                    friends_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000008);
-                    onChanged();
-                } else {
-                    friendsBuilder_.clear();
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public Builder removeFriends(int index) {
-                if (friendsBuilder_ == null) {
-                    ensureFriendsIsMutable();
-                    friends_.remove(index);
-                    onChanged();
-                } else {
-                    friendsBuilder_.remove(index);
-                }
-                return this;
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public com.github.taojoe.proto.Transform.User.Builder getFriendsBuilder(
-                    int index) {
-                return getFriendsFieldBuilder().getBuilder(index);
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public com.github.taojoe.proto.Transform.UserOrBuilder getFriendsOrBuilder(
-                    int index) {
-                if (friendsBuilder_ == null) {
-                    return friends_.get(index);
-                } else {
-                    return friendsBuilder_.getMessageOrBuilder(index);
-                }
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public java.util.List<? extends com.github.taojoe.proto.Transform.UserOrBuilder>
-            getFriendsOrBuilderList() {
-                if (friendsBuilder_ != null) {
-                    return friendsBuilder_.getMessageOrBuilderList();
-                } else {
-                    return java.util.Collections.unmodifiableList(friends_);
-                }
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public com.github.taojoe.proto.Transform.User.Builder addFriendsBuilder() {
-                return getFriendsFieldBuilder().addBuilder(
-                        com.github.taojoe.proto.Transform.User.getDefaultInstance());
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public com.github.taojoe.proto.Transform.User.Builder addFriendsBuilder(
-                    int index) {
-                return getFriendsFieldBuilder().addBuilder(
-                        index, com.github.taojoe.proto.Transform.User.getDefaultInstance());
-            }
-
-            /**
-             * <code>repeated .com.github.taojoe.proto.User friends = 4;</code>
-             */
-            public java.util.List<com.github.taojoe.proto.Transform.User.Builder>
-            getFriendsBuilderList() {
-                return getFriendsFieldBuilder().getBuilderList();
-            }
-
-            private com.google.protobuf.RepeatedFieldBuilder<
-                    com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder>
-            getFriendsFieldBuilder() {
-                if (friendsBuilder_ == null) {
-                    friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-                            com.github.taojoe.proto.Transform.User, com.github.taojoe.proto.Transform.User.Builder, com.github.taojoe.proto.Transform.UserOrBuilder>(
-                            friends_,
-                            ((bitField0_ & 0x00000008) == 0x00000008),
-                            getParentForChildren(),
-                            isClean());
-                    friends_ = null;
-                }
-                return friendsBuilder_;
-            }
-
-            private com.google.protobuf.MapField<
-                    java.lang.String, com.github.taojoe.proto.Transform.User> relations_;
-
-            private com.google.protobuf.MapField<java.lang.String, com.github.taojoe.proto.Transform.User>
-            internalGetRelations() {
-                if (relations_ == null) {
-                    return com.google.protobuf.MapField.emptyMapField(
-                            RelationsDefaultEntryHolder.defaultEntry);
-                }
-                return relations_;
-            }
-
-            private com.google.protobuf.MapField<java.lang.String, com.github.taojoe.proto.Transform.User>
-            internalGetMutableRelations() {
-                onChanged();
-                ;
-                if (relations_ == null) {
-                    relations_ = com.google.protobuf.MapField.newMapField(
-                            RelationsDefaultEntryHolder.defaultEntry);
-                }
-                if (!relations_.isMutable()) {
-                    relations_ = relations_.copy();
-                }
-                return relations_;
-            }
-
-            /**
-             * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
-             */
-            public java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User> getRelations() {
-                return internalGetRelations().getMap();
-            }
-
-            /**
-             * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
-             */
-            public java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User>
-            getMutableRelations() {
-                return internalGetMutableRelations().getMutableMap();
-            }
-
-            /**
-             * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
-             */
-            public Builder putAllRelations(
-                    java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User> values) {
-                getMutableRelations().putAll(values);
-                return this;
-            }
-
-            private int cnt_;
-
-            /**
-             * <code>optional int32 cnt = 6;</code>
-             */
-            public int getCnt() {
-                return cnt_;
-            }
-
-            /**
-             * <code>optional int32 cnt = 6;</code>
-             */
-            public Builder setCnt(int value) {
-
-                cnt_ = value;
-                onChanged();
-                return this;
-            }
-
-            /**
-             * <code>optional int32 cnt = 6;</code>
-             */
-            public Builder clearCnt() {
-
-                cnt_ = 0;
-                onChanged();
-                return this;
-            }
-
-            public final Builder setUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return this;
-            }
-
-            public final Builder mergeUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return this;
-            }
-
-
-            // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.SessionResponse)
-        }
-
-        // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.SessionResponse)
-        private static final com.github.taojoe.proto.Transform.SessionResponse DEFAULT_INSTANCE;
-
-        static {
-            DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.SessionResponse();
-        }
-
-        public static com.github.taojoe.proto.Transform.SessionResponse getDefaultInstance() {
-            return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<SessionResponse>
-                PARSER = new com.google.protobuf.AbstractParser<SessionResponse>() {
-            public SessionResponse parsePartialFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                try {
-                    return new SessionResponse(input, extensionRegistry);
-                } catch (RuntimeException e) {
-                    if (e.getCause() instanceof
-                            com.google.protobuf.InvalidProtocolBufferException) {
-                        throw (com.google.protobuf.InvalidProtocolBufferException)
-                                e.getCause();
-                    }
-                    throw e;
-                }
-            }
-        };
-
-        public static com.google.protobuf.Parser<SessionResponse> parser() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<SessionResponse> getParserForType() {
-            return PARSER;
-        }
-
-        public com.github.taojoe.proto.Transform.SessionResponse getDefaultInstanceForType() {
-            return DEFAULT_INSTANCE;
-        }
-
+        return relations_;
+      }
+      /**
+       * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
+       */
+      public java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User> getRelations() {
+        return internalGetRelations().getMap();
+      }
+      /**
+       * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
+       */
+      public java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User>
+      getMutableRelations() {
+        return internalGetMutableRelations().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .com.github.taojoe.proto.User&gt; relations = 5;</code>
+       */
+      public Builder putAllRelations(
+          java.util.Map<java.lang.String, com.github.taojoe.proto.Transform.User> values) {
+        getMutableRelations().putAll(values);
+        return this;
+      }
+
+      private int cnt_ ;
+      /**
+       * <code>optional int32 cnt = 6;</code>
+       */
+      public int getCnt() {
+        return cnt_;
+      }
+      /**
+       * <code>optional int32 cnt = 6;</code>
+       */
+      public Builder setCnt(int value) {
+        
+        cnt_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 cnt = 6;</code>
+       */
+      public Builder clearCnt() {
+        
+        cnt_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.github.taojoe.proto.SessionResponse)
     }
 
-    private static com.google.protobuf.Descriptors.Descriptor
-            internal_static_com_github_taojoe_proto_Error_descriptor;
-    private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internal_static_com_github_taojoe_proto_Error_fieldAccessorTable;
-    private static com.google.protobuf.Descriptors.Descriptor
-            internal_static_com_github_taojoe_proto_User_descriptor;
-    private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internal_static_com_github_taojoe_proto_User_fieldAccessorTable;
-    private static com.google.protobuf.Descriptors.Descriptor
-            internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
-    private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable;
-    private static com.google.protobuf.Descriptors.Descriptor
-            internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor;
-    private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_fieldAccessorTable;
-
-    public static com.google.protobuf.Descriptors.FileDescriptor
-    getDescriptor() {
-        return descriptor;
-    }
-
-    private static com.google.protobuf.Descriptors.FileDescriptor
-            descriptor;
-
+    // @@protoc_insertion_point(class_scope:com.github.taojoe.proto.SessionResponse)
+    private static final com.github.taojoe.proto.Transform.SessionResponse DEFAULT_INSTANCE;
     static {
-        java.lang.String[] descriptorData = {
-                "\n\017transform.proto\022\027com.github.taojoe.pro" +
-                        "to\"\"\n\005Error\022\014\n\004name\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\"\270" +
-                        "\001\n\004User\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\021" +
-                        "\n\tnickname0\030\003 \001(\t\022\022\n\nlogin_time\030\004 \001(\t\022:\n" +
-                        "\nlevel_type\030\005 \001(\0162&.com.github.taojoe.pr" +
-                        "oto.UserLevelType\022\017\n\007balance\030\007 \001(\001\022\017\n\007en" +
-                        "abled\030\010 \001(\010\022\014\n\004tags\030\006 \003(\t\"\326\002\n\017SessionRes" +
-                        "ponse\022\r\n\005token\030\001 \001(\t\022+\n\004user\030\002 \001(\0132\035.com" +
-                        ".github.taojoe.proto.User\022-\n\005error\030\003 \001(\013" +
-                        "2\036.com.github.taojoe.proto.Error\022.\n\007frie",
-                "nds\030\004 \003(\0132\035.com.github.taojoe.proto.User" +
-                        "\022J\n\trelations\030\005 \003(\01327.com.github.taojoe." +
-                        "proto.SessionResponse.RelationsEntry\022\013\n\003" +
-                        "cnt\030\006 \001(\005\032O\n\016RelationsEntry\022\013\n\003key\030\001 \001(\t" +
-                        "\022,\n\005value\030\002 \001(\0132\035.com.github.taojoe.prot" +
-                        "o.User:\0028\001**\n\rUserLevelType\022\007\n\003LV0\020\000\022\007\n\003" +
-                        "LV1\020\001\022\007\n\003LV2\020\002b\006proto3"
-        };
-        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-                new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-                    public com.google.protobuf.ExtensionRegistry assignDescriptors(
-                            com.google.protobuf.Descriptors.FileDescriptor root) {
-                        descriptor = root;
-                        return null;
-                    }
-                };
-        com.google.protobuf.Descriptors.FileDescriptor
-                .internalBuildGeneratedFileFrom(descriptorData,
-                        new com.google.protobuf.Descriptors.FileDescriptor[]{
-                        }, assigner);
-        internal_static_com_github_taojoe_proto_Error_descriptor =
-                getDescriptor().getMessageTypes().get(0);
-        internal_static_com_github_taojoe_proto_Error_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-                internal_static_com_github_taojoe_proto_Error_descriptor,
-                new java.lang.String[]{"Name", "Msg",});
-        internal_static_com_github_taojoe_proto_User_descriptor =
-                getDescriptor().getMessageTypes().get(1);
-        internal_static_com_github_taojoe_proto_User_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-                internal_static_com_github_taojoe_proto_User_descriptor,
-                new java.lang.String[]{"Uid", "Nickname", "Nickname0", "LoginTime", "LevelType", "Balance", "Enabled", "Tags",});
-        internal_static_com_github_taojoe_proto_SessionResponse_descriptor =
-                getDescriptor().getMessageTypes().get(2);
-        internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-                internal_static_com_github_taojoe_proto_SessionResponse_descriptor,
-                new java.lang.String[]{"Token", "User", "Error", "Friends", "Relations", "Cnt",});
-        internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor =
-                internal_static_com_github_taojoe_proto_SessionResponse_descriptor.getNestedTypes().get(0);
-        internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-                internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor,
-                new java.lang.String[]{"Key", "Value",});
+      DEFAULT_INSTANCE = new com.github.taojoe.proto.Transform.SessionResponse();
     }
 
-    // @@protoc_insertion_point(outer_class_scope)
+    public static com.github.taojoe.proto.Transform.SessionResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SessionResponse>
+        PARSER = new com.google.protobuf.AbstractParser<SessionResponse>() {
+      public SessionResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new SessionResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SessionResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SessionResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public com.github.taojoe.proto.Transform.SessionResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_github_taojoe_proto_Error_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_github_taojoe_proto_Error_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_github_taojoe_proto_User_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_github_taojoe_proto_User_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_github_taojoe_proto_SessionResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_fieldAccessorTable;
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+  static {
+    java.lang.String[] descriptorData = {
+      "\n\017transform.proto\022\027com.github.taojoe.pro" +
+      "to\"\"\n\005Error\022\014\n\004name\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\"\310" +
+      "\001\n\004User\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\021" +
+      "\n\tnickname0\030\003 \001(\t\022\022\n\nlogin_time\030\004 \001(\t\022:\n" +
+      "\nlevel_type\030\005 \001(\0162&.com.github.taojoe.pr" +
+      "oto.UserLevelType\022\017\n\007balance\030\007 \001(\001\022\017\n\007en" +
+      "abled\030\010 \001(\010\022\014\n\004tags\030\006 \003(\t\022\016\n\006avatar\030\n \001(" +
+      "\014\"\326\002\n\017SessionResponse\022\r\n\005token\030\001 \001(\t\022+\n\004" +
+      "user\030\002 \001(\0132\035.com.github.taojoe.proto.Use" +
+      "r\022-\n\005error\030\003 \001(\0132\036.com.github.taojoe.pro",
+      "to.Error\022.\n\007friends\030\004 \003(\0132\035.com.github.t" +
+      "aojoe.proto.User\022J\n\trelations\030\005 \003(\01327.co" +
+      "m.github.taojoe.proto.SessionResponse.Re" +
+      "lationsEntry\022\013\n\003cnt\030\006 \001(\005\032O\n\016RelationsEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022,\n\005value\030\002 \001(\0132\035.com.gi" +
+      "thub.taojoe.proto.User:\0028\001**\n\rUserLevelT" +
+      "ype\022\007\n\003LV0\020\000\022\007\n\003LV1\020\001\022\007\n\003LV2\020\002b\006proto3"
+    };
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        }, assigner);
+    internal_static_com_github_taojoe_proto_Error_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_com_github_taojoe_proto_Error_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_github_taojoe_proto_Error_descriptor,
+        new java.lang.String[] { "Name", "Msg", });
+    internal_static_com_github_taojoe_proto_User_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_com_github_taojoe_proto_User_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_github_taojoe_proto_User_descriptor,
+        new java.lang.String[] { "Uid", "Nickname", "Nickname0", "LoginTime", "LevelType", "Balance", "Enabled", "Tags", "Avatar", });
+    internal_static_com_github_taojoe_proto_SessionResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_com_github_taojoe_proto_SessionResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_github_taojoe_proto_SessionResponse_descriptor,
+        new java.lang.String[] { "Token", "User", "Error", "Friends", "Relations", "Cnt", });
+    internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor =
+      internal_static_com_github_taojoe_proto_SessionResponse_descriptor.getNestedTypes().get(0);
+    internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_github_taojoe_proto_SessionResponse_RelationsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+  }
+
+  // @@protoc_insertion_point(outer_class_scope)
 }

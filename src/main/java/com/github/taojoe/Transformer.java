@@ -6,6 +6,7 @@ import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 import com.google.protobuf.MapEntry;
 import com.google.protobuf.Message;
 import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.ByteString;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -50,6 +51,8 @@ public class Transformer {
             }else if(value.getClass().isEnum()){
                 return fieldDescriptor.getEnumType().findValueByName(((Enum) value).name());
             }
+        }else if(type.equals(JavaType.BYTE_STRING)){
+            return ByteString.copyFrom(((byte[]) value));
         }
         return null;
     }
@@ -77,6 +80,8 @@ public class Transformer {
             return LocalDateTime.parse((String) value);
         }else if(clz.equals(LocalDate.class)){
             return LocalDate.parse((String) value);
+        }else if(clz.equals(ByteString.class)){
+            return ((ByteString) value).toByteArray();
         }
         return null;
     }

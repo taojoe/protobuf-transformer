@@ -22,6 +22,7 @@ message User {
     double balance=7;
     bool enabled=8;
     repeated string tags=6;
+    bytes avatar=10;
 }
 
 message SessionResponse{

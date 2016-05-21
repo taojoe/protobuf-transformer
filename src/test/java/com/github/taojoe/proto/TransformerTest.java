@@ -1,8 +1,10 @@
 package com.github.taojoe.proto;
 
 import com.github.taojoe.Transformer;
+import com.google.protobuf.ByteString;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -11,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by joe on 4/19/16.
@@ -25,6 +28,7 @@ public class TransformerTest {
         public LocalDateTime login_time;
         public LeveType level_type;
         private boolean enabled1;
+        public byte[] avatar;
 
         public boolean isEnabled() {
             return enabled1;
@@ -48,11 +52,12 @@ public class TransformerTest {
         }
     }
     @Test
-    public void testMessageToJava(){
+    public void testMessageToJava()  {
         Transformer trans=new Transformer();
         Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb")
                 .setLoginTime(LocalDateTime.now().toString())
                 .setLevelType(Transform.UserLevelType.LV0)
+                .setAvatar(ByteString.copyFrom("abc".getBytes()))
                 .setEnabled(true);
         Transform.SessionResponse.Builder session= Transform.SessionResponse.newBuilder();
         session.setUser(user);
@@ -63,6 +68,7 @@ public class TransformerTest {
         session.addFriends(Transform.User.newBuilder().setUid("f2").addTags("f1").addTags("f2"));
         session.putAllRelations(relations);
         Session session1=trans.messageToJava(session.build(), Session.class);
+        assertEquals(new String( session1.user.avatar),"abc");
         assert session1.user.uid.equals("uu");
         assert session1.user.enabled1;
         assertArrayEquals(session1.user.tags.toArray(), new String[]{"aa", "bb"});
