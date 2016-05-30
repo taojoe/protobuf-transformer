@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,8 @@ import java.util.Map;
  * Created by joe on 4/20/16.
  */
 public class Transformer {
+    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     protected Object javaValueToMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
         JavaType type=fieldDescriptor.getJavaType();
         if(type.equals(JavaType.BOOLEAN)){
@@ -44,7 +47,12 @@ public class Transformer {
             }
             return value;
         }else if(type.equals(JavaType.STRING)){
-            return value.toString();
+            if(value instanceof LocalDateTime){
+                return ((LocalDateTime) value).format(dateTimeFormatter);
+            } else {
+                return value.toString();
+            }
+
         }else if(type.equals(JavaType.ENUM)){
             if(value instanceof String) {
                 return fieldDescriptor.getEnumType().findValueByName((String) value);
@@ -77,7 +85,12 @@ public class Transformer {
         }else if(clz.equals(BigDecimal.class)){
             return new BigDecimal((double)value);
         }else if(clz.equals(LocalDateTime.class)){
-            return LocalDateTime.parse((String) value);
+            try{
+                return LocalDateTime.parse((String) value, dateTimeFormatter);
+            } catch (Exception ex){
+                return LocalDateTime.parse((String) value);
+            }
+
         }else if(clz.equals(LocalDate.class)){
             return LocalDate.parse((String) value);
         }else if(clz.equals(byte[].class)){
