@@ -115,7 +115,7 @@ public class Transformer {
                 Object oldValue=message.getField(fieldDescriptor);
                 String name = fieldDescriptor.getName();
                 Object newValue=null;
-                BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(target, name);
+                BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(target, name, false, true);
                 if(objField!=null && objField.typeDescriptor.mustValueClz()){
                     boolean isValueMessage=fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
                     if(fieldDescriptor.isMapField()){
@@ -179,7 +179,7 @@ public class Transformer {
         List<Descriptors.FieldDescriptor> fields=builder.getDescriptorForType().getFields();
         for (Descriptors.FieldDescriptor fieldDescriptor: fields) {
             String name=fieldDescriptor.getName();
-            BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(bean, name);
+            BeanUtil.FieldOrProperty objField=BeanUtil.fieldOrProperty(bean, name, true, false);
             if(objField!=null){
                 Object oldValue=objField.getValue(bean);
                 if(oldValue!=null){

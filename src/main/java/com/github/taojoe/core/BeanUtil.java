@@ -111,7 +111,7 @@ public class BeanUtil {
             return null;
         }
     }
-    protected static FieldOrProperty simpleFieldOrProperty(Object obj, String name){
+    protected static FieldOrProperty simpleFieldOrProperty(Object obj, String name, boolean read, boolean write){
         try {
             Field field = obj.getClass().getDeclaredField(name);
             if(Modifier.isPublic(field.getModifiers())){
@@ -122,7 +122,7 @@ public class BeanUtil {
         }
         try {
             PropertyDescriptor descriptor = PropertyUtils.getPropertyDescriptor(obj, name);
-            if(descriptor!=null && descriptor.getWriteMethod()!=null && descriptor.getReadMethod()!=null){
+            if(descriptor!=null && (!write ||(descriptor.getWriteMethod()!=null)) && (!read ||(descriptor.getReadMethod()!=null))){
                 return new FieldOrProperty(null, descriptor);
             }
         } catch (IllegalAccessException e) {
@@ -134,12 +134,12 @@ public class BeanUtil {
         }
         return null;
     }
-    public static FieldOrProperty fieldOrProperty(Object obj, String name){
-        FieldOrProperty ret=simpleFieldOrProperty(obj, name);
+    public static FieldOrProperty fieldOrProperty(Object obj, String name, boolean read, boolean write){
+        FieldOrProperty ret=simpleFieldOrProperty(obj, name, read, write);
         if(ret==null){
             String name2=secondaryName(name);
             if(!name2.equals(name)){
-                ret=simpleFieldOrProperty(obj, name2);
+                ret=simpleFieldOrProperty(obj, name2, read, write);
             }
         }
         return ret;
