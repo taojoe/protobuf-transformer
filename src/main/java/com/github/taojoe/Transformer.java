@@ -54,10 +54,14 @@ public class Transformer {
             }
 
         }else if(type.equals(JavaType.ENUM)){
-            if(value instanceof String) {
-                return fieldDescriptor.getEnumType().findValueByName((String) value);
-            }else if(value.getClass().isEnum()){
-                return fieldDescriptor.getEnumType().findValueByName(((Enum) value).name());
+            try {
+                if (value instanceof String) {
+                    return fieldDescriptor.getEnumType().findValueByName((String) value);
+                } else if (value.getClass().isEnum()) {
+                    return fieldDescriptor.getEnumType().findValueByName(((Enum) value).name());
+                }
+            }catch (Exception e){
+
             }
         }else if(type.equals(JavaType.BYTE_STRING)){
             return ByteString.copyFrom(((byte[]) value));
@@ -77,11 +81,16 @@ public class Transformer {
                 return ((Descriptors.EnumDescriptor)value).getName();
             }
         }else if(clz.isEnum()){
-            if(value instanceof String){
-                return Enum.valueOf(clz, (String) value);
-            }else if(value instanceof Descriptors.EnumValueDescriptor){
-                return Enum.valueOf(clz, ((Descriptors.EnumValueDescriptor) value).getName() );
+            try{
+                if(value instanceof String){
+                    return Enum.valueOf(clz, (String) value);
+                }else if(value instanceof Descriptors.EnumValueDescriptor){
+                    return Enum.valueOf(clz, ((Descriptors.EnumValueDescriptor) value).getName() );
+                }
+            }catch (Exception e){
+                return null;
             }
+
         }else if(clz.equals(BigDecimal.class)){
             return new BigDecimal((double)value);
         }else if(clz.equals(LocalDateTime.class)){
@@ -223,7 +232,10 @@ public class Transformer {
                             Message.Builder tmpBuilder=builder.newBuilderForField(fieldDescriptor);
                             builder.setField(fieldDescriptor, javaToMessage(oldValue, tmpBuilder).build());
                         }else{
-                            builder.setField(fieldDescriptor, javaValueToMessageValue(oldValue, fieldDescriptor));
+                            Object newValue=javaValueToMessageValue(oldValue, fieldDescriptor);
+                            if(newValue!=null){
+                                builder.setField(fieldDescriptor, newValue);
+                            }
                         }
                     }
                 }
