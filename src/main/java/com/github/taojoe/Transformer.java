@@ -184,6 +184,9 @@ public class Transformer {
         return null;
     }
     public <T extends Message.Builder> T javaToMessage(Object bean, T builder){
+        if(bean==null){
+            return builder;
+        }
         Class clz=bean.getClass();
         List<Descriptors.FieldDescriptor> fields=builder.getDescriptorForType().getFields();
         for (Descriptors.FieldDescriptor fieldDescriptor: fields) {
