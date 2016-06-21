@@ -94,19 +94,23 @@ public class Transformer {
         }else if(clz.equals(BigDecimal.class)){
             return new BigDecimal((double)value);
         }else if(clz.equals(LocalDateTime.class)){
-            try{
-                return LocalDateTime.parse((String) value, dateTimeFormatter);
-            } catch (Exception ex){
-                return LocalDateTime.parse((String) value);
+            if(!"".equals(value)) {
+                try {
+                    return LocalDateTime.parse((String) value, dateTimeFormatter);
+                } catch (Exception ex) {
+                    return LocalDateTime.parse((String) value);
+                }
             }
-
         }else if(clz.equals(LocalDate.class)){
-            return LocalDate.parse((String) value);
+            if(!"".equals(value)){
+                return LocalDate.parse((String) value);
+            }
         }else if(clz.equals(byte[].class)){
             return ((ByteString) value).toByteArray();
         }
         return null;
     }
+
     public <T> T messageToJava(MessageOrBuilder message, Class<T> clz){
         List<Descriptors.FieldDescriptor> fields=message.getDescriptorForType().getFields();
         try {
@@ -116,7 +120,7 @@ public class Transformer {
                 if(fieldDescriptor.isRepeated()){
                     hasValue=message.getRepeatedFieldCount(fieldDescriptor)>0;
                 }else{
-                    hasValue=message.hasField(fieldDescriptor) || fieldDescriptor.getJavaType().equals(JavaType.ENUM);
+                    hasValue=!fieldDescriptor.getJavaType().equals(JavaType.MESSAGE) || message.hasField(fieldDescriptor);
                 }
                 if(!hasValue){
                     continue;
