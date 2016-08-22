@@ -1,6 +1,9 @@
 package com.github.taojoe;
 
 import com.github.taojoe.core.BeanUtil;
+import com.github.taojoe.helper.ObjectHelper;
+import com.github.taojoe.helper.PropertyReader;
+import com.github.taojoe.helper.PropertyWriter;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 import com.google.protobuf.MapEntry;
@@ -259,5 +262,148 @@ public class Transformer {
     }
     public Object getValueByFieldNameOrNull(MessageOrBuilder message, String fieldName){
         return getValueByFieldNameOrNull(message, fieldName, null);
+    }
+    //-----
+    protected Object toMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
+        return null;
+    }
+    protected Object fromMessageValue(Object value, Class clz){
+        if(value instanceof ByteString){
+
+        }
+        return null;
+    }
+    protected <T extends Message.Builder> T objectToMessage(ObjectHelper helper, Object object, T builder){
+        if(object!=null) {
+            List<Descriptors.FieldDescriptor> fields = builder.getDescriptorForType().getFields();
+            for (Descriptors.FieldDescriptor fieldDescriptor : fields) {
+                PropertyReader propertyReader= helper.getPropertyReader(object, fieldDescriptor.getName());
+                Object oldValue=propertyReader!=null? propertyReader.get():null;
+                if (oldValue != null) {
+                    boolean isValueMessage = fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                    if (fieldDescriptor.isMapField()) {
+                        if (oldValue instanceof Map) {
+                            //fieldDescriptor 在map的时候描述的是entry, entry 本身是message类型, 因此需要进一步获取到entry value的fieldDescriptor
+                            if (fieldDescriptor.getMessageType() != null) {
+                                List<Descriptors.FieldDescriptor> entryFields = fieldDescriptor.getMessageType().getFields();
+                                if (entryFields != null && entryFields.size() == 2) {
+                                    Descriptors.FieldDescriptor valueFieldDescriptor = entryFields.get(1);
+                                    isValueMessage = valueFieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                                    for (Map.Entry<Object, Object> entry : ((Map<Object, Object>) oldValue).entrySet()) {
+                                        Message.Builder tmpBuilder = builder.newBuilderForField(fieldDescriptor);
+                                        MapEntry.Builder entryBuilder = (MapEntry.Builder) tmpBuilder;
+                                        entryBuilder.setKey(entry.getKey());
+                                        if (isValueMessage) {
+                                            entryBuilder.setValue(objectToMessage(helper, entry.getValue(), entryBuilder.newBuilderForField(valueFieldDescriptor)).build());
+                                        } else {
+                                            entryBuilder.setValue(toMessageValue(entry.getValue(), valueFieldDescriptor));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else if (fieldDescriptor.isRepeated()) {
+                        if (oldValue instanceof List) {
+                            if (isValueMessage) {
+                                for (Object tmp : (List) oldValue) {
+                                    Message.Builder tmpBuilder = builder.newBuilderForField(fieldDescriptor);
+                                    builder.addRepeatedField(fieldDescriptor, objectToMessage(helper, tmp, tmpBuilder).build());
+                                }
+                            } else {
+                                for (Object tmp : (List) oldValue) {
+                                    builder.addRepeatedField(fieldDescriptor, toMessageValue(tmp, fieldDescriptor));
+                                }
+                            }
+                        }
+                    } else {
+                        if (isValueMessage) {
+                            Message.Builder tmpBuilder = builder.newBuilderForField(fieldDescriptor);
+                            builder.setField(fieldDescriptor, objectToMessage(helper, oldValue, tmpBuilder).build());
+                        } else {
+                            Object newValue = toMessageValue(oldValue, fieldDescriptor);
+                            if (newValue != null) {
+                                builder.setField(fieldDescriptor, newValue);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return builder;
+    }
+    public <T> T messageToObject(ObjectHelper helper, MessageOrBuilder message, T object){
+        if(object!=null) {
+            List<Descriptors.FieldDescriptor> fields = message.getDescriptorForType().getFields();
+            try {
+                for (Descriptors.FieldDescriptor fieldDescriptor : fields) {
+                    boolean hasValue = false;
+                    if (fieldDescriptor.isRepeated()) {
+                        hasValue = message.getRepeatedFieldCount(fieldDescriptor) > 0;
+                    } else {
+                        hasValue = !fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE) || message.hasField(fieldDescriptor);
+                    }
+                    if (!hasValue) {
+                        continue;
+                    }
+                    Object oldValue = message.getField(fieldDescriptor);
+                    PropertyWriter propertyWriter=helper.getPropertyWriter(object, fieldDescriptor.getName());
+                    if (propertyWriter!=null) {
+                        Object newValue = null;
+                        boolean isValueMessage = fieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                        if (fieldDescriptor.isMapField()) {
+                            //fieldDescriptor 在map的时候描述的是entry, entry 本身是message类型, 因此需要进一步获取到entry value的fieldDescriptor
+                            if (fieldDescriptor.getMessageType() != null) {
+                                List<Descriptors.FieldDescriptor> entryFields = fieldDescriptor.getMessageType().getFields();
+                                if (entryFields != null && entryFields.size() == 2) {
+                                    Descriptors.FieldDescriptor valueFieldDescriptor = entryFields.get(1);
+                                    isValueMessage = valueFieldDescriptor.getJavaType().equals(Descriptors.FieldDescriptor.JavaType.MESSAGE);
+                                    Map<Object, Object> destMap = new HashMap<>();
+                                    List<MapEntry<Object, MessageOrBuilder>> origList = (List) oldValue;
+                                    for (com.google.protobuf.MapEntry<Object, MessageOrBuilder> entry : origList) {
+                                        Object mapValue = null;
+                                        if (isValueMessage) {
+                                            mapValue = messageToObject(helper, entry.getValue(), propertyWriter.valueClass().newInstance());
+                                        } else {
+                                            mapValue = fromMessageValue(entry.getValue(), propertyWriter.valueClass());
+                                        }
+                                        destMap.put(entry.getKey(), mapValue);
+                                    }
+                                    newValue = destMap;
+                                }
+                            }
+
+                        } else if (fieldDescriptor.isRepeated()) {
+                            ArrayList<Object> destList = new ArrayList<>();
+                            if (isValueMessage) {
+                                List<MessageOrBuilder> origList = (List) oldValue;
+                                for (MessageOrBuilder org : origList) {
+                                    destList.add(messageToObject(helper, org, propertyWriter.valueClass().newInstance()));
+                                }
+                            } else {
+                                List<Object> origList = (List) oldValue;
+                                for (Object obj : origList) {
+                                    destList.add(fromMessageValue(obj, propertyWriter.valueClass()));
+                                }
+                            }
+                            newValue = destList;
+                        } else {
+                            if (isValueMessage) {
+                                newValue = messageToObject(helper, (MessageOrBuilder) oldValue, propertyWriter.valueClass().newInstance());
+                            } else {
+                                newValue = fromMessageValue(oldValue, propertyWriter.valueClass());
+                            }
+                        }
+                        if (newValue != null) {
+                            propertyWriter.write(newValue);
+                        }
+                    }
+                }
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return object;
     }
 }
