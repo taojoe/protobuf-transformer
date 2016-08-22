@@ -1,9 +1,8 @@
 package com.github.taojoe;
 
 import com.github.taojoe.core.BeanUtil;
-import com.github.taojoe.helper.ObjectHelper;
-import com.github.taojoe.helper.PropertyReader;
-import com.github.taojoe.helper.PropertyWriter;
+import com.github.taojoe.core.CoreValueCoerce;
+import com.github.taojoe.helper.*;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 import com.google.protobuf.MapEntry;
@@ -265,13 +264,7 @@ public class Transformer {
     }
     //-----
     protected Object toMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
-        return null;
-    }
-    protected Object fromMessageValue(Object value, Class clz){
-        if(value instanceof ByteString){
-
-        }
-        return null;
+        return CoreValueCoerce.toMessageValue(value, fieldDescriptor);
     }
     protected <T extends Message.Builder> T objectToMessage(ObjectHelper helper, Object object, T builder){
         if(object!=null) {
@@ -331,7 +324,7 @@ public class Transformer {
         }
         return builder;
     }
-    public <T> T messageToObject(ObjectHelper helper, MessageOrBuilder message, T object){
+    protected <T> T messageToObject(ObjectHelper helper, MessageOrBuilder message, T object){
         if(object!=null) {
             List<Descriptors.FieldDescriptor> fields = message.getDescriptorForType().getFields();
             try {
@@ -362,9 +355,9 @@ public class Transformer {
                                     for (com.google.protobuf.MapEntry<Object, MessageOrBuilder> entry : origList) {
                                         Object mapValue = null;
                                         if (isValueMessage) {
-                                            mapValue = messageToObject(helper, entry.getValue(), propertyWriter.valueClass().newInstance());
+                                            mapValue = messageToObject(helper, entry.getValue(), propertyWriter.itemInstance());
                                         } else {
-                                            mapValue = fromMessageValue(entry.getValue(), propertyWriter.valueClass());
+                                            mapValue = propertyWriter.itemInstance(entry.getValue());
                                         }
                                         destMap.put(entry.getKey(), mapValue);
                                     }
@@ -377,20 +370,20 @@ public class Transformer {
                             if (isValueMessage) {
                                 List<MessageOrBuilder> origList = (List) oldValue;
                                 for (MessageOrBuilder org : origList) {
-                                    destList.add(messageToObject(helper, org, propertyWriter.valueClass().newInstance()));
+                                    destList.add(messageToObject(helper, org, propertyWriter.itemInstance()));
                                 }
                             } else {
                                 List<Object> origList = (List) oldValue;
                                 for (Object obj : origList) {
-                                    destList.add(fromMessageValue(obj, propertyWriter.valueClass()));
+                                    destList.add(propertyWriter.itemInstance(obj));
                                 }
                             }
                             newValue = destList;
                         } else {
                             if (isValueMessage) {
-                                newValue = messageToObject(helper, (MessageOrBuilder) oldValue, propertyWriter.valueClass().newInstance());
+                                newValue = messageToObject(helper, (MessageOrBuilder) oldValue, propertyWriter.valueInstance());
                             } else {
-                                newValue = fromMessageValue(oldValue, propertyWriter.valueClass());
+                                newValue = propertyWriter.valueInstance(oldValue);
                             }
                         }
                         if (newValue != null) {
@@ -405,5 +398,25 @@ public class Transformer {
             }
         }
         return object;
+    }
+    public Map messageToMap(MessageOrBuilder message, Map map){
+        return messageToObject(new MapObjectHelper(), message, map);
+    }
+    public Map messageToMap(MessageOrBuilder message){
+        return messageToObject(new MapObjectHelper(), message, new HashMap());
+    }
+    public <T extends Message.Builder> T mapToMessage(Map map, T builder){
+        return objectToMessage(new MapObjectHelper(), map, builder);
+    }
+    public <T> T messageToBean(MessageOrBuilder message, Class<T> clz){
+        try {
+            return messageToObject(new BeanObjectHelper(), message, clz.newInstance());
+        } catch (InstantiationException e) {
+        } catch (IllegalAccessException e) {
+        }
+        return null;
+    }
+    public <T extends Message.Builder> T beanToMessage(Object bean, T builder){
+        return objectToMessage(new BeanObjectHelper(), bean, builder);
     }
 }

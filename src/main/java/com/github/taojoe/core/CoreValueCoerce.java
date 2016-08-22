@@ -44,6 +44,9 @@ public class CoreValueCoerce {
             if(clz.isPrimitive()){
                 clz=PRIMITIVES_TO_WRAPPERS.get(clz);
             }
+            if(value instanceof Boolean){
+                System.out.println("xxe");
+            }
             if(value instanceof Descriptors.EnumValueDescriptor){
                 value=((Descriptors.EnumValueDescriptor) value).getName();
             }else if(value instanceof ByteString){
@@ -81,7 +84,7 @@ public class CoreValueCoerce {
         }
         return null;
     }
-    protected Object toMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
+    public static Object toMessageValue(Object value, Descriptors.FieldDescriptor fieldDescriptor){
         if(value!=null){
             if(value instanceof Enum){
                 value=((Enum) value).name();

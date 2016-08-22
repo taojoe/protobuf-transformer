@@ -77,7 +77,34 @@ public class TransformerTest {
         assert response.getUser().getUid().equals("uu");
 
     }
-//    @Test
+    @Test
+    public void testMessageToBean()  {
+        Transformer trans=new Transformer();
+        Transform.User.Builder user= Transform.User.newBuilder().setUid("uu").addTags("aa").addTags("bb")
+                .setLoginTime(LocalDateTime.now().toString())
+                .setLevelType(Transform.UserLevelType.LV0)
+                .setAvatar(ByteString.copyFrom("abc".getBytes()))
+                .setEnabled(true);
+        Transform.SessionResponse.Builder session= Transform.SessionResponse.newBuilder();
+        session.setUser(user);
+        Map<String, Transform.User> relations=new HashMap<>();
+        relations.put("r0", Transform.User.newBuilder().setUid("u0").build());
+        relations.put("r1", Transform.User.newBuilder().setUid("u1").build());
+        session.addFriends(Transform.User.newBuilder().setUid("f1").addTags("f1").addTags("f2"));
+        session.addFriends(Transform.User.newBuilder().setUid("f2").addTags("f1").addTags("f2"));
+        session.putAllRelations(relations);
+        Session session1=trans.messageToBean(session.build(), Session.class);
+        assertEquals(new String(session1.user.avatar),"abc");
+        assert session1.user.uid.equals("uu");
+        assert session1.user.enabled1;
+        assertArrayEquals(session1.user.tags.toArray(), new String[]{"aa", "bb"});
+        session=Transform.SessionResponse.newBuilder();
+        Transform.SessionResponse response=trans.beanToMessage(session1, session).build();
+        assert response.getUser().getUid().equals("uu");
+
+    }
+
+    //    @Test
     public void testSimple(){
         Transformer trans=new Transformer();
         Transform.User.Builder user= Transform.User.newBuilder();
