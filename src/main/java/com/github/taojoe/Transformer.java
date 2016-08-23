@@ -313,7 +313,7 @@ public class Transformer {
                             Message.Builder tmpBuilder = builder.newBuilderForField(fieldDescriptor);
                             builder.setField(fieldDescriptor, objectToMessage(helper, oldValue, tmpBuilder).build());
                         } else {
-                            Object newValue = toMessageValue(oldValue, fieldDescriptor);
+                            Object newValue=toMessageValue(oldValue, fieldDescriptor);
                             if (newValue != null) {
                                 builder.setField(fieldDescriptor, newValue);
                             }

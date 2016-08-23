@@ -1,5 +1,7 @@
 package com.github.taojoe.helper;
 
+import com.github.taojoe.core.CoreValueCoerce;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +34,10 @@ public class MapObjectHelper implements ObjectHelper {
 
         @Override
         public void write(Object value) throws IllegalAccessException {
-            map.put(name, value);
+            value= CoreValueCoerce.fromMessageValue(value);
+            if(value!=null) {
+                map.put(name, value);
+            }
         }
 
         @Override

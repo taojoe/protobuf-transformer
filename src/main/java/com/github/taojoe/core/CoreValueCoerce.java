@@ -39,13 +39,18 @@ public class CoreValueCoerce {
 
     private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+    public static Object fromMessageValue(Object value){
+        if(value instanceof Descriptors.EnumValueDescriptor){
+            value=((Descriptors.EnumValueDescriptor) value).getName();
+        }else if(value instanceof ByteString) {
+            value = ((ByteString) value).toByteArray();
+        }
+        return value;
+    }
     public static Object fromMessageValue(Object value, Class clz){
         if(value!=null){
             if(clz.isPrimitive()){
                 clz=PRIMITIVES_TO_WRAPPERS.get(clz);
-            }
-            if(value instanceof Boolean){
-                System.out.println("xxe");
             }
             if(value instanceof Descriptors.EnumValueDescriptor){
                 value=((Descriptors.EnumValueDescriptor) value).getName();
@@ -62,10 +67,10 @@ public class CoreValueCoerce {
                 }else if(clz.equals(BigInteger.class)){
                     return new BigInteger(value.toString());
                 }else if(value instanceof Number && Number.class.isAssignableFrom(clz)){
-                    return Integer.class==clz? ((Number) value).intValue():
-                            Long.class==clz? ((Number) value).longValue():
-                                    Float.class==clz? ((Number)value).floatValue():
-                                            Double.class==clz? ((Number) value).doubleValue():null;
+                    return Integer.class.equals(clz)? ((Number) value).intValue():
+                            Long.class.equals(clz)? ((Number) value).longValue():
+                                    Float.class.equals(clz)? ((Number)value).floatValue():
+                                            Double.class.equals(clz)? ((Number) value).doubleValue():null;
                 }else if(clz.equals(LocalDateTime.class)){
                     if(!"".equals(value)) {
                         try {
@@ -93,10 +98,15 @@ public class CoreValueCoerce {
             Class clz=MESSAGE_TYPE_TO_WRAPPERS.get(type);
             if(clz!=null){
                 if(value instanceof Number){
-                    return Integer.class==clz? ((Number) value).intValue():
-                            Long.class==clz? ((Number) value).longValue():
-                                    Float.class==clz? ((Number)value).floatValue():
-                                            Double.class==clz? ((Number) value).doubleValue():null;
+                    if(Integer.class.equals(clz)){
+                        return ((Number) value).intValue();
+                    }else if(Long.class.equals(clz)){
+                        return ((Number) value).longValue();
+                    }else if(Float.class.equals(clz)){
+                        return ((Number) value).floatValue();
+                    }else if(Double.class.equals(clz)){
+                        return ((Number) value).doubleValue();
+                    }
                 }
             }else if(type.equals(JavaType.BOOLEAN)){
                 return Boolean.TRUE.equals(value);

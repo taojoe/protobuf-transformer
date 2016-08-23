@@ -88,10 +88,12 @@ public class BeanObjectHelper implements ObjectHelper {
         @Override
         public void write(Object value) throws IllegalAccessException {
             try {
-                if (field != null) {
-                    field.set(bean, value);
-                } else if (propertyDescriptor != null) {
-                    propertyDescriptor.getWriteMethod().invoke(bean, value);
+                if(value!=null) {
+                    if (field != null) {
+                        field.set(bean, value);
+                    } else if (propertyDescriptor != null) {
+                        propertyDescriptor.getWriteMethod().invoke(bean, value);
+                    }
                 }
             }catch (IllegalAccessException e){
             } catch (InvocationTargetException e) {
