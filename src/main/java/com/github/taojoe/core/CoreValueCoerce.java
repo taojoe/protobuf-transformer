@@ -67,10 +67,15 @@ public class CoreValueCoerce {
                 }else if(clz.equals(BigInteger.class)){
                     return new BigInteger(value.toString());
                 }else if(value instanceof Number && Number.class.isAssignableFrom(clz)){
-                    return Integer.class.equals(clz)? ((Number) value).intValue():
-                            Long.class.equals(clz)? ((Number) value).longValue():
-                                    Float.class.equals(clz)? ((Number)value).floatValue():
-                                            Double.class.equals(clz)? ((Number) value).doubleValue():null;
+                    if(Integer.class.equals(clz)){
+                        return ((Number) value).intValue();
+                    }else if(Long.class.equals(clz)){
+                        return ((Number) value).longValue();
+                    }else if(Float.class.equals(clz)){
+                        return ((Number) value).floatValue();
+                    }else if(Double.class.equals(clz)){
+                        return ((Number) value).doubleValue();
+                    }
                 }else if(clz.equals(LocalDateTime.class)){
                     if(!"".equals(value)) {
                         try {
