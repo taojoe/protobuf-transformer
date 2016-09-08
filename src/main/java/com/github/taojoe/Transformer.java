@@ -62,16 +62,13 @@ public class Transformer {
                 } else if (value.getClass().isEnum()) {
                     return fieldDescriptor.getEnumType().findValueByName(((Enum) value).name());
                 }
-            }catch (Exception e){
-
-            }
+            }catch (Exception e){}
         }else if(type.equals(JavaType.BYTE_STRING)){
             return ByteString.copyFrom(((byte[]) value));
         }
         return null;
     }
     protected Object massageValueToJavaValue(Object value, Class clz){
-        String clzName=clz.getName();
         if(clz.equals(Integer.class) || clz.equals(Long.class) || clz.equals(Float.class) || clz.equals(Double.class) ||clz.equals(Boolean.class) ||
                 clz.equals(int.class) || clz.equals(long.class) || clz.equals(float.class) || clz.equals(double.class) || clz.equals(boolean.class)){
             // 判断clz时,如果是boolean, 估计是直接返回的boolean type,因此同时包含类型的判断
@@ -412,8 +409,7 @@ public class Transformer {
         try {
             return messageToObject(new BeanObjectHelper(), message, clz.newInstance());
         } catch (InstantiationException e) {
-        } catch (IllegalAccessException e) {
-        }
+        } catch (IllegalAccessException e) {}
         return null;
     }
     public <T extends Message.Builder> T beanToMessage(Object bean, T builder){
