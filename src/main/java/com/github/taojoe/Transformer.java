@@ -79,6 +79,8 @@ public class Transformer {
                 return value;
             }else if(value instanceof Descriptors.EnumDescriptor){
                 return ((Descriptors.EnumDescriptor)value).getName();
+            }else if(value instanceof Descriptors.EnumValueDescriptor){
+                return ((Descriptors.EnumValueDescriptor) value).getName();
             }
         }else if(clz.isEnum()){
             try{
