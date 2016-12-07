@@ -288,6 +288,7 @@ public class Transformer {
                                         } else {
                                             entryBuilder.setValue(toMessageValue(entry.getValue(), valueFieldDescriptor));
                                         }
+                                        builder.addRepeatedField(fieldDescriptor, entryBuilder.build());
                                     }
                                 }
                             }

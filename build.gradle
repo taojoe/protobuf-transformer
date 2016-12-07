@@ -7,7 +7,7 @@ jar {
     baseName = 'protobuf-transformer'    
 }
 group = 'com.github.taojoe'
-version = '1.0.0'
+version = '1.0.1'
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier 'sources'
