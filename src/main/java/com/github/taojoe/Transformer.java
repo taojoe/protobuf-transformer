@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,6 +79,8 @@ public class Transformer {
                 return value;
             }else if(value instanceof Descriptors.EnumDescriptor){
                 return ((Descriptors.EnumDescriptor)value).getName();
+            }else if(value instanceof Descriptors.EnumValueDescriptor){
+                return ((Descriptors.EnumValueDescriptor) value).getName();
             }
         }else if(clz.isEnum()){
             try{
@@ -103,6 +106,10 @@ public class Transformer {
         }else if(clz.equals(LocalDate.class)){
             if(!"".equals(value)){
                 return LocalDate.parse((String) value);
+            }
+        }else if(clz.equals(LocalTime.class)){
+            if(!"".equals(value)){
+                return LocalTime.parse((String) value);
             }
         }else if(clz.equals(byte[].class)){
             return ((ByteString) value).toByteArray();
